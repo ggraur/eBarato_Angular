@@ -1,6 +1,6 @@
 export class Employee {
     id: number | undefined;
-    name: string | undefined;
+    fullName: string | undefined;
     gender: string | undefined;
     email?: string;
     phoneNumber?: number;
