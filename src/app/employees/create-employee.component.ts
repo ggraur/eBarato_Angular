@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Employee } from '../Modules/employee.model';
 import { Department } from '../Modules/department.model';
 
+ 
+
 
 @Component({
   selector: 'create-employee',
@@ -20,6 +22,7 @@ export class CreateEmployeeComponent implements OnInit {
   employee: Employee = new Employee;
  
   constructor() {
+  
     this.employee.contactPreference="phone";
     this.employee.gender="male";
     this.employee.isActive=true;
