@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from 'src/app/Modules/employee.model';
+import { IEmployee } from 'src/app/Modules/employee.model';
 
 @Component({
   selector: 'app-list-employees',
@@ -8,7 +8,7 @@ import { Employee } from 'src/app/Modules/employee.model';
 })
 export class ListEmployeesComponent implements OnInit {
 
-  employees: Employee[] = [
+  employees: IEmployee[] = [
     {
       id: 1,
       fullName: 'Mark',

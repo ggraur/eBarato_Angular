@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Employee } from '../Modules/employee.model';
+import { IEmployee } from '../Modules/employee.model';
 import { Department } from '../Modules/department.model';
-import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';   
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';   
 
  
 
@@ -13,7 +13,20 @@ import {BsDatepickerConfig} from 'ngx-bootstrap/datepicker';
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
+  previewPhoto = false;
   datePickerConfig: Partial<BsDatepickerConfig>;
+  employee: IEmployee = {
+    id:  null,
+    fullName: null,
+    gender: null,
+    contactPreference: null,
+    phoneNumber: null,
+    email: null,
+    dateOfBirth: null,
+    department: null,
+    isActive: null,
+    photoPath: null
+  };
   departments: Department[]=[
     {id:0, name : "-- Select Department --"},
     {id:1, name : "Help Desk-"},
@@ -21,15 +34,14 @@ export class CreateEmployeeComponent implements OnInit {
     {id:3, name : "IT"},
     {id:4, name : "Payroll"},
   ];
-  employee: Employee = new Employee;
  
   constructor() {
-  
     this.employee.contactPreference="phone";
     this.employee.gender="male";
     this.employee.isActive=true;
     this.employee.department='0';
-    this.employee.dateOfBirth =new Date(2000,0,1);
+    //this.employee.dateOfBirth =new Date(2000,0,1);
+    this.employee.photoPath="assets/Images/noImage.jfif";
     this.datePickerConfig = Object.assign({},
         {containerClass:'theme-dark-blue',
         showWeekNumbers:false,
@@ -43,6 +55,9 @@ export class CreateEmployeeComponent implements OnInit {
     
   }
 
+  togglePhotoPreview(){
+    this.previewPhoto=!this.previewPhoto;
+  }
   saveEmployee(empForm: NgForm): void {
     console.log(empForm.value);
   }
@@ -53,3 +68,4 @@ export class CreateEmployeeComponent implements OnInit {
 // angular forms tutorial
 
 // https://www.youtube.com/watch?v=HMK4P_jx0y8 -- dropdownlist
+

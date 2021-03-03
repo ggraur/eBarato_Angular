@@ -1,12 +1,12 @@
-export class Employee {
-    id: number | undefined;
-    fullName: string | undefined;
-    gender: string | undefined;
-    email?: string;
-    phoneNumber?: number;
-    contactPreference: string | undefined;
-    dateOfBirth: Date | undefined;
-    department: string | undefined;
-    isActive: boolean | undefined;
-    photoPath?: string;
+export interface IEmployee {
+    id: number | null;
+    fullName: string | null;
+    gender: string | null;
+    email?: string | null;
+    phoneNumber?: number | null;
+    contactPreference: string | null;
+    dateOfBirth: Date | null;
+    department: string | null;
+    isActive: boolean | null;
+    photoPath?: string | null;
 }
