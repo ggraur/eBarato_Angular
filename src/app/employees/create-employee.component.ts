@@ -44,9 +44,6 @@ export class CreateEmployeeComponent implements OnInit {
     this.employee.photoPath="assets/Images/noImage.jfif";
     this.datePickerConfig = Object.assign({},
         {containerClass:'theme-dark-blue',
-        showWeekNumbers:false,
-        minDate: new Date(2018,0,1),
-        maxDate: new Date(2021,8,1),
         dateInputFormat:'DD/MM/YYYY'
         })
   }
