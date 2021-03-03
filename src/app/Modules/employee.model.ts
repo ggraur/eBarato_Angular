@@ -2,7 +2,7 @@ export interface IEmployee {
     id: number | null;
     fullName: string | null;
     gender: string | null;
-    email?: string | boolean;
+    email?: string | null;
     phoneNumber?: number | null;
     contactPreference: string | null;
     dateOfBirth: Date | null;

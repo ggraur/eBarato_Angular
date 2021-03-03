@@ -21,14 +21,14 @@ export class CreateEmployeeComponent implements OnInit {
     gender: null,
     contactPreference: null,
     phoneNumber: null,
-    email: '',
+    email: null,
     dateOfBirth: null,
     department: null,
     isActive: null,
     photoPath: null
   };
   departments: Department[]=[
-    {id:0, name : "-- Select Department --"},
+   // {id:-1, name : "-- Select Department --"},
     {id:1, name : "Help Desk-"},
     {id:2, name : "HR"},
     {id:3, name : "IT"},
@@ -36,10 +36,10 @@ export class CreateEmployeeComponent implements OnInit {
   ];
  
   constructor() {
-    this.employee.contactPreference="phone";
-    this.employee.gender="male";
-    this.employee.isActive=true;
-    this.employee.department='0';
+    //this.employee.contactPreference="phone";
+    //this.employee.gender="male";
+   // this.employee.isActive=true;
+    //this.employee.department='-1';
     //this.employee.email="test@mail.com"
     //this.employee.dateOfBirth =new Date(2000,0,1);
     this.employee.photoPath="assets/Images/noImage.jfif";

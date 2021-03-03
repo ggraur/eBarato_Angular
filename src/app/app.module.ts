@@ -12,7 +12,6 @@ import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
-
 @NgModule({
   declarations: [
     AppComponent,
