@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, Validators } from '@angular/forms';
 import { IEmployee } from '../Modules/employee.model';
 import { Department } from '../Modules/department.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';   
@@ -21,7 +21,7 @@ export class CreateEmployeeComponent implements OnInit {
     gender: null,
     contactPreference: null,
     phoneNumber: null,
-    email: null,
+    email: '',
     dateOfBirth: null,
     department: null,
     isActive: null,
@@ -40,6 +40,7 @@ export class CreateEmployeeComponent implements OnInit {
     this.employee.gender="male";
     this.employee.isActive=true;
     this.employee.department='0';
+    //this.employee.email="test@mail.com"
     //this.employee.dateOfBirth =new Date(2000,0,1);
     this.employee.photoPath="assets/Images/noImage.jfif";
     this.datePickerConfig = Object.assign({},

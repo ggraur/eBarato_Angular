@@ -8,11 +8,9 @@
             <div class="form-group" [class.has-error]="fullName.invalid && fullName.touched"
                 [class.has-success]="fullName.valid">
                 <label for="fullName" class="control-label">Full Name</label>
-                <input required id="fullName" name="fullName" 
-                [(ngModel)]='employee.fullName' 
-                type="text" 
-                class="form-control" #fullName="ngModel" />
-                <span class="help-block" *ngIf="fullName.invalid && fullName.touched" >
+                <input required id="fullName" name="fullName" [(ngModel)]='employee.fullName' type="text"
+                    class="form-control" #fullName="ngModel" />
+                <span class="help-block" *ngIf="fullName.invalid && fullName.touched">
                     The full name is a mandatory field
                 </span>
             </div>
@@ -23,14 +21,20 @@
             <div>valid:{{employeeForm.valid}}</div>
             <div>invalid:{{employeeForm.invalid}}</div> -->
 
-            <div class="form-group" [class.has-error]="emailControl.invalid && emailControl.touched"
-                [class.has-success]="emailControl.valid">
+            <div class="form-group" [class.has-error]="email.invalid && email.touched"
+                [class.has-success]="email.valid">
                 <label for="email" class="control-label">Email</label>
-                <input required id="email" name="email" [(ngModel)]='employee.email' type="text"
-                 class="form-control" #emailControl="ngModel" />
-                <span class="help-block"
-                *ngIf="emailControl.invalid && emailControl.touched"
-                >The email is a mandatory field</span>
+                <!-- pattern="^[a-zA-Z0-9-.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(domainname)\.com$" for a specific domainname.  -->
+                <input id="email" required pattern="^[a-zA-Z0-9-.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" 
+                name="email"
+                    #email="ngModel" [(ngModel)]="employee.email" type="text"
+                    class="form-control"  />
+                <span class="help-block" *ngIf="email.errors?.required && email.touched">
+                    The email is a mandatory field
+                </span>
+                <span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+                    The email is invalid
+                </span>
             </div>
 
             <div class="form-group">
@@ -49,7 +53,7 @@
                 </button>
             </div>
             <div class="form-group">
-                <img [src]="employee.photoPath" height="200" width="200" *ngIf="previewPhoto"/>
+                <img [src]="employee.photoPath" height="200" width="200" *ngIf="previewPhoto" />
             </div>
 
             <div class="row">
@@ -118,7 +122,6 @@
     </div>
 </form>
 {{employeeForm.value | json}}
-<br/>
-<br/>
-Our employee model :{{employee | json}}
-
+<br />
+<br />
+Our employee model :{{employee | json}} 
