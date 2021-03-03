@@ -1,4 +1,5 @@
 // https://www.youtube.com/watch?v=2AAUf32pKy8
+// can be used to compare if valid selection selected from dropdown list.
 
 import { Directive, Input } from '@angular/core';
 import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
@@ -12,8 +13,8 @@ import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
     }]
 })
 export class SelectRequiredValidatorDirective implements Validator {
-    @Input() appSelectorValidator: string | undefined;
+    @Input('appSelectorValidator') defaultValue: string | undefined;
     validate(control: AbstractControl): { [key: string]: any } | null {
-        return control.value === this.appSelectorValidator ? { 'defaultSelected': true } : null
+        return control.value === this.defaultValue ? { 'defaultSelected': true } : null
     }
 }

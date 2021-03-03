@@ -18,7 +18,9 @@ export class ListEmployeesComponent implements OnInit {
       dateOfBirth: new Date('10/25/1988'),
       department: 'IT',
       isActive: true,
-      photoPath: '../assets/Images/1.png'
+      photoPath: '../assets/Images/1.png',
+      password:'',
+      confirmPassword:'',
     },
     {
       id: 2,
@@ -29,7 +31,9 @@ export class ListEmployeesComponent implements OnInit {
       dateOfBirth: new Date('11/20/1979'),
       department: 'HR',
       isActive: false,
-      photoPath: '../assets/Images/3.jfif'
+      photoPath: '../assets/Images/3.jfif',
+      password:'',
+      confirmPassword:'',
     },
     {
       id: 3,
@@ -40,7 +44,9 @@ export class ListEmployeesComponent implements OnInit {
       dateOfBirth: new Date('3/25/1976'),
       department: 'IT',
       isActive: false,
-      photoPath: '../assets/Images/2.jfif'
+      photoPath: '../assets/Images/2.jfif',
+      password:'',
+      confirmPassword:'',
     },
     {
       id: 4,
@@ -51,7 +57,10 @@ export class ListEmployeesComponent implements OnInit {
       dateOfBirth: new Date('4/22/1974'),
       department: 'IT',
       isActive: true,
-      photoPath: '../assets/Images/4.jfif'
+      photoPath: '../assets/Images/4.jfif',
+      password:'',
+      confirmPassword:'',
+
     },
     {
       id: 5,
@@ -62,7 +71,10 @@ export class ListEmployeesComponent implements OnInit {
       dateOfBirth: new Date('5/22/1975'),
       department: 'IT',
       isActive: false,
-      photoPath: '../assets/Images/5.jfif'
+      photoPath: '../assets/Images/5.jfif',
+      password:'',
+      confirmPassword:'',
+
     },
   ];
 

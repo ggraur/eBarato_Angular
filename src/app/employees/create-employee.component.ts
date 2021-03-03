@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, Validators } from '@angular/forms';
 import { IEmployee } from '../Modules/employee.model';
 import { Department } from '../Modules/department.model';
-import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';   
+import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
- 
+
 
 
 @Component({
@@ -23,38 +23,40 @@ export class CreateEmployeeComponent implements OnInit {
     phoneNumber: null,
     email: null,
     dateOfBirth: null,
-    department: null,
+    department:  null,
     isActive: null,
-    photoPath: null
+    photoPath: null,
+    password: null,
+    confirmPassword: null,
   };
-  departments: Department[]=[
-   // {id:-1, name : "-- Select Department --"},
-    {id:1, name : "Help Desk-"},
-    {id:2, name : "HR"},
-    {id:3, name : "IT"},
-    {id:4, name : "Payroll"},
+  departments: Department[] = [
+    {id: -1, name : '-- Select Department --'},
+    {id: 1, name : 'Help Desk-'},
+    {id: 2, name : 'HR'},
+    {id: 3, name : 'IT'},
+    {id: 4, name : 'Payroll'},
   ];
- 
+
   constructor() {
-    //this.employee.contactPreference="phone";
-    //this.employee.gender="male";
+    // this.employee.contactPreference="phone";
+    // this.employee.gender="male";
    // this.employee.isActive=true;
-    //this.employee.department='-1';
-    //this.employee.email="test@mail.com"
-    //this.employee.dateOfBirth =new Date(2000,0,1);
-    this.employee.photoPath="assets/Images/noImage.jfif";
+      this.employee.department = '-1';
+    // this.employee.email="test@mail.com"
+    // this.employee.dateOfBirth =new Date(2000,0,1);
+    this.employee.photoPath = 'assets/Images/noImage.jfif';
     this.datePickerConfig = Object.assign({},
-        {containerClass:'theme-dark-blue',
-        dateInputFormat:'DD/MM/YYYY'
-        })
+        {containerClass: 'theme-dark-blue',
+        dateInputFormat: 'DD/MM/YYYY'
+        });
   }
 
   ngOnInit(): void {
-    
+
   }
 
   togglePhotoPreview(){
-    this.previewPhoto=!this.previewPhoto;
+    this.previewPhoto = !this.previewPhoto;
   }
   saveEmployee(newEmployee: IEmployee): void {
     console.log(newEmployee);

@@ -9,6 +9,8 @@ import { EmployeesComponent } from './employees/employees.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
+import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive'
+import { SelectRequiredValidatorDirective } from './shared/select-required-validator.directive'
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
@@ -19,7 +21,9 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     EmployeesComponent,
     PageNotFoundComponent,
     ListEmployeesComponent,
-    CreateEmployeeComponent
+    CreateEmployeeComponent,
+    ConfirmEqualValidatorDirective,
+    SelectRequiredValidatorDirective
   ],
   imports: [
     BrowserModule,
