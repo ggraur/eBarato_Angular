@@ -25,12 +25,13 @@ import { AbstractControl, NG_VALIDATORS, Validator } from '@angular/forms';
 
 //     }
 // }
+
 export class ConfirmEqualValidatorDirective implements Validator {
-    validate(angularGroupControl: AbstractControl): { [key: string]: any } | null {
-        const passwordField = angularGroupControl.get('password');
-        const confirmPasswordField = angularGroupControl.get('confirmPassword');
+    validate(passwordGroup: AbstractControl): { [key: string]: any } | null {
+        const passwordField = passwordGroup.get('password');
+        const confirmPasswordField = passwordGroup.get('confirmPassword');
         if(passwordField && confirmPasswordField 
-            && passwordField == confirmPasswordField)
+            && passwordField.value !== confirmPasswordField.value)
         {
             return {'notEqual': true};
         }
