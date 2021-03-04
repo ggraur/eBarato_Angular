@@ -3,8 +3,8 @@ import { NgForm, Validators } from '@angular/forms';
 import { IEmployee } from '../Modules/employee.model';
 import { Department } from '../Modules/department.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
-
-
+import { EmployeeService } from './employee.service';
+import { Router } from '@angular/router'
 
 
 @Component({
@@ -37,7 +37,8 @@ export class CreateEmployeeComponent implements OnInit {
     {id: 4, name : 'Payroll'},
   ];
 
-  constructor() {
+  constructor(private _employeeService : EmployeeService,
+              private _router: Router) {
     // this.employee.contactPreference="phone";
     // this.employee.gender="male";
    // this.employee.isActive=true;
@@ -58,8 +59,10 @@ export class CreateEmployeeComponent implements OnInit {
   togglePhotoPreview(){
     this.previewPhoto = !this.previewPhoto;
   }
-  saveEmployee(newEmployee: IEmployee): void {
-    console.log(newEmployee);
+  saveEmployee(): void {
+    console.log(this.employee);
+    this._employeeService.save(this.employee);
+    this._router.navigate(['list']);
   }
 
 }

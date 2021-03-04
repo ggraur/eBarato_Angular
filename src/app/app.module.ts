@@ -10,9 +10,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive'
+
+
 import { SelectRequiredValidatorDirective } from './shared/select-required-validator.directive'
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { EmployeeService } from './employees/employee.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     CreateEmployeeComponent,
     ConfirmEqualValidatorDirective,
     SelectRequiredValidatorDirective
+    
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
