@@ -16,6 +16,8 @@ import { SelectRequiredValidatorDirective } from './shared/select-required-valid
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { EmployeeService } from './employees/employee.service';
+//import { DisplayEmployeeComponent } from './employee/display-employee.component';
+import { DisplayEmployeeComponent } from './employees/display-employee.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { EmployeeService } from './employees/employee.service';
     ListEmployeesComponent,
     CreateEmployeeComponent,
     ConfirmEqualValidatorDirective,
-    SelectRequiredValidatorDirective
+    SelectRequiredValidatorDirective,
+    DisplayEmployeeComponent
     
   ],
   imports: [

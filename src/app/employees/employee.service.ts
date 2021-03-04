@@ -16,6 +16,7 @@ export class EmployeeService{
           photoPath: '../assets/Images/1.png',
           password:'',
           confirmPassword:'',
+          phoneNumber: 2345978640
         },
         {
           id: 2,
