@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IEmployee } from 'src/app/Modules/employee.model';
 import { EmployeeService } from './employee.service'
 
@@ -16,12 +17,12 @@ export class ListEmployeesComponent implements OnInit {
   private empCount = -1;
   private indexArray = 1;
 
-  constructor(private _employeeService: EmployeeService) {
+  constructor(private _employeeService: EmployeeService, private _router:Router) {
     this.employeeId = 0;
   }
 
   ngOnInit(): void {
-    this.employees = this._employeeService.getEmployee();
+    this.employees = this._employeeService.getEmployees();
     this.employeeToDisplay = this.employees[0];
     this.empCount = this.employees.length;
     console.log("Total number of employees: " + this.empCount);
@@ -45,6 +46,9 @@ export class ListEmployeesComponent implements OnInit {
       this.employeeToDisplay = this.employees[0];
       this.indexArray = 1;
     }
+  }
+  displayEmployee(employeeId:number | null ){
+      this._router.navigate(['/employees',employeeId]);
   }
   // handleNotify(eventData: IEmployee) {
   //   this.dataFromChild = eventData;

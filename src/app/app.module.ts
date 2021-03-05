@@ -16,7 +16,7 @@ import { SelectRequiredValidatorDirective } from './shared/select-required-valid
 import { FormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { EmployeeService } from './employees/employee.service';
-//import { DisplayEmployeeComponent } from './employee/display-employee.component';
+
 import { DisplayEmployeeComponent } from './employees/display-employee.component'
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-guard.service';
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
