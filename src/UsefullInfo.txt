@@ -1,3 +1,14 @@
 <!-- https://www.pragimtech.com/courses/angular-crud-tutorial/ -->
 
-https://www.youtube.com/watch?v=lhl3w5rH7A8
+https://www.youtube.com/watch?v=BYwfrSlJFfY
+
+
+
+
+
+
+
+
+
+
+https://github.com/angular/angular/issues/17560

@@ -1,7 +1,24 @@
-<p>List of employees!</p>
-<div  *ngFor="let employee of employees">
-    <app-display-employee [employee]="employee"></app-display-employee>
-    <!-- <div class="panel-heading">
+
+<!-- <h1 *ngIf="dataFromChild">
+    {{ dataFromChild | json}}
+</h1> -->
+<h1 #h1Variable>
+
+</h1>
+<div *ngFor="let employee of employees">
+    <div (click) = "h1Variable.innerHTML = childComponent.getEmployeeNameAndGender()">
+        <app-display-employee [employee]="employee" #childComponent ></app-display-employee></div>
+    <!-- <app-display-employee [employee]="employee" (notify)="handleNotify($event)" ></app-display-employee> -->
+</div>
+
+<!-- <p>List of employees!</p>
+<hr/>
+<input type="button" (click)="prevEmployee()" class="btn btn-primary" value="View Prev Employee"/>
+<input type="button" (click)="nextEmployee()" class="btn btn-primary" value="View Next Employee"/>
+<br/>
+<br/>
+<app-display-employee [employee]="employeeToDisplay" [employeeId]="employeeToDisplay.id ? employeeToDisplay.id : 0"></app-display-employee> -->
+<!-- <div class="panel-heading">
         <h3 class="panel-title">{{employee.fullName}}</h3>
     </div>
     <div class="panel-body">
@@ -76,4 +93,3 @@
             </div>
         </div>
     </div> -->
-</div>

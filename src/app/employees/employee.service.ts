@@ -6,7 +6,7 @@ export class EmployeeService{
     private listEmployees: IEmployee[] =  [
         {
           id: 1,
-          fullName: 'Mark',
+          fullName: 'Mark, 1',
           gender: 'Male',
           contactPreference: 'Email',
           email: 'mark@pragimtech.com',
@@ -20,7 +20,7 @@ export class EmployeeService{
         },
         {
           id: 2,
-          fullName: 'Mary',
+          fullName: 'Mary, 2',
           gender: 'Female',
           contactPreference: 'Phone',
           phoneNumber: 2345978640,
@@ -33,7 +33,7 @@ export class EmployeeService{
         },
         {
           id: 3,
-          fullName: 'John',
+          fullName: 'John, 3',
           gender: 'Male',
           contactPreference: 'Email',
           phoneNumber: 5432978640,
@@ -46,7 +46,7 @@ export class EmployeeService{
         },
         {
           id: 4,
-          fullName: 'Annete',
+          fullName: 'Annete, 4',
           gender: 'Female',
           contactPreference: 'Phone',
           phoneNumber: 5432978642,
@@ -60,7 +60,7 @@ export class EmployeeService{
         },
         {
           id: 5,
-          fullName: 'Anton',
+          fullName: 'Anton,5 ',
           gender: 'Male',
           contactPreference: 'Post',
           phoneNumber: 5432978641,

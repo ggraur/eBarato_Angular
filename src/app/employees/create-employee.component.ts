@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, Validators } from '@angular/forms';
 import { IEmployee } from '../Modules/employee.model';
 import { Department } from '../Modules/department.model';
@@ -13,6 +13,7 @@ import { Router } from '@angular/router'
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
+  @ViewChild('employeeForm') public createEmployeeForm! : NgForm;
   previewPhoto = false;
   datePickerConfig: Partial<BsDatepickerConfig>;
   employee: IEmployee = {
