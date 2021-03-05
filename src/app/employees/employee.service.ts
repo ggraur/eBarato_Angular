@@ -76,6 +76,9 @@ export class EmployeeService {
   getEmployees(): IEmployee[] {
     return this.listEmployees;
   }
+  getEmployeesCount(): number {
+    return this.listEmployees.length;
+  }
   getEmployee(employeeId: number): IEmployee | undefined {
     return this.listEmployees.find(x => x.id === employeeId);
   }

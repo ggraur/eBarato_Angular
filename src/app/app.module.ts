@@ -21,6 +21,9 @@ import { DisplayEmployeeComponent } from './employees/display-employee.component
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-guard.service';
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -43,7 +46,8 @@ import { EmployeeDetailsComponent } from './employees/employee-details.component
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
   ],
-  providers: [EmployeeService,CreateEmployeeCanDeactivateGuardService],
+  providers: [EmployeeService
+             ,CreateEmployeeCanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
