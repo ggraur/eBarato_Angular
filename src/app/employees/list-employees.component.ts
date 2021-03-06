@@ -11,18 +11,35 @@ import { EmployeeService } from './employee.service'
 })
 export class ListEmployeesComponent implements OnInit {
   // dataFromChild: IEmployee | undefined;
+
+  private _searchTerm!: string;
+  get searchTerm(): string {
+    return this._searchTerm;
+  }
+  set searchTerm(value: string) {
+    this._searchTerm = value;
+    this.filteredEmployees = this.filterEmployees(value);
+  }
+  filterEmployees(searchString: string){
+    return this.employees.filter(
+      employee => employee.fullName?.toLowerCase().indexOf(searchString.toLowerCase())!==-1);
+  }
+
   employeeId!: number | null;
   employees!: IEmployee[];
+  filteredEmployees!: IEmployee[];
   employeeToDisplay!: IEmployee;
   private empCount = -1;
   private indexArray = 1;
 
-  constructor(private _employeeService: EmployeeService, private _router:Router) {
+  constructor(private _employeeService: EmployeeService, private _router: Router) {
     this.employeeId = 0;
   }
 
   ngOnInit(): void {
     this.employees = this._employeeService.getEmployees();
+    //this.filteredEmployees = Object.assign([],this.employees);
+    this.filteredEmployees = this.employees;
     this.employeeToDisplay = this.employees[0];
     this.empCount = this.employees.length;
     console.log("Total number of employees: " + this.empCount);
@@ -47,10 +64,26 @@ export class ListEmployeesComponent implements OnInit {
       this.indexArray = 1;
     }
   }
-  displayEmployee(employeeId:number | null ){
-      this._router.navigate(['/employees',employeeId]);
+  displayEmployee(employeeId: number | null) {
+    this._router.navigate(['/employees', employeeId]);
   }
   // handleNotify(eventData: IEmployee) {
   //   this.dataFromChild = eventData;
   // }
+
+  changeEmployeeName() {
+
+    this.employees[0].fullName = 'Jordan';
+    this.filteredEmployees = this.filterEmployees(this.searchTerm);
+
+    // // pure pipe to filter data
+    // const newEmployeeArray: IEmployee[] = Object.assign([],this.employees);
+    // newEmployeeArray[0].fullName='Jordan';
+    // this.employees=newEmployeeArray;
+
+  }
+
+  onMouseMove() {
+
+  }
 }

@@ -61,8 +61,11 @@ export class CreateEmployeeComponent implements OnInit {
     this.previewPhoto = !this.previewPhoto;
   }
   saveEmployee(): void {
-    console.log(this.employee);
-    this._employeeService.save(this.employee);
+    //console.log(this.employee);
+    const newEmployee:IEmployee = Object.assign({},this.employee);// https://www.youtube.com/watch?v=KNI66wZcaf8, explaining that line
+    this._employeeService.save(newEmployee);
+    // reseting form 
+    this.createEmployeeForm.reset();
     this._router.navigate(['list']);
   }
 

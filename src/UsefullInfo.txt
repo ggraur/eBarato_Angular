@@ -1,14 +1,11 @@
 <!-- https://www.pragimtech.com/courses/angular-crud-tutorial/ -->
 
-https://www.youtube.com/watch?v=BYwfrSlJFfY
+https://www.youtube.com/watch?v=vy0zhvCH-RM
 
 
 
 
-
-
-
-
+// sorting, by pipe , see that video https://www.youtube.com/watch?v=1TFSibbnkj0 and https://www.youtube.com/watch?v=G7WaP-yoiQg
 
 
 https://github.com/angular/angular/issues/17560

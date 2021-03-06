@@ -1,4 +1,5 @@
 import { Component, Input,  OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IEmployee } from '../Modules/employee.model';
 
 
@@ -10,6 +11,9 @@ import { IEmployee } from '../Modules/employee.model';
 export class DisplayEmployeeComponent implements OnInit {
 
   private _employeeId:number ;
+  
+  selectedEmployeeId: number | undefined;
+
   @Input() 
   set employeeId (val:number ){ 
     console.log("EmployeeID changed from " + JSON.stringify(this.employeeId) + ' to ' + JSON.stringify(val));
@@ -50,12 +54,14 @@ export class DisplayEmployeeComponent implements OnInit {
   //   }
   // }
 
-  constructor() {
+  constructor(private _route: ActivatedRoute) {
     this._employeeId=0;
    
    }
 
   ngOnInit(): void {
+    this.selectedEmployeeId = + (this._route.snapshot.paramMap.get('id') || '0');
+    console.log("_selectedEmployeeId : " + this.selectedEmployeeId);
   }
 
 
