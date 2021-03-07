@@ -1,4 +1,6 @@
 import { Injectable } from "@angular/core";
+import { Observable, of } from 'rxjs';
+import { mergeMap, delay, takeUntil } from 'rxjs/operators';
 import { IEmployee } from "../Modules/employee.model";
 
 @Injectable()
@@ -73,8 +75,8 @@ export class EmployeeService {
     },
   ];
 
-  getEmployees(): IEmployee[] {
-    return this.listEmployees;
+  getEmployees(): Observable<IEmployee[]> {
+    return of(this.listEmployees).pipe(delay(2000));
   }
   getEmployeesCount(): number {
     return this.listEmployees.length;

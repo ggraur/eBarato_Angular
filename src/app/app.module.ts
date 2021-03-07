@@ -20,9 +20,9 @@ import { EmployeeService } from './employees/employee.service';
 import { DisplayEmployeeComponent } from './employees/display-employee.component'
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-guard.service';
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
-
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { EmployeeFilterPipe } from './employees/employee-filter.pipe';
+import { EmployeeListResolverService } from './employees/employee-list-resolver.service';
+import { EmployeeDetailsGuardService } from './employees/employee-details-guard.service';
 
 
 
@@ -49,7 +49,9 @@ import { EmployeeFilterPipe } from './employees/employee-filter.pipe';
     BsDatepickerModule.forRoot(),
   ],
   providers: [EmployeeService
-             ,CreateEmployeeCanDeactivateGuardService],
+             ,CreateEmployeeCanDeactivateGuardService,
+             EmployeeListResolverService,
+             EmployeeDetailsGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

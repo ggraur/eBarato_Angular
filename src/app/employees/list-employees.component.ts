@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IEmployee } from 'src/app/Modules/employee.model';
-import { EmployeeService } from './employee.service'
+// import { EmployeeService } from './employee.service'
 
 
 @Component({
@@ -20,9 +20,9 @@ export class ListEmployeesComponent implements OnInit {
     this._searchTerm = value;
     this.filteredEmployees = this.filterEmployees(value);
   }
-  filterEmployees(searchString: string){
+  filterEmployees(searchString: string) {
     return this.employees.filter(
-      employee => employee.fullName?.toLowerCase().indexOf(searchString.toLowerCase())!==-1);
+      employee => employee.fullName?.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
   }
 
   employeeId!: number | null;
@@ -32,17 +32,40 @@ export class ListEmployeesComponent implements OnInit {
   private empCount = -1;
   private indexArray = 1;
 
-  constructor(private _employeeService: EmployeeService, private _router: Router) {
-    this.employeeId = 0;
-  }
-
-  ngOnInit(): void {
-    this.employees = this._employeeService.getEmployees();
-    //this.filteredEmployees = Object.assign([],this.employees);
-    this.filteredEmployees = this.employees;
+  constructor( private _router: Router
+    , private _route: ActivatedRoute) {
+      this.employees=this._route.snapshot.data['employeeList'];
+      
+      if (this._route.snapshot.queryParamMap.has('searchTerm')) {
+        this.searchTerm = this._route.snapshot.queryParamMap.get('searchTerm') || '';
+      } else {
+        this.filteredEmployees = this.employees;
+        //console.log('filteredEmployees : ' + new Date().toTimeString());
+      }
+    //this.employeeId = 0;
     this.employeeToDisplay = this.employees[0];
     this.empCount = this.employees.length;
     console.log("Total number of employees: " + this.empCount);
+  }
+
+  ngOnInit(): void {
+    // this._employeeService.getEmployees().subscribe((empList) => {
+    //   this.employees = empList;
+    //   //console.log('Subscribe : ' + new Date().toTimeString());
+      
+
+    //   //this.filteredEmployees = Object.assign([],this.employees);
+
+
+    //   // console.log(this._route.snapshot.queryParamMap.has('searchTerm'));
+    //   // console.log(this._route.snapshot.queryParamMap.get('searchTerm'));
+    //   // console.log(this._route.snapshot.queryParamMap.getAll('searchTerm'));
+    //   // console.log(this._route.snapshot.paramMap.keys);
+
+
+     
+    // });
+
   }
   prevEmployee(): void {
     if (this.indexArray == 1) {
@@ -65,7 +88,11 @@ export class ListEmployeesComponent implements OnInit {
     }
   }
   displayEmployee(employeeId: number | null) {
-    this._router.navigate(['/employees', employeeId]);
+    this._router.navigate(['/employees', employeeId], {
+      queryParams: {
+        'searchTerm': this.searchTerm, 'testParam': 'testValue'
+      }
+    });
   }
   // handleNotify(eventData: IEmployee) {
   //   this.dataFromChild = eventData;

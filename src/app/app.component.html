@@ -194,7 +194,7 @@
   }
 
   .terminal pre {
-    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
     color: white;
     padding: 0 1rem 1rem;
     margin: 0;
@@ -238,17 +238,17 @@
     align-items: center;
     font-size: 12px;
     padding: 3px 10px;
-    border: 1px solid rgba(27,31,35,.2);
+    border: 1px solid rgba(27, 31, 35, .2);
     border-radius: 3px;
-    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    background-image: linear-gradient(-180deg, #fafbfc, #eff3f6 90%);
     margin-left: 4px;
     font-weight: 600;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   }
 
   .github-star-badge:hover {
-    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
-    border-color: rgba(27,31,35,.35);
+    background-image: linear-gradient(-180deg, #f0f3f6, #e6ebf1 90%);
+    border-color: rgba(27, 31, 35, .35);
     background-position: -.5em;
   }
 
@@ -269,7 +269,7 @@
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
 
-    .card-container > *:not(.circle-link),
+    .card-container>*:not(.circle-link),
     .terminal {
       width: 100%;
     }
@@ -295,6 +295,31 @@
       visibility: hidden;
     }
   }
+
+  .loader {
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #177bd8;
+      width: 120px;
+      height: 120px;
+      top: 50%;
+      left: 50%;
+      -webkit-animation: spin 700ms linear infinite; /* Safari */
+      animation: spin 700ms linear infinite;
+      position: absolute;
+  }
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 </style>
 <div style="padding:5px">
   <div class="container">
@@ -311,7 +336,8 @@
         </li>
       </ul>
     </nav>
-    <br/>
-    <router-outlet></router-outlet>
+    <br />
+    <div *ngIf="showLoadingIndicator" class="loader"></div>
+      <router-outlet></router-outlet>
   </div>
 </div>

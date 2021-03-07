@@ -4,6 +4,7 @@ import { CreateEmployeeCanDeactivateGuardService } from './employees/create-empl
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
+import { EmployeeListResolverService } from './employees/employee-list-resolver.service';
 import { EmployeesComponent } from './employees/employees.component';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { HomeComponent } from './home/home.component';
@@ -11,7 +12,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'list', component: ListEmployeesComponent},
+  {path: 'list', component: ListEmployeesComponent,
+  resolve:{employeeList:EmployeeListResolverService}},
   {
     path: 'create', 
     component: CreateEmployeeComponent,
@@ -20,9 +22,12 @@ const routes: Routes = [
 
   // {path: 'employees', component: EmployeesComponent},
   
-  {path: 'employees/:id', component: EmployeeDetailsComponent},
-
+  {path: 'employees/:id', component: EmployeeDetailsComponent,
+   canActivate: []},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
+
+  {path: 'notFound', component: PageNotFoundComponent},
+
   {path: '**', component: PageNotFoundComponent}
 ];
 
