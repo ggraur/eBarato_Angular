@@ -1,0 +1,4 @@
+// Angular check the port used by app
+    netstat -a -n -o
+//Angular kill port used by app 
+    taskkill -f /pid 18932

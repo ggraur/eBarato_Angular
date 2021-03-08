@@ -24,7 +24,12 @@ export class ListEmployeesComponent implements OnInit {
     return this.employees.filter(
       employee => employee.fullName?.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
   }
-
+  onDeleteNotification(id:number){
+    const deleteId = this.filteredEmployees.findIndex(e => e.id == id);
+    if (deleteId !== -1) {
+      this.filteredEmployees.splice(deleteId, 1)
+    }
+  }
   employeeId!: number | null;
   employees!: IEmployee[];
   filteredEmployees!: IEmployee[];
@@ -67,50 +72,50 @@ export class ListEmployeesComponent implements OnInit {
     // });
 
   }
-  prevEmployee(): void {
-    if (this.indexArray == 1) {
-      this.employeeToDisplay = this.employees[this.empCount - 1];
-      this.indexArray = this.empCount;
-    }
-    else {
-      this.indexArray--;
-      this.employeeToDisplay = this.employees[this.indexArray - 1];
-    }
-  }
-  nextEmployee(): void {
-    if (this.indexArray < this.empCount) {
-      this.employeeToDisplay = this.employees[this.indexArray];
-      this.indexArray++;
-    }
-    else {
-      this.employeeToDisplay = this.employees[0];
-      this.indexArray = 1;
-    }
-  }
-  displayEmployee(employeeId: number | null) {
-    this._router.navigate(['/employees', employeeId], {
-      queryParams: {
-        'searchTerm': this.searchTerm, 'testParam': 'testValue'
-      }
-    });
-  }
+  // prevEmployee(): void {
+  //   if (this.indexArray == 1) {
+  //     this.employeeToDisplay = this.employees[this.empCount - 1];
+  //     this.indexArray = this.empCount;
+  //   }
+  //   else {
+  //     this.indexArray--;
+  //     this.employeeToDisplay = this.employees[this.indexArray - 1];
+  //   }
+  // }
+  // nextEmployee(): void {
+  //   if (this.indexArray < this.empCount) {
+  //     this.employeeToDisplay = this.employees[this.indexArray];
+  //     this.indexArray++;
+  //   }
+  //   else {
+  //     this.employeeToDisplay = this.employees[0];
+  //     this.indexArray = 1;
+  //   }
+  // }
+  // displayEmployee(employeeId: number | null) {
+  //   this._router.navigate(['/employees', employeeId], {
+  //     queryParams: {
+  //       'searchTerm': this.searchTerm, 'testParam': 'testValue'
+  //     }
+  //   });
+  // }
   // handleNotify(eventData: IEmployee) {
   //   this.dataFromChild = eventData;
   // }
 
-  changeEmployeeName() {
+  // changeEmployeeName() {
 
-    this.employees[0].fullName = 'Jordan';
-    this.filteredEmployees = this.filterEmployees(this.searchTerm);
+  //   this.employees[0].fullName = 'Jordan';
+  //   this.filteredEmployees = this.filterEmployees(this.searchTerm);
 
-    // // pure pipe to filter data
-    // const newEmployeeArray: IEmployee[] = Object.assign([],this.employees);
-    // newEmployeeArray[0].fullName='Jordan';
-    // this.employees=newEmployeeArray;
+  //   // // pure pipe to filter data
+  //   // const newEmployeeArray: IEmployee[] = Object.assign([],this.employees);
+  //   // newEmployeeArray[0].fullName='Jordan';
+  //   // this.employees=newEmployeeArray;
 
-  }
+  // }
 
-  onMouseMove() {
+  // onMouseMove() {
 
-  }
+  // }
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-guard.service';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
+import { EmployeeDetailsGuardService } from './employees/employee-details-guard.service';
 
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
 import { EmployeeListResolverService } from './employees/employee-list-resolver.service';
@@ -15,7 +16,7 @@ const routes: Routes = [
   {path: 'list', component: ListEmployeesComponent,
   resolve:{employeeList:EmployeeListResolverService}},
   {
-    path: 'create', 
+    path: 'edit/:id', 
     component: CreateEmployeeComponent,
     canDeactivate:[CreateEmployeeCanDeactivateGuardService]
   },
@@ -23,12 +24,13 @@ const routes: Routes = [
   // {path: 'employees', component: EmployeesComponent},
   
   {path: 'employees/:id', component: EmployeeDetailsComponent,
-   canActivate: []},
+   canActivate: [EmployeeDetailsGuardService]},
   {path: '', redirectTo: '/home', pathMatch: 'full'},
 
   {path: 'notFound', component: PageNotFoundComponent},
 
   {path: '**', component: PageNotFoundComponent}
+
 ];
 
 @NgModule({

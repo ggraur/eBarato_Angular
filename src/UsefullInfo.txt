@@ -1,6 +1,6 @@
 <!-- https://www.pragimtech.com/courses/angular-crud-tutorial/ -->
 
-https://www.youtube.com/watch?v=Dm1OpX42Aho
+https://www.youtube.com/watch?v=pkTAFaR5LRM
 
 
 
@@ -9,3 +9,7 @@ https://www.youtube.com/watch?v=Dm1OpX42Aho
 
 
 https://github.com/angular/angular/issues/17560
+
+
+// Learn Angular 10, Web API & SQL Server by Creating a Web Application from Scratch
+https://www.youtube.com/watch?v=4a9VxZjnT7E
