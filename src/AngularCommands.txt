@@ -6,3 +6,7 @@
     npm install -g json-server
 //Angular start watch server
     json-server -w=true db.json
+//Angular create app-routing.ts 
+    ng g m app-routing --flat=true --module=app
+//angualr generate component in specific folder with no spec file 
+    ng g c merchant/create-merchant --skip-tests=true --flat

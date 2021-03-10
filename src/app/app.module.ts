@@ -30,6 +30,8 @@ import { AccordionComponent } from './shared/accordion/accordion.component';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { CreateMerchantComponent } from './merchant/create-merchant.component';
+import { ListMerchantsComponent } from './merchant/list-merchants.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     EmployeeDetailsComponent,
     EmployeeFilterPipe,
     AccordionComponent,
-    ErrorAlertComponent
+    ErrorAlertComponent,
+    CreateMerchantComponent,
+    ListMerchantsComponent
     
   ],
   imports: [

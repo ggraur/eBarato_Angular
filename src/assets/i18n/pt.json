@@ -1,4 +1,10 @@
 {
+    "Merchant Name":"Novo Comerciante",
+    "The full name is a mandatory field":"O nome do comerciante é um campo obrigatório",
+    "New Merchant":"Novo Comerciante",
+    "Create Merchants":"Criar Comerciantes",
+    "Merchants":"Comerciantes",
+    "Employees":"Empregados",
     "title":"eBarato Marketplace, o seu local preferido de vendas",
     "Sitetitle": "Site Angular Multi Language",
     "Name": "Nome",

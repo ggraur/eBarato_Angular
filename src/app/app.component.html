@@ -297,29 +297,39 @@
   }
 
   .loader {
-      border: 16px solid #f3f3f3;
-      border-radius: 50%;
-      border-top: 16px solid #177bd8;
-      width: 120px;
-      height: 120px;
-      top: 50%;
-      left: 50%;
-      -webkit-animation: spin 700ms linear infinite; /* Safari */
-      animation: spin 700ms linear infinite;
-      position: absolute;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid #177bd8;
+    width: 120px;
+    height: 120px;
+    top: 50%;
+    left: 50%;
+    -webkit-animation: spin 700ms linear infinite;
+    /* Safari */
+    animation: spin 700ms linear infinite;
+    position: absolute;
   }
 
-/* Safari */
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
 
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 </style>
 <div style="padding:5px">
   <div class="container">
@@ -327,25 +337,35 @@
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active">
-          <a routerLink="home"> 
+          <a routerLink="home">
             {{'Home' | translate}}
           </a>
         </li>
         <li routerLinkActive="active">
+          <a  routerLink="list">{{'Employees' | translate}}</a>
+          <ul>
+            <a routerLink="list">{{'Employee List' | translate}}</a>
+            <a routerLink="editEmployee/0">{{'Create Employee' | translate}}</a>
+          </ul>
+        </li>
+        <li routerLinkActive="active">
+          <a  routerLink="merchants">{{'Merchants' | translate}}</a>
+          <ul>
+            <a routerLink="merchants">{{'Merchants List' | translate}}</a>
+            <a routerLink="editMerchant/0">{{'Create Merchants' | translate}}</a>
+          </ul>
+        </li>
+        <!-- <li routerLinkActive="active">
           <a routerLink="list">{{'Employee List' | translate}}</a>
         </li>
         <li routerLinkActive="active">
           <a routerLink="edit/0">{{'Create Employee' | translate}}</a>
-        </li>
+        </li> -->
       </ul>
       <div class="pull-right lngClass">
         <span class="form-inline ">
-          <select 
-              class="form-control" 
-              #selectedLang 
-              (change)="switchLang(selectedLang.value)">
-            <option *ngFor="let language of translate.getLangs()" 
-              [value]="language"
+          <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
+            <option *ngFor="let language of translate.getLangs()" [value]="language"
               [selected]="language === translate.currentLang">
               {{ language }}
             </option>
@@ -355,6 +375,6 @@
     </nav>
     <br />
     <div *ngIf="showLoadingIndicator" class="loader"></div>
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 </div>

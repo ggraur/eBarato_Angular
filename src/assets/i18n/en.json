@@ -1,4 +1,10 @@
 {
+    "Merchant Name":"Merchant name",
+    "The full name is a mandatory field":"The full name is a mandatory field",
+    "New Merchant":"New Merchant",
+    "Create Merchants":"Create Merchants",
+    "Merchants":"Merchants",
+    "Employees":"Employees",
     "title":"eBarato Marketplace",
     "Sitetitle": "Angular Multi Language Site",
     "Name": "Name",
