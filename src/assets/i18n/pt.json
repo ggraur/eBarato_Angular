@@ -1,0 +1,22 @@
+{
+    "title":"eBarato Marketplace, o seu local preferido de vendas",
+    "Sitetitle": "Site Angular Multi Language",
+    "Name": "Nome",
+    "NameError": "Tenho certeza que você deve ter um nome!",
+    "Email": "Endereço de email",
+    "PhoneNo": "N. Telefone",
+    "Password": "Palavra passe",
+    "TermsConditions": "Eu concordo com os termos e condições.",
+    "Submit": "Submeter",
+    "Gender": "Gênero",
+    "Phone Number": "Número de telefone",
+    "Contact Preference": "Preferência de contato",
+    "Date Of Birth": "Data de Nascimento",
+    "Department":"Departamento",
+    "Is active":"Está ativo",
+    "Home": "Pagina Principal",
+    "Employee List":"Lista de funcionários",
+    "Create New Employee":"Criar Novo Funcionário",
+    "Create Employee":"Criar funcionário",
+    "Full Name":"Nome Completo"
+}

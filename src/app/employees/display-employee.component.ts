@@ -16,6 +16,7 @@ export class DisplayEmployeeComponent implements OnInit {
   
   @Output() notifyDelete: EventEmitter<number> = new EventEmitter<number>();
   confirmDelete:boolean=false;
+ 
   @Input() searchTerm!:string;
   @Input()
   set employeeId(val: number) {
@@ -59,7 +60,7 @@ export class DisplayEmployeeComponent implements OnInit {
   // }
 
   constructor(private _route: ActivatedRoute, private _empService : EmployeeService,
-    private _router: Router) {
+    private _router: Router, ) {
     this._employeeId = 0;
 
   }

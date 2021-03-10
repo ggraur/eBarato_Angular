@@ -4,8 +4,8 @@ import { IEmployee } from '../Modules/employee.model';
 import { Department } from '../Modules/department.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { EmployeeService } from './employee.service';
-import { ActivatedRoute, Router } from '@angular/router'
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'create-employee',
@@ -41,7 +41,7 @@ export class CreateEmployeeComponent implements OnInit {
 
   constructor(private _employeeService: EmployeeService,
     private _router: Router,
-    private _route: ActivatedRoute) {
+    private _route: ActivatedRoute, public translate: TranslateService ) {
     // this.employee.contactPreference="phone";
     // this.employee.gender="male";
     // this.employee.isActive=true;
@@ -78,8 +78,9 @@ export class CreateEmployeeComponent implements OnInit {
         password: null,
         confirmPassword: null,
       };
+      // this.createEmployeeForm.reset();
       this.panelTitle = 'Create New Employee';
-      this.createEmployeeForm.reset();
+      
     }
     else {
       this.employee =Object.assign({}, this._employeeService.getEmployee(id)!);

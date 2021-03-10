@@ -323,18 +323,35 @@
 </style>
 <div style="padding:5px">
   <div class="container">
+    <div class="logo">{{'title' | translate}}</div>
     <nav class="navbar navbar-default">
       <ul class="nav navbar-nav">
         <li routerLinkActive="active">
-          <a routerLink="home">Home</a>
+          <a routerLink="home"> 
+            {{'Home' | translate}}
+          </a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="list">Employee List</a>
+          <a routerLink="list">{{'Employee List' | translate}}</a>
         </li>
         <li routerLinkActive="active">
-          <a routerLink="edit/0">Create Employee</a>
+          <a routerLink="edit/0">{{'Create Employee' | translate}}</a>
         </li>
       </ul>
+      <div class="pull-right lngClass">
+        <span class="form-inline ">
+          <select 
+              class="form-control" 
+              #selectedLang 
+              (change)="switchLang(selectedLang.value)">
+            <option *ngFor="let language of translate.getLangs()" 
+              [value]="language"
+              [selected]="language === translate.currentLang">
+              {{ language }}
+            </option>
+          </select>
+        </span>
+      </div>
     </nav>
     <br />
     <div *ngIf="showLoadingIndicator" class="loader"></div>

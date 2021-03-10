@@ -13,3 +13,11 @@ position: absolute;
     0%{transform: rotate(0deg);}
     100%{transform: rotate(-360deg);}
 }
+
+.lngClass
+{
+    position: relative;
+    padding-top: 8px;
+    padding-right: 5px;
+    padding-bottom: 3px;
+}

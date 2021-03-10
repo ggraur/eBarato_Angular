@@ -7,7 +7,7 @@
         <div class="panel-body">
             <div class="form-group" [class.has-error]="fullName.invalid && fullName.touched"
                 [class.has-success]="fullName.valid">
-                <label for="fullName" class="control-label">Full Name</label>
+                <label for="fullName" class="control-label">{{ 'Full Name' | translate}}</label>
                 <input required id="fullName" name="fullName" [(ngModel)]='employee.fullName' type="text"
                     class="form-control" #fullName="ngModel" />
                 <span class="help-block" *ngIf="fullName.invalid && fullName.touched">

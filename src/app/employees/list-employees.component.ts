@@ -13,6 +13,8 @@ export class ListEmployeesComponent implements OnInit {
   // dataFromChild: IEmployee | undefined;
 
   private _searchTerm!: string;
+  public error!: string;
+  errorMsg!: string;
   get searchTerm(): string {
     return this._searchTerm;
   }
@@ -24,7 +26,7 @@ export class ListEmployeesComponent implements OnInit {
     return this.employees.filter(
       employee => employee.fullName?.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
   }
-  onDeleteNotification(id:number){
+  onDeleteNotification(id: number) {
     const deleteId = this.filteredEmployees.findIndex(e => e.id == id);
     if (deleteId !== -1) {
       this.filteredEmployees.splice(deleteId, 1)
@@ -37,27 +39,41 @@ export class ListEmployeesComponent implements OnInit {
   private empCount = -1;
   private indexArray = 1;
 
-  constructor( private _router: Router
+  constructor(private _router: Router
     , private _route: ActivatedRoute) {
-      this.employees=this._route.snapshot.data['employeeList'];
-      
+
+    const resolvedData: IEmployee[] | string = this._route.snapshot.data['employeeList'];
+
+    // console.log("Resolved Data: " + (resolvedData));
+
+    if (Array.isArray(resolvedData)) {
+      this.employees = resolvedData;
+    } else {
+      console.log('I\'m passing here');
+      this.error = resolvedData!;
+    }
+
+    //      this.employees=this._route.snapshot.data['employeeList'];
+    if (Array.isArray(this.employees)) {
       if (this._route.snapshot.queryParamMap.has('searchTerm')) {
         this.searchTerm = this._route.snapshot.queryParamMap.get('searchTerm') || '';
       } else {
         this.filteredEmployees = this.employees;
         //console.log('filteredEmployees : ' + new Date().toTimeString());
       }
-    //this.employeeId = 0;
-    this.employeeToDisplay = this.employees[0];
-    this.empCount = this.employees.length;
-    console.log("Total number of employees: " + this.empCount);
+      //this.employeeId = 0;
+
+      this.employeeToDisplay = this.employees[0];
+      this.empCount = this.employees.length;
+      console.log("Total number of employees: " + this.empCount);
+    }
   }
 
   ngOnInit(): void {
     // this._employeeService.getEmployees().subscribe((empList) => {
     //   this.employees = empList;
     //   //console.log('Subscribe : ' + new Date().toTimeString());
-      
+
 
     //   //this.filteredEmployees = Object.assign([],this.employees);
 
@@ -68,7 +84,7 @@ export class ListEmployeesComponent implements OnInit {
     //   // console.log(this._route.snapshot.paramMap.keys);
 
 
-     
+
     // });
 
   }

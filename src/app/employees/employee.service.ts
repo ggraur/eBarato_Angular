@@ -1,10 +1,18 @@
 import { Injectable } from "@angular/core";
-import { Observable, of } from 'rxjs';
-import { mergeMap, delay, takeUntil } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { mergeMap, delay, takeUntil, catchError } from 'rxjs/operators';
 import { IEmployee } from "../Modules/employee.model";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Router } from "@angular/router";
+
+
 
 @Injectable()
 export class EmployeeService {
+  constructor(private _httpClient: HttpClient, private _router:Router) {
+
+  }
+
   private listEmployees: IEmployee[] = [
     {
       id: 1,
@@ -75,10 +83,57 @@ export class EmployeeService {
     },
   ];
 
-  getEmployees(): Observable<IEmployee[]> {
-    // return of(this.listEmployees).pipe(delay(2000));
-    return of(this.listEmployees);
+  private handleError(errorResponse: HttpErrorResponse) {
+    if (errorResponse.error instanceof ErrorEvent) {
+      console.error('Client Side Error: ', errorResponse.error.message);
+
+    } else {
+      console.error('Server Side Error: ', errorResponse);
+    }
+    return throwError('There is a problem with a service. We are notified & working on it. Please try again later.');
   }
+  getEmployees(): Observable<IEmployee[]> {
+    return this._httpClient.get<IEmployee[]>('http://localhost:3000/employees1')
+      .pipe(
+        catchError(error => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message}`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      )
+
+
+    // .catch(this.handleError);
+
+    // return of(this.listEmployees).pipe(delay(2000));
+    //return of(this.listEmployees);
+  }
+
+  private getServerErrorMessage(error: HttpErrorResponse): string {
+    switch (error.status) {
+      case 404: {
+       // this._router.navigate(['notfound'])
+       // console.error('The server not found: ${error.message}');
+        return `Not Found: ${error.message}`;
+       // return `The server not found`;
+      }
+      case 403: {
+        return `Access Denied: ${error.message}`;
+      }
+      case 500: {
+        return `Internal Server Error: ${error.message}`;
+      }
+      default: {
+        return `Unknown Server Error: ${error.message}`;
+      }
+
+    }
+  }
+
   getEmployeesCount(): number {
     return this.listEmployees.length;
   }

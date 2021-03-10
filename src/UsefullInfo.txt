@@ -1,6 +1,7 @@
 <!-- https://www.pragimtech.com/courses/angular-crud-tutorial/ -->
 
-https://www.youtube.com/watch?v=pkTAFaR5LRM
+https://www.youtube.com/watch?v=d5bkiNebYWk
+
 
 
 
@@ -13,3 +14,21 @@ https://github.com/angular/angular/issues/17560
 
 // Learn Angular 10, Web API & SQL Server by Creating a Web Application from Scratch
 https://www.youtube.com/watch?v=4a9VxZjnT7E
+
+//create reusable component  app-acordion.
+https://www.youtube.com/watch?v=2SJ9Ch8jX3A
+
+// catch error Angular
+https://www.pluralsight.com/guides/handling-exceptions-using-the-angular-httpclient
+
+//multilanguage site 
+https://www.positronx.io/angular-internationalization-i18n-with-ngx-translate-tutorial/
+https://github.com/SinghDigamber/angular-translate-app
+
+
+//numero contribuinte portugues 
+1 ou 2 (pessoa singular)
+5 (pessoa colectiva)
+6 (pessoa colectiva pública)
+8 (empresário em nome individual)
+9 (pessoa colectiva irregular ou número provisório)
