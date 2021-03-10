@@ -14,10 +14,10 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class CreateEmployeeComponent implements OnInit {
   @ViewChild('employeeForm') public createEmployeeForm!: NgForm;
-  panelTitle!:string;
+  panelTitle!: string;
   previewPhoto = false;
   datePickerConfig: Partial<BsDatepickerConfig>;
-  employee: IEmployee= {
+  employee: IEmployee = {
     id: null,
     fullName: null,
     gender: null,
@@ -41,8 +41,8 @@ export class CreateEmployeeComponent implements OnInit {
 
   constructor(private _employeeService: EmployeeService,
     private _router: Router,
-    private _route: ActivatedRoute, public translate: TranslateService ) {
-    // this.employee.contactPreference="phone";
+    private _route: ActivatedRoute, public translate: TranslateService) {
+    this.employee.contactPreference = "Email";
     // this.employee.gender="male";
     // this.employee.isActive=true;
     this.employee.department = '-1';
@@ -80,23 +80,43 @@ export class CreateEmployeeComponent implements OnInit {
       };
       // this.createEmployeeForm.reset();
       this.panelTitle = 'Create New Employee';
-      
     }
     else {
-      this.employee =Object.assign({}, this._employeeService.getEmployee(id)!);
-      this.panelTitle = 'Modify Employee: ' + this.employee.fullName;
+      // this.employee =Object.assign({}, this._employeeService.getEmployee(id)!);
+      this._employeeService.getEmployee(id).subscribe(
+        (employee) => this.employee = employee
+        ),
+        (err: any) => console.log(err);
+
+      this.panelTitle =  'Modify Employee' + (this.employee.fullName ? (+ ' : ' + this.employee.fullName) :'');
+        
     }
   }
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
   }
   saveEmployee(): void {
-    //console.log(this.employee);
-    const newEmployee: IEmployee = Object.assign({}, this.employee);// https://www.youtube.com/watch?v=KNI66wZcaf8, explaining that line
-    this._employeeService.save(newEmployee);
-    // reseting form 
-    this.createEmployeeForm.reset();
-    this._router.navigate(['list']);
+    if (this.employee.id == null) {
+      const newEmployee: IEmployee = Object.assign({}, this.employee);
+      // https://www.youtube.com/watch?v=KNI66wZcaf8, explaining that line
+      this._employeeService.addEmployee(newEmployee)?.subscribe(
+        (data: IEmployee) => {
+          console.log(data);
+          this.createEmployeeForm.reset();
+          this._router.navigate(['list']);
+        },
+        (error: any) => console.log(error)
+      );
+    } else {
+      this._employeeService.update(this.employee)?.subscribe(
+        () => {
+          this.createEmployeeForm.reset();
+          this._router.navigate(['list']);
+        },
+        (error: any) => console.log(error)
+      );
+    }
+
   }
 
 }

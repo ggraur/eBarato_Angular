@@ -2,3 +2,7 @@
     netstat -a -n -o
 //Angular kill port used by app 
     taskkill -f /pid 18932
+//Angular install json-server 
+    npm install -g json-server
+//Angular start watch server
+    json-server -w=true db.json

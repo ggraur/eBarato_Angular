@@ -4,14 +4,17 @@ import { mergeMap, delay, takeUntil, catchError } from 'rxjs/operators';
 import { IEmployee } from "../Modules/employee.model";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from "@angular/router";
+import { HttpHeaders } from '@angular/common/http';
 
 
 
 @Injectable()
 export class EmployeeService {
-  constructor(private _httpClient: HttpClient, private _router:Router) {
+  constructor(private _httpClient: HttpClient, private _router: Router) {
 
   }
+
+  baseUrl = 'http://localhost:3000/employees';
 
   private listEmployees: IEmployee[] = [
     {
@@ -93,7 +96,7 @@ export class EmployeeService {
     return throwError('There is a problem with a service. We are notified & working on it. Please try again later.');
   }
   getEmployees(): Observable<IEmployee[]> {
-    return this._httpClient.get<IEmployee[]>('http://localhost:3000/employees1')
+    return this._httpClient.get<IEmployee[]>(this.baseUrl)
       .pipe(
         catchError(error => {
           let errorMsg: string;
@@ -116,10 +119,10 @@ export class EmployeeService {
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {
       case 404: {
-       // this._router.navigate(['notfound'])
-       // console.error('The server not found: ${error.message}');
+        // this._router.navigate(['notfound'])
+        // console.error('The server not found: ${error.message}');
         return `Not Found: ${error.message}`;
-       // return `The server not found`;
+        // return `The server not found`;
       }
       case 403: {
         return `Access Denied: ${error.message}`;
@@ -137,28 +140,45 @@ export class EmployeeService {
   getEmployeesCount(): number {
     return this.listEmployees.length;
   }
-  getEmployee(employeeId: number): IEmployee | undefined {
-    return this.listEmployees.find(x => x.id === employeeId);
+  getEmployee(employeeId: number): Observable<IEmployee> {
+    return this._httpClient.get<IEmployee>(`${this.baseUrl}/${employeeId}`)
+      .pipe(catchError(this.handleError));
   }
 
-  delete(id: number) {
-    const deleteId = this.listEmployees.findIndex(e => e.id == id);
-    if (deleteId !== -1) {
-      this.listEmployees.splice(deleteId, 1)
-    }
+
+  delete(id: number): Observable<void> {
+    return this._httpClient.delete<void>(`${this.baseUrl}/${id}`)
+      .pipe(catchError(this.handleError));
+
+    // const deleteId = this.listEmployees.findIndex(e => e.id == id);
+    // if (deleteId !== -1) {
+    //   this.listEmployees.splice(deleteId, 1)
+    // }
   }
-  save(employee: IEmployee) {
-    if (employee.id == null) {
-      const maxId = this.listEmployees.reduce(function (e1, e2) {
-        return ((e1.id!) > (e2.id!)) ? e1 : e2;
-      }).id;
-      employee.id = maxId! + 1;
-      this.listEmployees.push(employee);
-    } else {
-      const foundIndex = +this.listEmployees.findIndex(e => e.id === employee.id);
-      this.listEmployees[foundIndex] = employee;
-    }
+
+  addEmployee(employee: IEmployee): Observable<IEmployee> | undefined | null {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this._httpClient.post<IEmployee>(this.baseUrl, employee, httpOptions)
+      .pipe(catchError(this.handleError));
+
 
   }
+
+  update(employee: IEmployee): Observable<void> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this._httpClient.put<void>(`${this.baseUrl}/${employee.id}`, employee, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
 
 }
