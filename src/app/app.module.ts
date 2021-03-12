@@ -32,6 +32,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CreateMerchantComponent } from './merchant/create-merchant.component';
 import { ListMerchantsComponent } from './merchant/list-merchants.component';
+import { CountryComponent } from './countries/country.component';
+import { AddressComponent } from './address/address.component';
+
 
 
 @NgModule({
@@ -51,8 +54,9 @@ import { ListMerchantsComponent } from './merchant/list-merchants.component';
     AccordionComponent,
     ErrorAlertComponent,
     CreateMerchantComponent,
-    ListMerchantsComponent
-    
+    ListMerchantsComponent,
+    CountryComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,

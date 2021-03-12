@@ -1,34 +1,68 @@
 <form #merchantForm="ngForm" ngNativeValidate (ngSubmit)="saveMerchant()">
     <div class="panel panel-primary" *ngIf="merchant">
         <div class="panel-heading">
-            <h3 class="panel-title">{{'New Merchant' | translate}}</h3>
-            <hr />
+            <h3 class="panel-title">{{'Create Merchants' | translate}}</h3>
         </div>
         <div class="panel-body">
-            <!-- <div class="form-group" [class.has-error]="merchantName.invalid && merchantName.touched"
+
+            <div class="form-group" [class.has-error]="nif.invalid && nif.touched"
+                [class.has-success]="nif.valid">
+                <label for="nif" class="control-label">{{ 'Merchant VAT' | translate}}</label>
+                <input required id="nif" name="nif" [(ngModel)]='merchant.nif' type="text" class="form-control"
+                    #nif="ngModel" />
+                <span class="help-block" *ngIf="nif.invalid && nif.touched">
+                    {{'Merchant VAT' | translate}}
+                </span>
+            </div>
+            <div class="form-group" [class.has-error]="merchantName.invalid && merchantName.touched"
                 [class.has-success]="merchantName.valid">
                 <label for="merchantName" class="control-label">{{ 'Merchant Name' | translate}}</label>
                 <input required id="merchantName" name="merchantName" [(ngModel)]='merchant.merchantName' type="text"
-                    class="form-control" #fullName="ngModel" />
+                    class="form-control" #merchantName="ngModel" />
                 <span class="help-block" *ngIf="merchantName.invalid && merchantName.touched">
-                    {{'The full name is a mandatory field' | translate}}
-                </span>
-            </div> -->
-            <!-- <div class="form-group" [class.has-error]="repFullName.invalid && repFullName.touched"
-                [class.has-success]="repFullName.valid"> -->
-            <div>
-                <label for="repFullName" class="control-label">{{ 'Merchant Name' | translate}}</label>
-                <input required id="repFullName" name="repFullName" [(ngModel)]='merchant.repFullName' type="text"
-                    class="form-control" #fullName="ngModel" />
-                <!-- <span class="help-block" *ngIf="repFullName.invalid && repFullName.touched"> -->
-                <span class="help-block" *ngIf="merchant.repFullName.invalid  && repFullName.touched">
-                    The full name is a mandatory field
+                    {{'Merchant Name' | translate}}
                 </span>
             </div>
-            <div>
+            <div class="form-group" [class.has-error]="repFullName.invalid && repFullName.touched"
+                [class.has-success]="repFullName.valid">
+                <label for="repFullName" class="control-label">{{ 'Rep. Full Name' | translate}}</label>
+                <input required id="repFullName" name="repFullName" [(ngModel)]='merchant.repFullName' type="text"
+                    class="form-control" #repFullName="ngModel" />
+                <span class="help-block" *ngIf="repFullName.invalid && repFullName.touched">
+                    {{'Rep. Full Name' | translate}}
+                </span>
+            </div>
+            <div class="form-group" [class.has-error]="contactPreference.touched && contactPreference.invalid">
+                <label class="control-label">{{'Contact Preference' | translate}}}</label>
+                <div class="form-control">
+                    <label class="radio-inline">
+                        <input type="radio" required #contactPreference="ngModel" value="Phone" name="contactPreference"
+                            [(ngModel)]='merchant.contactPreference'>
+                        {{'Phone' | translate }}
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" required #contactPreference="ngModel" value="Email" name="contactPreference"
+                            [(ngModel)]='merchant.contactPreference'>
+                        {{'Email' | translate }}
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" required #contactPreference="ngModel" value="Post" name="contactPreference"
+                            [(ngModel)]='merchant.contactPreference'>
+                        {{'Post'| translate}}
+                    </label>
+                </div>
+                <span class="help-block" *ngIf="contactPreference.touched && contactPreference.invalid">
+                    Contact Preference is required
+                </span>
+
+            </div>
+ 
+            <div class="form-group">
                 <label for="email" class="control-label">{{ 'Email' | translate}}</label>
-                <input id="email" pattern="^[a-zA-Z0-9-.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" name="email"
-                    #email="ngModel" [(ngModel)]="merchant.email" type="text" class="form-control" />
+                <!-- pattern="^[a-zA-Z0-9-.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(domainname)\.com$" for a specific domainname.  -->
+                <input id="email" [required]="contactPreference.value=='Email'"
+                    pattern="^[a-zA-Z0-9-.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" name="mail" #email="ngModel"
+                    [(ngModel)]="merchant.email" type="text" class="form-control" />
                 <span class="help-block" *ngIf="email.errors?.required">
                     The email is a mandatory field
                 </span>
@@ -36,23 +70,70 @@
                     The email is invalid
                 </span>
             </div>
+
+            <div class="form-group" [class.has-error]="phoneNumber.invalid">
+                <label for="phoneNumber">{{'Phone Number' | translate }}</label>
+                <input id="phoneNumber" [required]="contactPreference.value=='Phone'" #phoneNumber="ngModel"
+                    name="phoneNumber" [(ngModel)]='merchant.phoneNumber' type="text" class="form-control" />
+                <span class="help-block" *ngIf="phoneNumber.invalid">
+                    {{'Phone Number is required' | translate}}
+                </span>
+            </div>
+            <div class="form-group">
+                <label for="mobileNumber">{{'mobileNumber' | translate }}</label>
+                <input id="mobileNumber" #mobileNumber="ngModel" name="mobileNumber" [(ngModel)]='merchant.mobileNumber'
+                    type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+                <app-country #country 
+                [cntryCode]="newcntryCode"
+                (notifyOnChange)="notifyChange($event)"></app-country>
+            </div>
+            <!-- <app-country #country></app-country> -->
+            <div class="form-group"    >
+                <!-- <label for="app-address">{{'Address' | translate }}</label><hr/> -->
+                <app-address ></app-address>
+            </div>
+
+            <div class="form-group" hidden>
+                <div class="form-control">
+                    <label class="checkbox-inline control-label">
+                        <input type="checkbox" name="isActive" [(ngModel)]="merchant.isActive">
+                        Is Active
+                    </label>
+                </div>
+            </div>
+            <!-- 
+
+ 
+    logoPath?: string | null;
+    businessInfo?:string| null;
+
+             -->
+
         </div>
-        <!-- fullName: string | null;
-            email?: string | null;
-            nif?:string | null;
-            country?:string | null;
-            address1?:string | null;
-            address2?:string | null;
-            address3?:string | null;
-            address4?:string | null;
-            phoneNumber?: number | null;
-            mobileNumber?: number | null;
-            contactPreference: string | null;
-            isActive: boolean | null;
-            logoPath?: string | null; -->
 
         <div class="panel-footer">
             <button type="submit" class="btn btn-primary" [disabled]="merchantForm.invalid">Save</button>
         </div>
+
     </div>
 </form>
+{{merchantForm.value | json}}
+
+<!-- 
+     <div class="form-group" [class.has-error]="department.touched && department.invalid">
+                <label for="department" class="control-label">
+                    Department
+                </label>
+                <select id="department" appSelectorValidator="-1" name="department" [(ngModel)]='employee.department'
+                    class="form-control" #department="ngModel">
+                    <option *ngFor="let dept of departments" [value]="dept.id">
+                        {{dept.name}}
+                    </option>
+                </select>
+                <span class="help-block" *ngIf="department.touched && department.errors?.defaultSelected">
+                    Department is required
+                </span>
+            </div>
+ -->
