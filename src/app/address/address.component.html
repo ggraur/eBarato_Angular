@@ -6,7 +6,8 @@
     </label>
 
     <input id="addressLine1" [required]="!!address.addressLine1" #addressLine1="ngModel" name="addressLine1"
-        [(ngModel)]='address.addressLine1' type="text" class="form-control" />
+        [(ngModel)]='address.addressLine1' type="text" class="form-control" 
+        (change)="onChangeEventA1($event)"/>
     <span class="help-block" *ngIf="addressLine1.invalid">
         {{'addressLineErr1' | translate}}
     </span>
@@ -16,7 +17,8 @@
     </label>
 
     <input id="addressLine2" [required]="!!address.addressLine2" #addressLine2="ngModel" name="addressLine2"
-        [(ngModel)]='address.addressLine2' type="text" class="form-control" />
+        [(ngModel)]='address.addressLine2' type="text" class="form-control" 
+        (change)="onChangeEventA2($event)"/>
     <span class="help-block" *ngIf="addressLine2.invalid">
         {{'addressLineErr2' | translate}}
     </span>
@@ -24,18 +26,19 @@
     <label for="addressLine3" class="control-label">
         {{'Address3' | translate}}
     </label>
-
     <input id="addressLine3" [required]="!!address.addressLine3" #addressLine3="ngModel" name="addressLine3"
-        [(ngModel)]='address.addressLine3' type="text" class="form-control" />
+        [(ngModel)]='address.addressLine3' type="text" class="form-control" 
+        (change)="onChangeEventA3($event)"/>
     <span class="help-block" *ngIf="addressLine3.invalid">
         {{'addressLineErr3' | translate}}
     </span>
 
-    <label for="addressLine3" class="control-label">
+    <label for="town" class="control-label">
         {{'town' | translate}}
     </label>
     <input id="town" [required]="!!address.town" #town="ngModel" name="town"
-        [(ngModel)]='address.town' type="text" class="form-control" />
+        [(ngModel)]='address.town' type="text" class="form-control" 
+        (change)="onChangeEventTown($event)"/>
     <span class="help-block" *ngIf="town.invalid">
         {{'townErr' | translate}}
     </span>
@@ -44,7 +47,8 @@
         {{'county' | translate}}
     </label>
     <input id="county" [required]="!!address.county" #county="ngModel" name="county"
-        [(ngModel)]='address.county' type="text" class="form-control" />
+        [(ngModel)]='address.county' type="text" class="form-control"
+        (change)="onChangeEventCounty($event)"/>
     <span class="help-block" *ngIf="county.invalid">
         {{'countyErr' | translate}}
     </span>
@@ -53,13 +57,10 @@
         {{'postCode' | translate}}
     </label>
     <input id="postCode" [required]="!!address.postCode" #postCode="ngModel" name="postCode"
-        [(ngModel)]='address.postCode' type="text" class="form-control" />
+        [(ngModel)]='address.postCode' type="text" class="form-control"
+        (change)="onChangeEventPostCode($event)"/>
     <span class="help-block" *ngIf="postCode.invalid">
         {{'postCodeErr' | translate}}
     </span>
-
-<!--  
-    county:string | null | undefined;
-    postCode:string | null | undefined; -->
-
+ 
 </div>

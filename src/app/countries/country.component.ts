@@ -13,7 +13,7 @@ export class CountryComponent implements OnInit {
   countries!: ICountry[];
 
   @Input('cntryCode') cntryCode!: string;
-  @Output() notifyOnChange: EventEmitter<ICountry> = new EventEmitter<ICountry>();
+  @Output() notifyOnChangeCountry: EventEmitter<ICountry> = new EventEmitter<ICountry>();
 
   private _country!: ICountry;
 
@@ -23,7 +23,7 @@ export class CountryComponent implements OnInit {
   selected() {
   //  console.log("child component emit: " +  JSON.stringify(this._country))
     this._country = this.countries.find(x=>x.code==this.cntryCode)!;
-    this.notifyOnChange.emit( this._country );
+    this.notifyOnChangeCountry.emit( this._country );
   }
 
   ngOnInit(): void {

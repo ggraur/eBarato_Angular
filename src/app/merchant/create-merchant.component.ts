@@ -7,7 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { IMerchant } from '../Modules/merchant.model';
 import { ICountry } from '../Modules/country.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-
+import { IAddress } from '../Modules/address.module';
+// import { NifPipe } from '../pipe/nif.pipe'
 
 @Component({
   selector: 'app-create-merchant',
@@ -19,7 +20,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 export class CreateMerchantComponent implements OnInit {
 
   countries!: ICountry[];
-  newcntryCode! : string;
+  newcntryCode!: string;
+  validNif: boolean = false;
   // cntry!: ICountry;
   @ViewChild('merchantForm') public createEmployeeForm!: NgForm;
   merchant: IMerchant = {
@@ -41,6 +43,57 @@ export class CreateMerchantComponent implements OnInit {
     // this.merchant.contactPreference = "Email";
     this.merchant.isActive = true;
   }
+  onVerifyNif(event: any) {
+    let value: string = event.target.value;
+    let bRez: boolean = this.IsValidContrib(value);
+    this.validNif = bRez;
+    console.log(value);
+  }
+
+  IsValidContrib(contrib: string): boolean {
+    if (contrib == null || contrib == "") {
+      return false;
+    }
+    if ((contrib.length != 9)) {
+      return false;
+    }
+    var sS: number[] = (Array.from(contrib) as Array<unknown>) as Array<number>;
+    var nString: number[] = (Array.from(contrib.substring(1, 9)) as Array<unknown>) as Array<number>;
+
+    if ((contrib.length == 9)) {
+      let c: number = +sS[0];
+      let i1: number = 0;
+      let checkDigit: number = 0;
+
+      var arrInt: number[] = [1, 2, 5, 6, 8, 9]
+      var firstCharEqualToC: boolean = arrInt.includes(c);
+
+      if (firstCharEqualToC) {
+        checkDigit = c * 9;
+
+        i1 = 1;
+        for (let n of nString) {
+          i1++;
+          if (i1 < 9) {
+            checkDigit += (n * (10 - i1));
+          }
+        }
+        checkDigit = 11 - (checkDigit % 11);
+
+        if ((checkDigit >= 10)) {
+          checkDigit = 0;
+        }
+        else {
+          if (checkDigit == sS[8])
+          {
+            //console.log("Numéro de contribuinte:{contrib} validado com sucesso!");
+            return true;
+          }
+        }
+      }
+    }
+    return false;
+  }
 
   ngOnInit(): void {
     this.httpService.get('./assets/countries/countries.json').subscribe(
@@ -55,9 +108,13 @@ export class CreateMerchantComponent implements OnInit {
   saveMerchant() {
 
   }
-
-  notifyChange(ctry:ICountry) {
-      this.merchant.country = ctry;
+  notifyChangeAddress(address: IAddress) {
+    this.merchant.address = address;
+    var dataString = JSON.stringify(address);
+    console.log(dataString)
+  }
+  notifyChangeCountry(ctry: ICountry) {
+    this.merchant.country = ctry;
     //  console.log("this.merchant.country : " + this.merchant.country.code);
   }
 }

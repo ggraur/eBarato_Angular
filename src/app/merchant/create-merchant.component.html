@@ -5,11 +5,11 @@
         </div>
         <div class="panel-body">
 
-            <div class="form-group" [class.has-error]="nif.invalid && nif.touched"
-                [class.has-success]="nif.valid">
+            <div class="form-group" [class.has-error]="nif.invalid && nif.touched && validNif"
+                [class.has-success]="nif.valid">valid nif {{validNif}}
                 <label for="nif" class="control-label">{{ 'Merchant VAT' | translate}}</label>
                 <input required id="nif" name="nif" [(ngModel)]='merchant.nif' type="text" class="form-control"
-                    #nif="ngModel" />
+                    #nif="ngModel" (change)="onVerifyNif($event)" />
                 <span class="help-block" *ngIf="nif.invalid && nif.touched">
                     {{'Merchant VAT' | translate}}
                 </span>
@@ -70,7 +70,6 @@
                     The email is invalid
                 </span>
             </div>
-
             <div class="form-group" [class.has-error]="phoneNumber.invalid">
                 <label for="phoneNumber">{{'Phone Number' | translate }}</label>
                 <input id="phoneNumber" [required]="contactPreference.value=='Phone'" #phoneNumber="ngModel"
@@ -87,12 +86,12 @@
             <div class="form-group">
                 <app-country #country 
                 [cntryCode]="newcntryCode"
-                (notifyOnChange)="notifyChange($event)"></app-country>
+                (notifyOnChangeCountry)="notifyChangeCountry($event)"></app-country>
             </div>
-            <!-- <app-country #country></app-country> -->
             <div class="form-group"    >
-                <!-- <label for="app-address">{{'Address' | translate }}</label><hr/> -->
-                <app-address ></app-address>
+                <app-address #address
+                (notifyOnChangeAddress)="notifyChangeAddress($event)">
+                </app-address>
             </div>
 
             <div class="form-group" hidden>
@@ -103,37 +102,15 @@
                     </label>
                 </div>
             </div>
-            <!-- 
-
- 
-    logoPath?: string | null;
-    businessInfo?:string| null;
-
-             -->
 
         </div>
 
         <div class="panel-footer">
             <button type="submit" class="btn btn-primary" [disabled]="merchantForm.invalid">Save</button>
         </div>
-
     </div>
 </form>
 {{merchantForm.value | json}}
-
-<!-- 
-     <div class="form-group" [class.has-error]="department.touched && department.invalid">
-                <label for="department" class="control-label">
-                    Department
-                </label>
-                <select id="department" appSelectorValidator="-1" name="department" [(ngModel)]='employee.department'
-                    class="form-control" #department="ngModel">
-                    <option *ngFor="let dept of departments" [value]="dept.id">
-                        {{dept.name}}
-                    </option>
-                </select>
-                <span class="help-block" *ngIf="department.touched && department.errors?.defaultSelected">
-                    Department is required
-                </span>
-            </div>
- -->
+<br/>
+<br/>
+{{merchant | json}}

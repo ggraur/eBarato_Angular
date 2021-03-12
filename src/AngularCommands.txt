@@ -10,3 +10,5 @@
     ng g m app-routing --flat=true --module=app
 //angualr generate component in specific folder with no spec file 
     ng g c merchant/create-merchant --skip-tests=true --flat
+//angular generate pipe command line 
+    ng generate pipe custom
