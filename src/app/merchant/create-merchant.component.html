@@ -5,8 +5,8 @@
         </div>
         <div class="panel-body">
 
-            <div class="form-group" [class.has-error]="nif.invalid && nif.touched && validNif"
-                [class.has-success]="nif.valid">valid nif {{validNif}}
+            <div class="form-group" [class.has-error]="nif.invalid && nif.touched"
+                [class.has-success]="validNif">
                 <label for="nif" class="control-label">{{ 'Merchant VAT' | translate}}</label>
                 <input required id="nif" name="nif" [(ngModel)]='merchant.nif' type="text" class="form-control"
                     #nif="ngModel" (change)="onVerifyNif($event)" />
