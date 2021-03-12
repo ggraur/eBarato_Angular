@@ -95,6 +95,7 @@ export class CreateEmployeeComponent implements OnInit {
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
   }
+  
   saveEmployee(): void {
     if (this.employee.id == null) {
       const newEmployee: IEmployee = Object.assign({}, this.employee);

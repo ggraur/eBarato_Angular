@@ -1,8 +1,8 @@
 export class IAddress {
-   addressLine1:string | null | undefined;
-   addressLine2:string | null | undefined;
-   addressLine3:string | null | undefined;
-   town:string | null | undefined;
-   county:string | null | undefined;
-   postCode:string | null | undefined;
+   addressLine1!:string | null;
+   addressLine2!:string | null;
+   addressLine3!:string | null;
+   town!:string | null;
+   county!:string | null;
+   postCode!:string | null;
 } 

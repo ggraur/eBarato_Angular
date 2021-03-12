@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -75,6 +75,7 @@ import { NifPipe } from './pipe/nif.pipe';
       }
     })
   ],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   providers: [EmployeeService
              ,CreateEmployeeCanDeactivateGuardService,
              EmployeeListResolverService,

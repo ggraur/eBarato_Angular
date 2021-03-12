@@ -66,5 +66,28 @@
       "password": "",
       "confirmPassword": ""
     }
+  ],
+
+  "merchants":[
+    { 
+      "id":1,
+      "nif": "514279699", 
+      "merchantName": "Alegria Partilhada LDA", 
+      "repFullName": "Gheorghe Graur", 
+      "contactPreference": "Phone", 
+      "email": "alegriapartilhada@gmail.com", 
+      "phoneNumber": "+351969309119", 
+      "mobileNumber": "+351969309119", 
+      "addressForm": { 
+                    "addressLine1": "Rua Federico George N29", 
+                    "addressLine2": "Alto do Lumiar", 
+                    "addressLine3": null, 
+                    "town": "Lisboa", 
+                    "county": "Lisboa", 
+                    "postCode": "2140-536" 
+                    }, 
+        "isActive": true , 
+        "logoPath": null
+      }
   ]
 }

@@ -45,6 +45,7 @@
     "Post":"CTT",
     "Contact Preference is required":"A preferência de contato é obrigatória" ,
     "Merchant VAT":"NIF Empresa",
+    "MerchantRequired":"NIF Empresa é um campo obrigatório",    
     "mobileNumber":"Número de telemóvel",
     "Email": "Endereço de email",
     "The email is a mandatory field":"O email é um campo obrigatório",

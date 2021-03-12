@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm, Validators } from '@angular/forms';
 import { Department } from '../Modules/department.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
@@ -8,7 +8,9 @@ import { IMerchant } from '../Modules/merchant.model';
 import { ICountry } from '../Modules/country.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IAddress } from '../Modules/address.module';
-// import { NifPipe } from '../pipe/nif.pipe'
+import { MerchantService } from './merchant.service';
+
+ 
 
 @Component({
   selector: 'app-create-merchant',
@@ -19,11 +21,13 @@ import { IAddress } from '../Modules/address.module';
 
 export class CreateMerchantComponent implements OnInit {
 
+  @Input('selectedLng') selectedLng!:string;
+
   countries!: ICountry[];
   newcntryCode!: string;
   validNif: boolean = false;
   // cntry!: ICountry;
-  @ViewChild('merchantForm') public createEmployeeForm!: NgForm;
+  @ViewChild('merchantForm') public createMerchantForm!: NgForm;
   merchant: IMerchant = {
     id: null,
     merchantName: null,
@@ -31,7 +35,7 @@ export class CreateMerchantComponent implements OnInit {
     email: null,
     nif: null,
     country: null,
-    address: undefined,
+    address: {addressLine1:null,addressLine2:null,addressLine3:null,county:null,postCode:null,town:null },
     phoneNumber: null,
     mobileNumber: null,
     contactPreference: null,
@@ -39,10 +43,13 @@ export class CreateMerchantComponent implements OnInit {
     logoPath: null
   }
   cntry!: ICountry;
-  constructor(private httpService: HttpClient) {
+  constructor(private httpService: HttpClient, public translate: TranslateService,
+    // private _merchantService: MerchantService,
+    private _router: Router) {
     // this.merchant.contactPreference = "Email";
     this.merchant.isActive = true;
   }
+  
   onVerifyNif(event: any) {
     let value: string = event.target.value;
     let bRez: boolean = this.IsValidContrib(value);
@@ -51,7 +58,12 @@ export class CreateMerchantComponent implements OnInit {
   }
 
   IsValidContrib(contrib: string): boolean {
-    if (contrib == null || contrib == "") {
+
+    var  isNum :boolean = typeof contrib == 'number';
+
+    //const isNum = isNumeric(contrib) ? Number(contrib) : 0;
+   // || isNum == 0
+    if (contrib == null || contrib == "" || isNum == true ) {
       return false;
     }
     if ((contrib.length != 9)) {
@@ -106,7 +118,26 @@ export class CreateMerchantComponent implements OnInit {
     )
   }
   saveMerchant() {
-
+    //  if (this.merchant.id == null) {
+    //   const newMerchant: IMerchant = Object.assign({}, this.merchant);
+    //   // https://www.youtube.com/watch?v=KNI66wZcaf8, explaining that line
+    //   this._merchantService.addMerchant(newMerchant)?.subscribe(
+    //     (data: IMerchant) => {
+    //       console.log(data);
+    //       this.createMerchantForm.reset();
+    //       this._router.navigate(['merchants']);
+    //     },
+    //     (error: any) => console.log(error)
+    //   );
+    // } else {
+    //   this._merchantService.update(this.merchant)?.subscribe(
+    //     () => {
+    //       this.createMerchantForm.reset();
+    //       this._router.navigate(['list']);
+    //     },
+    //     (error: any) => console.log(error)
+    //   );
+    // }
   }
   notifyChangeAddress(address: IAddress) {
     this.merchant.address = address;
@@ -117,4 +148,13 @@ export class CreateMerchantComponent implements OnInit {
     this.merchant.country = ctry;
     //  console.log("this.merchant.country : " + this.merchant.country.code);
   }
+
+  onRdbPostSelected(event: any){
+    let target: string = event.target;
+    
+    console.log("onRdbPostSelected : " + event);
+  }
+
+
+ 
 }

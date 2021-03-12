@@ -45,6 +45,7 @@
     "Post":"Post",
     "Contact Preference is required":"Contact Preference is required",
     "Merchant VAT":"Merchant VAT",
+    "MerchantRequired":"Merchant VAT is required",
     "mobileNumber":"Mobile Number",
     "Email": "Email address",
     "The email is a mandatory field":"The email is a mandatory field",

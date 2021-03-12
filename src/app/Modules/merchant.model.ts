@@ -8,7 +8,7 @@ export interface IMerchant {
     email?: string | null;
     nif?:string | null;
     country:ICountry | null;
-    address?: IAddress;
+    address: IAddress;
     phoneNumber?: number | null;
     mobileNumber?: number | null;
     contactPreference: string | null;
@@ -16,3 +16,4 @@ export interface IMerchant {
     logoPath?: string | null;
     businessInfo?:string| null;
 }
+ 
