@@ -1,3 +1,46 @@
 <!-- https://www.pragimtech.com/courses/angular-crud-tutorial/ -->
 
-https://www.youtube.com/watch?v=lhl3w5rH7A8
+https://www.youtube.com/watch?v=d5bkiNebYWk
+https://www.youtube.com/watch?v=smzuLV6ovxc
+
+
+
+
+// sorting, by pipe , see that video https://www.youtube.com/watch?v=1TFSibbnkj0 and https://www.youtube.com/watch?v=G7WaP-yoiQg
+
+
+https://github.com/angular/angular/issues/17560
+
+
+// Learn Angular 10, Web API & SQL Server by Creating a Web Application from Scratch
+https://www.youtube.com/watch?v=4a9VxZjnT7E
+
+//create reusable component  app-acordion.
+https://www.youtube.com/watch?v=2SJ9Ch8jX3A
+
+// catch error Angular
+https://www.pluralsight.com/guides/handling-exceptions-using-the-angular-httpclient
+
+//multilanguage site 
+https://www.positronx.io/angular-internationalization-i18n-with-ngx-translate-tutorial/
+https://github.com/SinghDigamber/angular-translate-app
+
+//Angular post 
+https://angular.io/guide/http
+
+
+
+//numero contribuinte portugues 
+1 ou 2 (pessoa singular)
+5 (pessoa colectiva)
+6 (pessoa colectiva pública)
+8 (empresário em nome individual)
+9 (pessoa colectiva irregular ou número provisório)
+
+
+// create microservices 
+https://video.search.yahoo.com/video/play;_ylt=AwrDQymPqUhgylMACGP7w8QF;_ylu=c2VjA3NyBHNsawN2aWQEdnRpZAMEZ3BvcwMy?p=c%23+create+microservices&vid=d3a60d2feb212566ed0a9c4bd2065f7d&turl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOVP.29VquJ4pWFJfX9vOEvhWHgEsDh%26pid%3DApi%26h%3D225%26w%3D300%26c%3D7%26rs%3D1&rurl=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DVgsWHgT18mQ&tit=%3Cb%3ECreate%3C%2Fb%3E+%3Cb%3EMicroServices%3C%2Fb%3E+in+.Net+Core&c=1&h=225&w=300&l=1429&sigr=Vvm9lOe8fQu8&sigt=EjCEb62DwmHS&sigi=XL50B1RJIJMI&age=1594893273&fr2=p%3As%2Cv%3Av&fr=yset_ff_syc_widemail&tt=b
+
+
+NG0100: Expression has changed after it was checked
+// https://angular.io/errors/NG0100

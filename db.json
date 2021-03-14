@@ -1,0 +1,128 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "fullName": "Mark, 1",
+      "gender": "Male",
+      "contactPreference": "Email",
+      "email": "mark@pragimtech.com",
+      "dateOfBirth": "2000-03-17T00:00:00.000Z",
+      "department": "3",
+      "isActive": true,
+      "photoPath": "../assets/Images/1.png",
+      "password": "a",
+      "confirmPassword": "a",
+      "phoneNumber": 2345978640
+    },
+    {
+      "id": 2,
+      "fullName": "Mary, 2",
+      "gender": "Female",
+      "contactPreference": "Phone",
+      "phoneNumber": 2345978640,
+      "dateOfBirth": "11/20/1979",
+      "department": "2",
+      "isActive": false,
+      "photoPath": "../assets/Images/3.jfif",
+      "password": "",
+      "confirmPassword": ""
+    },
+    {
+      "id": 3,
+      "fullName": "Nick, 3",
+      "gender": "Male",
+      "contactPreference": "Email",
+      "phoneNumber": 5432978640,
+      "dateOfBirth": "3/25/1976",
+      "department": "3",
+      "isActive": false,
+      "photoPath": "../assets/Images/2.jfif",
+      "password": "",
+      "confirmPassword": ""
+    },
+    {
+      "id": 4,
+      "fullName": "Annete, 4",
+      "gender": "Female",
+      "contactPreference": "Phone",
+      "phoneNumber": 5432978642,
+      "dateOfBirth": "4/22/1974",
+      "department": "3",
+      "isActive": true,
+      "photoPath": "../assets/Images/4.jfif",
+      "password": "",
+      "confirmPassword": ""
+    },
+    {
+      "id": 5,
+      "fullName": "Anton,5 ",
+      "gender": "Male",
+      "contactPreference": "Post",
+      "phoneNumber": 5432978641,
+      "dateOfBirth": "5/22/1975",
+      "department": "3",
+      "isActive": false,
+      "photoPath": "../assets/Images/5.jfif",
+      "password": "",
+      "confirmPassword": ""
+    }
+  ],
+  "merchants": [
+    {
+      "id": 1,
+      "nif": "510774547",
+      "merchantName": "Suriaj LDA",
+      "repFullName": "Gheorghe Graur",
+      "contactPreference": "Phone",
+      "email": "geral.suriaj@yahoo.com",
+      "phoneNumber": "+351969309119",
+      "mobileNumber": "+351969309119",
+      "addressForm": {
+        "addressLine1": "Rua Federico George N29",
+        "addressLine2": "Alto do Lumiar",
+        "addressLine3": null,
+        "town": "Lisboa",
+        "county": "Lisboa",
+        "postCode": "2140-536"
+      },
+      "isActive": true,
+      "logoPath": null
+    },
+    {
+      "id": 2,
+      "merchantName": "Alegria Partilhada LDA",
+      "repFullName": "Gheorghe Graur",
+      "email": "alegriapartilhada@gmail.com",
+      "nif": "514279699",
+      "country": {
+        "name": "Portugal",
+        "code": "PT",
+        "capital": "Lisbon",
+        "region": "EU",
+        "currency": {
+          "code": "EUR",
+          "name": "Euro",
+          "symbol": "€"
+        },
+        "language": {
+          "code": "pt",
+          "name": "Portuguese"
+        },
+        "flag": "https://restcountries.eu/data/prt.svg"
+      },
+      "address": {
+        "addressLine1": "Rua Federico George N29",
+        "addressLine2": "Alto do Lumiar",
+        "addressLine3": "Alto do Lumiar",
+        "town": "Lisboa",
+        "county": "Lisboa",
+        "postCode": "2140-536"
+      },
+      "phoneNumber": "+351969309119",
+      "mobileNumber": "+351969309119",
+      "contactPreference": "Phone",
+      "isActive": true,
+      "logoPath": null
+    }
+  ]
+}

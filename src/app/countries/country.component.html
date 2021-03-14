@@ -1,0 +1,26 @@
+<div *ngIf="countries">
+    <div class="form-group">
+        <div>
+            <label for="country" class="control-label">
+                {{'Country' | translate}}
+            </label>
+            <select id="country" appSelectorValidator="-1" name="country" class="form-control"  
+                    #country="ngModel"  [(ngModel)]='cntryCode'  (change)="selected()" >
+                <option *ngFor="let cnt of countries" [value]="cnt.code" [style.background-image]="cnt.flag">
+                    {{cnt.name}}
+                </option>
+            </select>
+            
+           <span class="help-block" *ngIf="country.touched && country.errors?.defaultSelected">  
+                Country is required
+            </span>
+        </div>
+        <!-- <ng-select bindLabel="name" placeholder="Select item" appendTo="body" multiple="true" [searchable]="true"
+            [clearable]="true">
+            <ng-option [value]="cnt.code" *ngFor="let cnt of countries">
+                <img src="{{cnt.flag}}" width="20px" height="20px" />
+                {{cnt.name}}
+            </ng-option>
+        </ng-select> -->
+
+    </div>
