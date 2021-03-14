@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, delay, takeUntil, catchError } from 'rxjs/operators';
-import { IMerchant } from "../Modules/merchant.model";
+import { IMerchant } from '../Modules/merchant.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 
 
@@ -14,7 +14,7 @@ export class MerchantService {
   }
 
   baseUrl = 'http://localhost:3000/merchants';
- 
+
 
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
@@ -38,13 +38,13 @@ export class MerchantService {
           }
           return throwError(errorMsg);
         })
-      )
+      );
 
 
     // .catch(this.handleError);
 
     // return of(this.listEmployees).pipe(delay(2000));
-    //return of(this.listEmployees);
+    // return of(this.listEmployees);
   }
 
   private getServerErrorMessage(error: HttpErrorResponse): string {
@@ -80,7 +80,7 @@ export class MerchantService {
   delete(id: number): Observable<void> {
     return this._httpClient.delete<void>(`${this.baseUrl}/${id}`)
       .pipe(catchError(this.handleError));
- 
+
   }
 
   addMerchant(merchant: IMerchant): Observable<IMerchant> | undefined | null {

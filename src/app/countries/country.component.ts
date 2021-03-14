@@ -22,7 +22,7 @@ export class CountryComponent implements OnInit {
 
   selected() {
   //  console.log("child component emit: " +  JSON.stringify(this._country))
-    this._country = this.countries.find(x=>x.code==this.cntryCode)!;
+    this._country = this.countries.find(x => x.code == this.cntryCode)!;
     this.notifyOnChangeCountry.emit( this._country );
   }
 
@@ -34,7 +34,7 @@ export class CountryComponent implements OnInit {
       (err: HttpErrorResponse) => {
         console.log(err.message);
       }
-    )
+    );
   }
 
 }

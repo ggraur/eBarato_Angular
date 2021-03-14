@@ -10,11 +10,6 @@ import { IEmployee } from 'src/app/Modules/employee.model';
   styleUrls: ['./list-employees.component.css']
 })
 export class ListEmployeesComponent implements OnInit {
-  // dataFromChild: IEmployee | undefined;
-
-  private _searchTerm!: string;
-  public error!: string;
-  errorMsg!: string;
   get searchTerm(): string {
     return this._searchTerm;
   }
@@ -22,27 +17,11 @@ export class ListEmployeesComponent implements OnInit {
     this._searchTerm = value;
     this.filteredEmployees = this.filterEmployees(value);
   }
-  filterEmployees(searchString: string) {
-    return this.employees.filter(
-      employee => employee.fullName?.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
-  }
-  onDeleteNotification(id: number) {
-    const deleteId = this.filteredEmployees.findIndex(e => e.id == id);
-    if (deleteId !== -1) {
-      this.filteredEmployees.splice(deleteId, 1)
-    }
-  }
-  employeeId!: number | null;
-  employees!: IEmployee[];
-  filteredEmployees!: IEmployee[];
-  employeeToDisplay!: IEmployee;
-  private empCount = -1;
-  private indexArray = 1;
 
   constructor(private _router: Router
-    , private _route: ActivatedRoute) {
+    ,         private _route: ActivatedRoute) {
 
-    const resolvedData: IEmployee[] | string = this._route.snapshot.data['employeeList'];
+    const resolvedData: IEmployee[] | string = this._route.snapshot.data.employeeList;
 
     // console.log("Resolved Data: " + (resolvedData));
 
@@ -59,13 +38,34 @@ export class ListEmployeesComponent implements OnInit {
         this.searchTerm = this._route.snapshot.queryParamMap.get('searchTerm') || '';
       } else {
         this.filteredEmployees = this.employees;
-        //console.log('filteredEmployees : ' + new Date().toTimeString());
+        // console.log('filteredEmployees : ' + new Date().toTimeString());
       }
-      //this.employeeId = 0;
+      // this.employeeId = 0;
 
       this.employeeToDisplay = this.employees[0];
       this.empCount = this.employees.length;
-      console.log("Total number of employees: " + this.empCount);
+      console.log('Total number of employees: ' + this.empCount);
+    }
+  }
+  // dataFromChild: IEmployee | undefined;
+
+  private _searchTerm!: string;
+  public error!: string;
+  errorMsg!: string;
+  employeeId!: number | null;
+  employees!: IEmployee[];
+  filteredEmployees!: IEmployee[];
+  employeeToDisplay!: IEmployee;
+  private empCount = -1;
+  private indexArray = 1;
+  filterEmployees(searchString: string) {
+    return this.employees.filter(
+      employee => employee.fullName?.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
+  onDeleteNotification(id: number) {
+    const deleteId = this.filteredEmployees.findIndex(e => e.id == id);
+    if (deleteId !== -1) {
+      this.filteredEmployees.splice(deleteId, 1);
     }
   }
 

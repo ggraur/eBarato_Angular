@@ -2,23 +2,23 @@ import { Component, EventEmitter, Input, NgModule, OnInit, Output, ViewChild } f
 import { IAddress } from '../Modules/address.module';
 import { NgForm, Validators } from '@angular/forms';
 
- 
+
 @Component({
   selector: 'app-address',
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.css']
 })
 
- 
+
 
 export class AddressComponent implements OnInit {
   @ViewChild('addressForm') public createAddressForm!: NgForm;
-  _addressLine1: boolean = false;
-  _addressLine2: boolean = false;
-  _addressLine3: boolean = false;
-  _town: boolean = false;
-  _county: boolean = false;
-  _postCode: boolean = false;
+  _addressLine1 = false;
+  _addressLine2 = false;
+  _addressLine3 = false;
+  _town = false;
+  _county = false;
+  _postCode = false;
 
   @Input('inputString') inputString!: string;
   @Output() notifyOnChangeAddress: EventEmitter<IAddress> = new EventEmitter<IAddress>();
@@ -34,23 +34,23 @@ export class AddressComponent implements OnInit {
   constructor() { }
 
   onChangeEventA1(event: any) {
-    let value: string = event.target.value;
-    if (value.length > 0) { 
-      this._addressLine1 = true; 
+    const value: string = event.target.value;
+    if (value.length > 0) {
+      this._addressLine1 = true;
     }
     else{
-      this._addressLine1 = false; 
+      this._addressLine1 = false;
     }
     this.address.addressLine1 = value;
     this.notifyOnChangeAddress.emit(this.address);
   }
   onChangeEventA2(event: any) {
-    let value: string = event.target.value;
-    if (value.length > 0) { 
-      this._addressLine2 = true; 
+    const value: string = event.target.value;
+    if (value.length > 0) {
+      this._addressLine2 = true;
     }
     else{
-      this._addressLine2 = false; 
+      this._addressLine2 = false;
     }
     this.address.addressLine2 = value;
     this.notifyOnChangeAddress.emit(this.address);
@@ -60,37 +60,37 @@ export class AddressComponent implements OnInit {
     this.notifyOnChangeAddress.emit(this.address);
   }
   onChangeEventTown(event: any) {
-    let value: string = event.target.value;
-    if (value.length > 0) { 
-      this._town = true; 
+    const value: string = event.target.value;
+    if (value.length > 0) {
+      this._town = true;
     }
     else{
-      this._town = false; 
+      this._town = false;
     }
     this.address.town = value;
     this.notifyOnChangeAddress.emit(this.address);
   }
   onChangeEventCounty(event: any) {
-    let value: string = event.target.value;
-    if (value.length > 0) { 
-      this._county = true; 
+    const value: string = event.target.value;
+    if (value.length > 0) {
+      this._county = true;
     }
     else{
-      this._county = false; 
+      this._county = false;
     }
     this.address.county = value;
-    this.notifyOnChangeAddress.emit(this.address); 
+    this.notifyOnChangeAddress.emit(this.address);
   }
   onChangeEventPostCode(event: any) {
-    let value: string = event.target.value;
-    if (value.length > 0) { 
-      this._postCode = true; 
+    const value: string = event.target.value;
+    if (value.length > 0) {
+      this._postCode = true;
     }
     else{
-      this._postCode = false; 
+      this._postCode = false;
     }
     this.address.postCode = value;
-    this.notifyOnChangeAddress.emit(this.address); 
+    this.notifyOnChangeAddress.emit(this.address);
   }
 
   ngOnInit(): void {

@@ -67,27 +67,62 @@
       "confirmPassword": ""
     }
   ],
-
-  "merchants":[
-    { 
-      "id":1,
-      "nif": "514279699", 
-      "merchantName": "Alegria Partilhada LDA", 
-      "repFullName": "Gheorghe Graur", 
-      "contactPreference": "Phone", 
-      "email": "alegriapartilhada@gmail.com", 
-      "phoneNumber": "+351969309119", 
-      "mobileNumber": "+351969309119", 
-      "addressForm": { 
-                    "addressLine1": "Rua Federico George N29", 
-                    "addressLine2": "Alto do Lumiar", 
-                    "addressLine3": null, 
-                    "town": "Lisboa", 
-                    "county": "Lisboa", 
-                    "postCode": "2140-536" 
-                    }, 
-        "isActive": true , 
-        "logoPath": null
-      }
+  "merchants": [
+    {
+      "id": 1,
+      "nif": "510774547",
+      "merchantName": "Suriaj LDA",
+      "repFullName": "Gheorghe Graur",
+      "contactPreference": "Phone",
+      "email": "geral.suriaj@yahoo.com",
+      "phoneNumber": "+351969309119",
+      "mobileNumber": "+351969309119",
+      "addressForm": {
+        "addressLine1": "Rua Federico George N29",
+        "addressLine2": "Alto do Lumiar",
+        "addressLine3": null,
+        "town": "Lisboa",
+        "county": "Lisboa",
+        "postCode": "2140-536"
+      },
+      "isActive": true,
+      "logoPath": null
+    },
+    {
+      "id": 2,
+      "merchantName": "Alegria Partilhada LDA",
+      "repFullName": "Gheorghe Graur",
+      "email": "alegriapartilhada@gmail.com",
+      "nif": "514279699",
+      "country": {
+        "name": "Portugal",
+        "code": "PT",
+        "capital": "Lisbon",
+        "region": "EU",
+        "currency": {
+          "code": "EUR",
+          "name": "Euro",
+          "symbol": "€"
+        },
+        "language": {
+          "code": "pt",
+          "name": "Portuguese"
+        },
+        "flag": "https://restcountries.eu/data/prt.svg"
+      },
+      "address": {
+        "addressLine1": "Rua Federico George N29",
+        "addressLine2": "Alto do Lumiar",
+        "addressLine3": "Alto do Lumiar",
+        "town": "Lisboa",
+        "county": "Lisboa",
+        "postCode": "2140-536"
+      },
+      "phoneNumber": "+351969309119",
+      "mobileNumber": "+351969309119",
+      "contactPreference": "Phone",
+      "isActive": true,
+      "logoPath": null
+    }
   ]
 }

@@ -15,12 +15,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'list', component: ListEmployeesComponent, resolve:{employeeList:EmployeeListResolverService}},
-  {path: 'editEmployee/:id', component: CreateEmployeeComponent, canDeactivate:[CreateEmployeeCanDeactivateGuardService]},
+  {path: 'list', component: ListEmployeesComponent, resolve: {employeeList: EmployeeListResolverService}},
+  {path: 'editEmployee/:id', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService]},
   {path: 'employees/:id', component: EmployeeDetailsComponent, canActivate: [EmployeeDetailsGuardService]},
 
   {path: 'merchants', component: ListMerchantsComponent},
-  {path: 'editMerchant/:id', component: CreateMerchantComponent   
+  {path: 'editMerchant/:id', component: CreateMerchantComponent
    // ,    canDeactivate:[CreateEmployeeCanDeactivateGuardService]
   },
 

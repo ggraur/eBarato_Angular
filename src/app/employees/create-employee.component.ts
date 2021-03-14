@@ -40,9 +40,9 @@ export class CreateEmployeeComponent implements OnInit {
   ];
 
   constructor(private _employeeService: EmployeeService,
-    private _router: Router,
-    private _route: ActivatedRoute, public translate: TranslateService) {
-    this.employee.contactPreference = "Email";
+              private _router: Router,
+              private _route: ActivatedRoute, public translate: TranslateService) {
+    this.employee.contactPreference = 'Email';
     // this.employee.gender="male";
     // this.employee.isActive=true;
     this.employee.department = '-1';
@@ -60,7 +60,7 @@ export class CreateEmployeeComponent implements OnInit {
     this._route.paramMap.subscribe(parameterMap => {
       const id = +(parameterMap.get('id') || 0);
       this.getEmployee(id);
-    })
+    });
   }
   private getEmployee(id: number) {
     if (id === 0) {
@@ -88,14 +88,14 @@ export class CreateEmployeeComponent implements OnInit {
         ),
         (err: any) => console.log(err);
 
-      this.panelTitle =  'Modify Employee' + (this.employee.fullName ? (+ ' : ' + this.employee.fullName) :'');
-        
+      this.panelTitle =  'Modify Employee' + (this.employee.fullName ? (+ ' : ' + this.employee.fullName) : '');
+
     }
   }
   togglePhotoPreview() {
     this.previewPhoto = !this.previewPhoto;
   }
-  
+
   saveEmployee(): void {
     if (this.employee.id == null) {
       const newEmployee: IEmployee = Object.assign({}, this.employee);

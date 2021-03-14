@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, delay, takeUntil, catchError } from 'rxjs/operators';
-import { IEmployee } from "../Modules/employee.model";
+import { IEmployee } from '../Modules/employee.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 
 
@@ -107,13 +107,13 @@ export class EmployeeService {
           }
           return throwError(errorMsg);
         })
-      )
+      );
 
 
     // .catch(this.handleError);
 
     // return of(this.listEmployees).pipe(delay(2000));
-    //return of(this.listEmployees);
+    // return of(this.listEmployees);
   }
 
   private getServerErrorMessage(error: HttpErrorResponse): string {

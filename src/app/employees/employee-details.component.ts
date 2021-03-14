@@ -1,4 +1,4 @@
-// https://www.youtube.com/watch?v=aP2hd4TePl4 display details 
+// https://www.youtube.com/watch?v=aP2hd4TePl4 display details
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IEmployee } from '../Modules/employee.model';
@@ -14,14 +14,14 @@ export class EmployeeDetailsComponent implements OnInit {
   private _employeesCount!: number;
   employee: IEmployee | undefined;
   constructor(private _route: ActivatedRoute,
-    private _employeeService: EmployeeService,
-    private _router: Router) { }
+              private _employeeService: EmployeeService,
+              private _router: Router) { }
 
   ngOnInit(): void {
 
-    this._id = + this._route.snapshot.params['id'];
+    this._id = + this._route.snapshot.params.id;
     // console.log("Selected id: " + id);
-    //this.employee = this._employeeService.getEmployee(this._id);
+    // this.employee = this._employeeService.getEmployee(this._id);
     this._employeeService.getEmployee(this._id).subscribe(
       (employee) => this.employee = employee,
       (err: any) => console.log(err)

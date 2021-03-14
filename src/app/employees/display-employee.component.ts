@@ -13,14 +13,14 @@ export class DisplayEmployeeComponent implements OnInit {
 
   private _employeeId: number;
   selectedEmployeeId: number | undefined;
-  
+
   @Output() notifyDelete: EventEmitter<number> = new EventEmitter<number>();
-  confirmDelete:boolean=false;
- 
-  @Input() searchTerm!:string;
+  confirmDelete = false;
+
+  @Input() searchTerm!: string;
   @Input()
   set employeeId(val: number) {
-    console.log("EmployeeID changed from " + JSON.stringify(this.employeeId) + ' to ' + JSON.stringify(val));
+    console.log('EmployeeID changed from ' + JSON.stringify(this.employeeId) + ' to ' + JSON.stringify(val));
     this._employeeId = val;
   }
   get employeeId(): number { return this._employeeId; }
@@ -59,14 +59,14 @@ export class DisplayEmployeeComponent implements OnInit {
   //   }
   // }
 
-  constructor(private _route: ActivatedRoute, private _empService : EmployeeService,
-    private _router: Router, ) {
+  constructor(private _route: ActivatedRoute, private _empService: EmployeeService,
+              private _router: Router, ) {
     this._employeeId = 0;
 
   }
   deleteEmployee(){
     this._empService.delete(this.employee.id!).subscribe(
-      ()=> console.log(`Employee with Id = ${this.employee.id} deleted.`),
+      () => console.log(`Employee with Id = ${this.employee.id} deleted.`),
       (err) => console.log()
     );
 
@@ -77,7 +77,7 @@ export class DisplayEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedEmployeeId = + (this._route.snapshot.paramMap.get('id') || '0');
-    console.log("_selectedEmployeeId : " + this.selectedEmployeeId);
+    console.log('_selectedEmployeeId : ' + this.selectedEmployeeId);
   }
 
   editEmployee(){
@@ -86,7 +86,7 @@ export class DisplayEmployeeComponent implements OnInit {
   }
   viewEmployee() {
     this._router.navigate(['/employees', this.employee.id], {
-      queryParams: { 'searchTerm': this.searchTerm}
+      queryParams: { searchTerm: this.searchTerm}
     });
   }
 
