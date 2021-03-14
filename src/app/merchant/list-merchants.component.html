@@ -1,1 +1,13 @@
-<p>list-merchants works!</p>
+<!-- <div *ngIf="filteredEmployees"> -->
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="searchTerm">
+    </div>
+ 
+    <div *ngFor="let merchant of filteredMerchants">
+         <app-display-merchant [merchant]="merchant" #childComponent [searchTerm]="searchTerm"
+            (notifyDelete)="onDeleteNotification($event)">
+        </app-display-merchant>
+    </div>
+    <!-- <error-alert *ngIf="errorMsg" [msg]="errorMsg"></error-alert>
+    <div *ngIf="error" class="danger" >{{error}}</div> -->
+<!-- </div> -->

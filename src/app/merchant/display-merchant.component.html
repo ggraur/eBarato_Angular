@@ -1,0 +1,68 @@
+ 
+<app-accordion [title] ="merchant.repFullName!"
+[hasJustViewed]="selectedMerchantId===merchant.id"
+[isHidden]="true">
+<div class="col-xs-10 myPanelBody">
+    <div class="row vertical-align">
+        <div class="col-xs-4">
+            <img class="imageClass" [src]="merchant?.logoPath" />
+        </div>
+        <div class="col-xs-8">
+            <div class="row">
+                <div class="col-xs-6">
+                    Gender
+                </div>
+                <div class="col-xs-6">
+                    : {{merchant?.repFullName}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    Email
+                </div>
+                <div class="col-xs-6">
+                    : {{merchant?.email}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    Phone Number
+                </div>
+                <div class="col-xs-6">
+                    : {{merchant?.phoneNumber}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    Contact Preference
+                </div>
+                <div class="col-xs-6">
+                    : {{merchant?.contactPreference}}
+                </div>
+            </div>
+          
+            <div class="row">
+                <div class="col-xs-6">
+                    Is active
+                </div>
+                <div class="col-xs-6">
+                    : {{merchant?.isActive}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="myPanelFooter">
+    <button class="btn btn-primary" (click)="viewMerchant()">View</button>
+    <button class="btn btn-primary"(click)="editMerchant()" >Edit</button>
+    <span *ngIf="confirmDelete" >
+        <span>
+            Are you sure you want to Delete the {{merchant?.repFullName | uppercase}}? 
+        </span>
+        <button class="btn btn-danger" (click)="deleteMerchant()" >Yes</button>
+        <button class="btn btn-primary" (click)="confirmDelete=false" >No</button>
+    </span>
+    <button *ngIf="!confirmDelete" class="btn btn-danger" 
+        (click)="confirmDelete=true" >Delete</button>
+</div>
+</app-accordion>

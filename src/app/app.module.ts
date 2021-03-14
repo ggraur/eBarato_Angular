@@ -36,7 +36,8 @@ import { CountryComponent } from './countries/country.component';
 import { AddressComponent } from './address/address.component';
 import { NifPipe } from './pipe/nif.pipe';
 import { MerchantService } from './merchant/merchant.service';
-import { ListMerchantComponent } from './merchant/list-merchant.component';
+import { DisplayMerchantComponent } from './merchant/display-merchant.component';
+
 
 
 
@@ -61,7 +62,7 @@ import { ListMerchantComponent } from './merchant/list-merchant.component';
     CountryComponent,
     AddressComponent,
     NifPipe,
-    ListMerchantComponent
+    DisplayMerchantComponent 
   ],
   imports: [
     BrowserModule,
