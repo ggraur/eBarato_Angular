@@ -9,9 +9,15 @@ import { IMerchant } from '../Modules/merchant.model';
 })
 export class ListMerchantsComponent implements OnInit {
   
+  public error!: string;
+
   filteredMerchants!: IMerchant[];
   merchants!: IMerchant[];
   private _searchTerm!: string;
+  private merchCount = -1;
+  merchantToDisplay!: IMerchant;
+
+  errorMsg!: string;
 
   get searchTerm(): string {
     return this._searchTerm;
@@ -20,17 +26,40 @@ export class ListMerchantsComponent implements OnInit {
     this._searchTerm = value;
     this.filteredMerchants = this.filterMerchants(value);
   }
-  
+
   filterMerchants(searchString: string) {
     return this.merchants.filter(
       merchant => merchant.repFullName?.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
   }
 
-  constructor(private _router: Router
-             ,private _route: ActivatedRoute) {
+  constructor(private _router: Router, private _route: ActivatedRoute) {
+    
+    const resolvedData: IMerchant[] | string = this._route.snapshot.data.merchantList;
+ 
+    console.log("Resolved Data: " + (resolvedData));
 
+    if (Array.isArray(resolvedData)) {
+      this.merchants = resolvedData;
+    } else {
+      console.log('merchant I\'m passing here');
+      this.error = resolvedData!;
+    }
 
-     }
+    //      this.employees=this._route.snapshot.data['employeeList'];
+    if (Array.isArray(this.merchants)) {
+      if (this._route.snapshot.queryParamMap.has('searchTerm')) {
+        this.searchTerm = this._route.snapshot.queryParamMap.get('searchTerm') || '';
+      } else {
+        this.filteredMerchants = this.merchants;
+        // console.log('filteredEmployees : ' + new Date().toTimeString());
+      }
+      // this.employeeId = 0;
+
+      this.merchantToDisplay = this.merchants[0];
+      this.merchCount = this.merchants.length;
+      console.log('Total number of merchants: ' + this.merchCount);
+    }
+  }
 
   ngOnInit(): void {
   }

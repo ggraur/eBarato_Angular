@@ -37,7 +37,7 @@ import { AddressComponent } from './address/address.component';
 import { NifPipe } from './pipe/nif.pipe';
 import { MerchantService } from './merchant/merchant.service';
 import { DisplayMerchantComponent } from './merchant/display-merchant.component';
-
+import { MerchantListResolverService } from './merchant/MerchantListResolver.service'
 
 
 
@@ -84,6 +84,7 @@ import { DisplayMerchantComponent } from './merchant/display-merchant.component'
               MerchantService
              , CreateEmployeeCanDeactivateGuardService,
              EmployeeListResolverService,
+             MerchantListResolverService,
              EmployeeDetailsGuardService],
   bootstrap: [AppComponent]
 })

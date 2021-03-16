@@ -8,7 +8,6 @@ https://www.youtube.com/watch?v=smzuLV6ovxc
 
 // sorting, by pipe , see that video https://www.youtube.com/watch?v=1TFSibbnkj0 and https://www.youtube.com/watch?v=G7WaP-yoiQg
 
-
 https://github.com/angular/angular/issues/17560
 
 
@@ -25,8 +24,15 @@ https://www.pluralsight.com/guides/handling-exceptions-using-the-angular-httpcli
 https://www.positronx.io/angular-internationalization-i18n-with-ngx-translate-tutorial/
 https://github.com/SinghDigamber/angular-translate-app
 
+//angular fake rest api 
+https://www.youtube.com/watch?v=C9soEIBDZMA
+
 //Angular post 
 https://angular.io/guide/http
+
+//angular post/put/get/delete
+https://www.youtube.com/watch?v=7_a-ROt8z_4
+
 
 
 

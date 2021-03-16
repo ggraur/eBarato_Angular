@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IEmployee } from 'src/app/Modules/employee.model';
 // import { EmployeeService } from './employee.service'
 
@@ -18,8 +18,7 @@ export class ListEmployeesComponent implements OnInit {
     this.filteredEmployees = this.filterEmployees(value);
   }
 
-  constructor(private _router: Router
-    ,         private _route: ActivatedRoute) {
+  constructor(private _route: ActivatedRoute) {
 
     const resolvedData: IEmployee[] | string = this._route.snapshot.data.employeeList;
 
@@ -28,7 +27,7 @@ export class ListEmployeesComponent implements OnInit {
     if (Array.isArray(resolvedData)) {
       this.employees = resolvedData;
     } else {
-      console.log('I\'m passing here');
+      
       this.error = resolvedData!;
     }
 

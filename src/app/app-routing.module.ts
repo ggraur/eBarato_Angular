@@ -11,6 +11,7 @@ import { ListEmployeesComponent } from './employees/list-employees.component';
 import { HomeComponent } from './home/home.component';
 import { CreateMerchantComponent } from './merchant/create-merchant.component';
 import { ListMerchantsComponent } from './merchant/list-merchants.component';
+import { MerchantListResolverService } from './merchant/MerchantListResolver.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -18,8 +19,8 @@ const routes: Routes = [
   {path: 'list', component: ListEmployeesComponent, resolve: {employeeList: EmployeeListResolverService}},
   {path: 'editEmployee/:id', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService]},
   {path: 'employees/:id', component: EmployeeDetailsComponent, canActivate: [EmployeeDetailsGuardService]},
-
-  {path: 'merchants', component: ListMerchantsComponent},
+  
+  {path: 'merchants', component: ListMerchantsComponent, resolve: {merchantList: MerchantListResolverService}},
   {path: 'editMerchant/:id', component: CreateMerchantComponent
    // ,    canDeactivate:[CreateEmployeeCanDeactivateGuardService]
   },

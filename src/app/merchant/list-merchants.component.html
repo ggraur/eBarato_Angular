@@ -1,4 +1,4 @@
-<!-- <div *ngIf="filteredEmployees"> -->
+<div *ngIf="filteredMerchants">
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="searchTerm">
     </div>
@@ -8,6 +8,6 @@
             (notifyDelete)="onDeleteNotification($event)">
         </app-display-merchant>
     </div>
-    <!-- <error-alert *ngIf="errorMsg" [msg]="errorMsg"></error-alert>
+    <!-- <error-alert *ngIf="errorMsg" [msg]="errorMsg"></error-alert> -->
     <div *ngIf="error" class="danger" >{{error}}</div> -->
-<!-- </div> -->
+</div>
