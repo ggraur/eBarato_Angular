@@ -37,7 +37,8 @@ import { AddressComponent } from './address/address.component';
 import { NifPipe } from './pipe/nif.pipe';
 import { MerchantService } from './merchant/merchant.service';
 import { DisplayMerchantComponent } from './merchant/display-merchant.component';
-import { MerchantListResolverService } from './merchant/MerchantListResolver.service'
+import { MerchantListResolverService } from './merchant/MerchantListResolver.service';
+import { FileUploadComponent } from './file-upload.component'
 
 
 
@@ -62,7 +63,8 @@ import { MerchantListResolverService } from './merchant/MerchantListResolver.ser
     CountryComponent,
     AddressComponent,
     NifPipe,
-    DisplayMerchantComponent 
+    DisplayMerchantComponent,
+    FileUploadComponent 
   ],
   imports: [
     BrowserModule,

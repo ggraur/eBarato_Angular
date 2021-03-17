@@ -50,3 +50,10 @@ https://video.search.yahoo.com/video/play;_ylt=AwrDQymPqUhgylMACGP7w8QF;_ylu=c2V
 
 NG0100: Expression has changed after it was checked
 // https://angular.io/errors/NG0100
+
+create web api 
+// https://www.youtube.com/watch?v=GbKBcDX8DDQ
+
+Custom Authorization Filter In MVC With An Example
+//https://www.c-sharpcorner.com/article/custom-authorization-filter-in-mvc-with-an-example/
+//https://ekobit.com/blog/asp-netcore-custom-authorization-attributes/

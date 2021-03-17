@@ -13,7 +13,8 @@ export class MerchantService {
 
   }
 
-  baseUrl = 'http://localhost:3000/merchants';
+//   baseUrl = 'http://localhost:3000/merchants';
+  baseUrl = 'https://localhost:44331/api/merchants';
 
 
   private handleError(errorResponse: HttpErrorResponse) {
