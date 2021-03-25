@@ -1,0 +1,9 @@
+{
+    "extends": [
+        "accessibility"
+        
+    ],
+    "hints": {
+        "x-content-type-options": "error"
+    }
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { IEmployee } from '../Modules/employee.model';
+import { IEmployee } from '../Models/employee.model';
 import { EmployeeService } from './employee.service';
 import { ResolvedEmployeeList } from './resolved-employeelist.model';
 

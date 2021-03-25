@@ -57,3 +57,21 @@ create web api
 Custom Authorization Filter In MVC With An Example
 //https://www.c-sharpcorner.com/article/custom-authorization-filter-in-mvc-with-an-example/
 //https://ekobit.com/blog/asp-netcore-custom-authorization-attributes/
+
+
+Angular 11 JWT Authentication example with Web Api
+// https://bezkoder.com/angular-11-jwt-auth/
+// https://bezkoder.com/angular-11-jwt-auth/
+
+Security in Angular: 
+//https://www.codemag.com/Article/1805021/Security-in-Angular-Part-1
+//https://www.codemag.com/Article/1809031/Security-in-Angular-Part-2
+//https://www.codemag.com/Article/1811031/Security-in-Angular-Part-3
+
+//Angular http example 
+https://efficientcoder.net/angular-11-httpclient-tutorial-example/
+
+//.Net Core api 
+//https://jasonwatmore.com/post/2019/10/21/aspnet-core-3-basic-authentication-tutorial-with-example-api#authenticate-model-cs
+//Angular basic authentification
+//https://jasonwatmore.com/post/2019/06/26/angular-8-basic-http-authentication-tutorial-example

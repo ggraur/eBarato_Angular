@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { IEmployee } from '../Modules/employee.model';
+import { IEmployee } from '../Models/employee.model';
 import { EmployeeService } from './employee.service';
 
 

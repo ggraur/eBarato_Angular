@@ -342,14 +342,14 @@
           </a>
         </li>
         <li routerLinkActive="active">
-          <a  routerLink="list">{{'Employees' | translate}}</a>
+          <a routerLink="list">{{'Employees' | translate}}</a>
           <ul>
             <a routerLink="list">{{'Employee List' | translate}}</a>
             <a routerLink="editEmployee/0">{{'Create Employee' | translate}}</a>
           </ul>
         </li>
         <li routerLinkActive="active">
-          <a  routerLink="merchants">{{'Merchants' | translate}}</a>
+          <a routerLink="merchants">{{'Merchants' | translate}}</a>
           <ul>
             <a routerLink="merchants">{{'Merchants List' | translate}}</a>
             <a routerLink="editMerchant/0">{{'Create Merchants' | translate}}</a>
@@ -371,6 +371,10 @@
             </option>
           </select>
         </span>
+        <div *ngIf="!isLoggedIn">
+          <a href="/register" routerLink="register">{{'Sign Up' | translate}}</a>&nbsp;  &nbsp;&nbsp;
+          <a href="/login" routerLink="login">{{'Login' | translate}}</a>
+        </div>
       </div>
     </nav>
     <br />

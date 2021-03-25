@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, delay, takeUntil, catchError } from 'rxjs/operators';
-import { IMerchant } from '../Modules/merchant.model';
+import { IMerchant } from '../Models/merchant.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
@@ -14,7 +14,11 @@ export class MerchantService {
   }
 
 //   baseUrl = 'http://localhost:3000/merchants';
-  baseUrl = 'https://localhost:44331/api/merchants';
+  baseUrl = 'https://localhost:5000/api/merchants';
+//baseUrl = 'https://localhost:44331/api/merchants';
+  
+  
+  //https://www.youtube.com/watch?v=X8hLraWnVhw
 
 
   private handleError(errorResponse: HttpErrorResponse) {
@@ -28,6 +32,8 @@ export class MerchantService {
   }
 
   getMerchants(): Observable<IMerchant[]> {
+
+    
     return this._httpClient.get<IMerchant[]>(this.baseUrl)
       .pipe(
         catchError(error => {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IMerchant } from '../Modules/merchant.model';
+import { IMerchant } from '../Models/merchant.model';
 
 @Component({
   selector: 'app-list-merchants',
@@ -36,26 +36,23 @@ export class ListMerchantsComponent implements OnInit {
     
     const resolvedData: IMerchant[] | string = this._route.snapshot.data.merchantList;
  
-    console.log("Resolved Data: " + (resolvedData));
+    // console.log("Resolved Data: " + (resolvedData));
 
     if (Array.isArray(resolvedData)) {
       this.merchants = resolvedData;
     } else {
-      console.log('merchant I\'m passing here');
+      // console.log('merchant I\'m passing here');
       this.error = resolvedData!;
     }
 
-    //      this.employees=this._route.snapshot.data['employeeList'];
+
     if (Array.isArray(this.merchants)) {
       if (this._route.snapshot.queryParamMap.has('searchTerm')) {
         this.searchTerm = this._route.snapshot.queryParamMap.get('searchTerm') || '';
       } else {
         this.filteredMerchants = this.merchants;
-        // console.log('filteredEmployees : ' + new Date().toTimeString());
       }
-      // this.employeeId = 0;
-
-      this.merchantToDisplay = this.merchants[0];
+        this.merchantToDisplay = this.merchants[0];
       this.merchCount = this.merchants.length;
       console.log('Total number of merchants: ' + this.merchCount);
     }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, Input,   EventEmitter, Output } from '@angular/core';
-import { ICountry } from '../Modules/country.model';
+import { ICountry } from '../Models/country.model';
 
 @Component({
   selector: 'app-country',

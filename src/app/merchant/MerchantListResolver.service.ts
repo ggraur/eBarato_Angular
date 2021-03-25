@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { IMerchant } from '../Modules/merchant.model';
+import { IMerchant } from '../Models/merchant.model';
 import { MerchantService } from './merchant.service';
 // import { ResolvedMerchantList } from './resolved-merchantlist.model';
 

@@ -1,13 +1,13 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm, Validators } from '@angular/forms';
-import { Department } from '../Modules/department.model';
+import { Department } from '../Models/department.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { IMerchant } from '../Modules/merchant.model';
-import { ICountry } from '../Modules/country.model';
+import { IMerchant } from '../Models/merchant.model';
+import { ICountry } from '../Models/country.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { IAddress } from '../Modules/address.module';
+import { IAddress } from '../Models/address.module';
 import { MerchantService } from './merchant.service';
 
 

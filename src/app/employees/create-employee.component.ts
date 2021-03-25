@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm, Validators } from '@angular/forms';
-import { IEmployee } from '../Modules/employee.model';
-import { Department } from '../Modules/department.model';
+import { IEmployee } from '../Models/employee.model';
+import { Department } from '../Models/department.model';
 import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 import { EmployeeService } from './employee.service';
 import { ActivatedRoute, Router } from '@angular/router';

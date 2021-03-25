@@ -1,1 +1,13 @@
-<h1>The resurse you are looking for cannot be found</h1>
+<div *ngIf='queryParams'>
+    <h1>{{errDesc | translate}}</h1>
+</div>
+<!-- 
+<div >
+    <h2>routeParams</h2>
+    <pre>{{routeParams|json }}</pre>
+
+    <h2>queryParams</h2>
+    <pre>{{queryParams|json }}</pre>
+
+    <h2>{{id}} </h2>
+</div> -->

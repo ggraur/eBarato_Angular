@@ -38,8 +38,15 @@ import { NifPipe } from './pipe/nif.pipe';
 import { MerchantService } from './merchant/merchant.service';
 import { DisplayMerchantComponent } from './merchant/display-merchant.component';
 import { MerchantListResolverService } from './merchant/MerchantListResolver.service';
-import { FileUploadComponent } from './file-upload.component'
-
+import { FileUploadComponent } from './file-upload.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { ActivateAccountComponent } from './activate_account/activate-account.component';
 
 
 @NgModule({
@@ -64,7 +71,14 @@ import { FileUploadComponent } from './file-upload.component'
     AddressComponent,
     NifPipe,
     DisplayMerchantComponent,
-    FileUploadComponent 
+    FileUploadComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent,
+    ActivateAccountComponent 
   ],
   imports: [
     BrowserModule,
@@ -87,7 +101,8 @@ import { FileUploadComponent } from './file-upload.component'
              , CreateEmployeeCanDeactivateGuardService,
              EmployeeListResolverService,
              MerchantListResolverService,
-             EmployeeDetailsGuardService],
+             EmployeeDetailsGuardService,
+             authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

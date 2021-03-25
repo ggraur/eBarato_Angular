@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IEmployee } from '../Modules/employee.model';
+import { IEmployee } from '../Models/employee.model';
 @Pipe({
     name: 'employeeFilter',
     pure: false // https://www.youtube.com/watch?v=XSLf5PRjxPw , make pipe impure (pure: false)

@@ -13,6 +13,8 @@
     "Create Merchants":"Criar Comerciantes",
     "county":"Distrito",
     "countyErr":"Distrito é um campo obrigatório",
+ 
+    
     "Merchants":"Comerciantes",
     "Employees":"Empregados",
     "title":"eBarato Marketplace, o seu local preferido de vendas",
@@ -27,17 +29,20 @@
     "postCodeErr":"Código postal é um campo obrigatório",
     "TermsConditions": "Eu concordo com os termos e condições.",
     "Submit": "Submeter",
+    "Sign Up":"Registrar",
     "Gender": "Gênero",
     "Country":"País",
     "Contact Preference": "Preferência de contato",
     "Date Of Birth": "Data de Nascimento",
     "Department":"Departamento",
     "Is active":"Está ativo",
+    "Invalid activation link":"Link de ativação inválido",
     "Home": "Pagina Principal",
     "Employee List":"Lista de funcionários",
     "Create New Employee":"Criar Novo Funcionário",
     "Create Employee":"Criar funcionário",
     "Full Name":"Nome Completo",
+    "Login":"Entrar",
     "Rep. Full Name":"Nome completo do representante da empresa",
     "Phone":"Telefone",
     "Phone Number": "Número do telefone",
@@ -49,5 +54,9 @@
     "mobileNumber":"Número de telemóvel",
     "Email": "Endereço de email",
     "The email is a mandatory field":"O email é um campo obrigatório",
-    "The email is invalid":"O email é inválido"
+    "The email is invalid":"O email é inválido",
+    "The resurse you are looking for cannot be found":"O recurso que você está procurando não pode ser encontrado",
+    "User not found":"Utilizador não encontrado",
+    "User successfully activated":"Utilizador ativado com sucesso"
+
 }

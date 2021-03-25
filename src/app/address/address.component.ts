@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, NgModule, OnInit, Output, ViewChild } from '@angular/core';
-import { IAddress } from '../Modules/address.module';
+import { IAddress } from '../Models/address.module';
 import { NgForm, Validators } from '@angular/forms';
 
 

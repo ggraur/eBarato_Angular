@@ -27,17 +27,20 @@
     "townErr":"Town/City is an required field",
     "TermsConditions": "I agree to terms and conditions.",
     "Submit": "Submit",
+    "Sign Up":"Sign Up",
     "Gender": "Gender",
     "Country":"Country",
     "Contact Preference": "Contact Preference",
     "Date Of Birth": "Date Of Birth",
     "Department":"Department",
     "Is active":"Is active",
+    "Invalid activation link":"Invalid activation link",
     "Home": "Home",
     "Employee List":"Employee List",
     "Create New Employee":"Create New Employee",
     "Create Employee":"Create Employee",
     "Full Name":"Full Name",
+    "Login":"Login",
     "Rep. Full Name":"Full name of the company delegate",
     "Phone":"Phone",
     "Phone Number": "Phone Number",
@@ -49,5 +52,9 @@
     "mobileNumber":"Mobile Number",
     "Email": "Email address",
     "The email is a mandatory field":"The email is a mandatory field",
-    "The email is invalid":"The email is invalid"
+    "The email is invalid":"The email is invalid",
+    "The resurse you are looking for cannot be found":"The resurse you are looking for cannot be found",
+    "User not found":"User not found",
+    "User successfully activated":"User successfully activated"
+
 }

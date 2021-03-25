@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, delay, takeUntil, catchError } from 'rxjs/operators';
-import { IEmployee } from '../Modules/employee.model';
+import { IEmployee } from '../Models/employee.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';

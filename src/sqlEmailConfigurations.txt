@@ -1,0 +1,115 @@
+--https://www.sqlservercentral.com/blogs/sending-mail-using-sql-server-express-edition
+
+--1 Create Sysmail Account
+EXECUTE msdb.dbo.sysmail_add_account_sp
+@account_name = 'tools4Acc',
+@description = 'Sent Mail using tools4Acc',
+@email_address = 'indo23md@yahoo.com',
+@display_name = 'tools4Acc',
+@username='indo23md@yahoo.com',
+@password='!xxxJJJkkk',
+@mailserver_name = 'mail.yahoo.com'
+
+--2 Creating Database Profile
+EXECUTE msdb.dbo.sysmail_add_profile_sp
+@profile_name = 'tools4Acc',
+@description = 'Profile used to send mail'
+--3 Add database Mail account to profile
+EXECUTE msdb.dbo.sysmail_add_profileaccount_sp
+@profile_name = 'tools4Acc',
+@account_name = 'tools4Acc',
+@sequence_number = 1
+--4 Grants permission for a database user or role to use a Database Mail profile.
+EXECUTE msdb.dbo.sysmail_add_principalprofile_sp
+@profile_name = 'tools4Acc',
+@principal_name = 'public',
+@is_default = 1 ;
+
+--5 You can query to test data
+SELECT *FROM msdb.dbo.sysmail_account
+SELECT *FROM msdb.dbo.sysmail_configuration
+SELECT *FROM msdb.dbo.sysmail_principalprofile
+SELECT *FROM msdb.dbo.sysmail_profile
+SELECT *FROM msdb.dbo.sysmail_profileaccount
+SELECT *FROM msdb.dbo.sysmail_profileaccount
+--6 Send Mail using Created Profile
+exec msdb.dbo.sp_send_dbmail @profile_name = 'tools4Acc', 
+					@recipients = 'indo23md@gmail.com', @subject = 'Mail Test', @body = 'Mail Sent Successfully',
+					@body_format = 'text'
+
+--7 This error occured due to 'Database Mail XPs' disabled.To enable this use this code
+-- Msg 15281, Level 16, State 1, Procedure sp_send_dbmail, Line 0
+-- SQL Server blocked access to procedure 'dbo.sp_send_dbmail' of component 'Database Mail XPs' because this component is turned off as part of the security configuration for this server. A system administrator can enable the use of 'Database Mail XPs' by using sp_configure. For more information about enabling 'Database Mail XPs', see "Surface Area Configuration" in SQL Server Books Online.
+ 
+sp_configure 'show advanced options', 1;
+GO
+RECONFIGURE;
+GO
+sp_configure 'Database Mail XPs', 1;
+GO
+RECONFIGURE
+GO
+
+--10 check emails in queue
+
+EXEC msdb.dbo.sysmail_help_queue_sp;
+
+--11 check unsended 
+
+ SELECT * FROM msdb.dbo.sysmail_event_log;
+-- To get number of unsent emails
+select count(*) from msdb.dbo.sysmail_unsentitems;
+-- remove all the unsent emails
+delete from msdb.dbo.sysmail_unsentitems; 
+
+
+
+-- create triguer 
+//https://www.aspsnippets.com/Articles/Send-Email-from-Trigger-in-SQL-Server.aspx 
+
+CREATE TRIGGER [dbo].[Customer_INSERT_Notification]
+       ON [dbo].[Customers]
+AFTER INSERT
+AS
+BEGIN
+       SET NOCOUNT ON;
+ 
+       DECLARE @CustomerId INT
+ 
+       SELECT @CustomerId = INSERTED.CustomerId      
+       FROM INSERTED
+       declare @body varchar(500) = 'Customer with ID: ' + CAST(@CustomerId AS VARCHAR(5)) + ' inserted.'
+       EXEC msdb.dbo.sp_send_dbmail
+            @profile_name = 'Mudassar_Email_Profile'
+           ,@recipients = 'recipient@gmail.com'
+           ,@subject = 'New Customer Record'
+           ,@body = @body
+           ,@importance ='HIGH'
+END
+
+
+
+
+
+  Email.send({
+        Host: "webmail.ebarato.pt",
+        Username: "donotreply@ebarato.pt",
+        Password: "Aw9gy@38",
+        Port: 25,
+        //Ssl: true,
+        //UseDefaultCredentials: false,
+        //DeliveryMethod: SmtpDeliveryMethod.Network,
+        To: "indo23md@yahoo.com",
+        From: "donotreply@ebarato.pt",
+        Subject: "Reset Password on eBarato.pt",
+        IsBodyHtml: true,
+        Body: body,
+        success: function (data) {
+            alert(data)
+        },
+        error: function (data) {
+            alert('Nao foi possivel entregar o email')
+        }
+    }).then(function (message) {
+        alert("mail sent successfully")
+    });

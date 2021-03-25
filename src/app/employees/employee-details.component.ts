@@ -1,7 +1,7 @@
 // https://www.youtube.com/watch?v=aP2hd4TePl4 display details
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IEmployee } from '../Modules/employee.model';
+import { IEmployee } from '../Models/employee.model';
 import { EmployeeService } from './employee.service';
 
 @Component({

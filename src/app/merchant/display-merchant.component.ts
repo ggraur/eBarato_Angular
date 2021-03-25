@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IMerchant } from '../Modules/merchant.model';
+import { IMerchant } from '../Models/merchant.model';
 import { MerchantService } from './merchant.service';
 
 @Component({
