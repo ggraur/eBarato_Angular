@@ -35,6 +35,7 @@
     "Department":"Department",
     "Is active":"Is active",
     "Invalid activation link":"Invalid activation link",
+    "Invalid user or password":"Invalid user or password",
     "Home": "Home",
     "Employee List":"Employee List",
     "Create New Employee":"Create New Employee",
@@ -47,6 +48,7 @@
     "Phone Number is required":"Phone Number is required",
     "Post":"Post",
     "Contact Preference is required":"Contact Preference is required",
+    "Customers":"Customers",
     "Merchant VAT":"Merchant VAT",
     "MerchantRequired":"Merchant VAT is required",
     "mobileNumber":"Mobile Number",
@@ -55,6 +57,7 @@
     "The email is invalid":"The email is invalid",
     "The resurse you are looking for cannot be found":"The resurse you are looking for cannot be found",
     "User not found":"User not found",
-    "User successfully activated":"User successfully activated"
+    "User successfully activated":"User successfully activated",
+    "Your registration is successful! Please check your email and fallow the link to activate your account.":"Your registration is successful! Please check your email and fallow the link to activate your account."
 
 }

@@ -75,3 +75,12 @@ https://efficientcoder.net/angular-11-httpclient-tutorial-example/
 //https://jasonwatmore.com/post/2019/10/21/aspnet-core-3-basic-authentication-tutorial-with-example-api#authenticate-model-cs
 //Angular basic authentification
 //https://jasonwatmore.com/post/2019/06/26/angular-8-basic-http-authentication-tutorial-example
+
+//NLog
+// configuration link 
+//https://csharp-video-tutorials.blogspot.com/2019/05/logging-to-file-in-aspnet-core-using.html
+//videos links
+//https://www.youtube.com/watch?v=o5u4fE0t79k&list=PL6n9fhu94yhVkdrusLaQsfERmL_Jh4XmU&index=63
+
+//ThirdParty authorisation + google
+https://codinglatte.com/posts/angular/sign-in-with-google-angular/

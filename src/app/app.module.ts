@@ -47,6 +47,18 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ActivateAccountComponent } from './activate_account/activate-account.component';
+import { MyloginComponent } from './mylogin/mylogin.component';
+// import { AuthGuard } from'./guards/auth-guard.service'
+
+import {JwtModule} from '@auth0/angular-jwt';
+import { AuthGuard } from './guards/auth-guard.service';
+import { CustomerComponent } from './customer/customer.component';
+import { NavloginComponent } from './mylogin/navlogin.component';
+
+export function tokenGetter(){
+  return localStorage.getItem("jwt");
+  // https://www.youtube.com/watch?v=NSQHiIAP7Z8
+}
 
 
 @NgModule({
@@ -78,7 +90,10 @@ import { ActivateAccountComponent } from './activate_account/activate-account.co
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    ActivateAccountComponent 
+    ActivateAccountComponent,
+    MyloginComponent,
+    CustomerComponent,
+    NavloginComponent 
   ],
   imports: [
     BrowserModule,
@@ -93,16 +108,24 @@ import { ActivateAccountComponent } from './activate_account/activate-account.co
         useFactory: httpTranslateLoader,
         deps: [HttpClient]
       }
+    }),
+    JwtModule.forRoot({
+      config:{
+        tokenGetter:tokenGetter,
+        allowedDomains:["localhost:5001"],
+        disallowedRoutes:[]
+      }
     })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [EmployeeService,
               MerchantService
-             , CreateEmployeeCanDeactivateGuardService,
-             EmployeeListResolverService,
-             MerchantListResolverService,
-             EmployeeDetailsGuardService,
-             authInterceptorProviders],
+             , CreateEmployeeCanDeactivateGuardService
+             ,EmployeeListResolverService
+             ,MerchantListResolverService
+             ,EmployeeDetailsGuardService
+             ,authInterceptorProviders
+            ,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

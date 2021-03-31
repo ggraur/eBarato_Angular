@@ -80,3 +80,22 @@ li:hover li a:hover
 {
     background: #95A9B1;
 }
+
+.myHeader{
+     padding:5px ;
+}
+.logo{
+    padding: 10px;
+    font-size: large;
+    font-weight: bold;
+    font-style: italic;
+    color: #337AB7;
+}
+
+.div_aLog{
+    padding-top:15px !important ;
+}
+.aLog{
+    display: inline;
+    width: auto;
+}

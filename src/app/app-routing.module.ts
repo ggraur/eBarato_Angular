@@ -21,11 +21,16 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { ActivateAccountComponent } from './activate_account/activate-account.component';
+import { MyloginComponent } from './mylogin/mylogin.component';
+import { AuthGuard } from './guards/auth-guard.service';
+import { CustomerComponent } from './customer/customer.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent },
+  { path: 'mylogin', component: MyloginComponent },
+
   { path: 'register', component: RegisterComponent },
   { path: 'activate_account/:id', component:ActivateAccountComponent},
   { path: 'profile', component: ProfileComponent },
@@ -33,11 +38,12 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
 
-  { path: 'list', component: ListEmployeesComponent, resolve: {employeeList: EmployeeListResolverService}},
+  { path: 'list', component: ListEmployeesComponent, resolve: {employeeList: EmployeeListResolverService}, canActivate:[AuthGuard]},
+  { path: 'customers', component: CustomerComponent, canActivate:[AuthGuard]},
   { path: 'editEmployee/:id', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService]},
   { path: 'employees/:id', component: EmployeeDetailsComponent, canActivate: [EmployeeDetailsGuardService]},
   
-  { path: 'merchants', component: ListMerchantsComponent, resolve: {merchantList: MerchantListResolverService}},
+  { path: 'merchants', component: ListMerchantsComponent, resolve: {merchantList: MerchantListResolverService}, canActivate:[AuthGuard]},
   { path: 'editMerchant/:id', component: CreateMerchantComponent
    // ,    canDeactivate:[CreateEmployeeCanDeactivateGuardService]
   },

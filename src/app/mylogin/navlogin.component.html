@@ -1,0 +1,9 @@
+<div  class="aLog">
+    <a href="/register" routerLink="register">{{'Sign Up' | translate}}</a>&nbsp; &nbsp;&nbsp;
+  </div>
+  <div class="aLog" *ngIf="!userIsLogged">
+    <a href="/mylogin" routerLink="mylogin">{{'Login' | translate}}</a>&nbsp; &nbsp;&nbsp;
+  </div>
+  <div class="aLog" *ngIf="userIsLogged">
+    <a href="/mylogin" routerLink="mylogin">{{'LogOff' | translate}}</a>
+  </div>

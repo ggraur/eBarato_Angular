@@ -331,39 +331,14 @@
     }
   }
 </style>
-<div style="padding:5px">
-  <div class="container">
-    <div class="logo">{{'title' | translate}}</div>
-    <nav class="navbar navbar-default">
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active">
-          <a routerLink="home">
-            {{'Home' | translate}}
-          </a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="list">{{'Employees' | translate}}</a>
-          <ul>
-            <a routerLink="list">{{'Employee List' | translate}}</a>
-            <a routerLink="editEmployee/0">{{'Create Employee' | translate}}</a>
-          </ul>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="merchants">{{'Merchants' | translate}}</a>
-          <ul>
-            <a routerLink="merchants">{{'Merchants List' | translate}}</a>
-            <a routerLink="editMerchant/0">{{'Create Merchants' | translate}}</a>
-          </ul>
-        </li>
-        <!-- <li routerLinkActive="active">
-          <a routerLink="list">{{'Employee List' | translate}}</a>
-        </li>
-        <li routerLinkActive="active">
-          <a routerLink="edit/0">{{'Create Employee' | translate}}</a>
-        </li> -->
-      </ul>
-      <div class="pull-right lngClass">
-        <span class="form-inline ">
+<div>
+  <div>
+    <div class="row">
+      <div class="logo col-xs-8" style="padding-left: 20px;">
+        <p> {{'title' | translate}}</p>
+      </div>
+      <div class="lngClass col-cs-1 pull-right" style="padding-right: 20px;">
+        <span>
           <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
             <option *ngFor="let language of translate.getLangs()" [value]="language"
               [selected]="language === translate.currentLang">
@@ -371,14 +346,55 @@
             </option>
           </select>
         </span>
-        <div *ngIf="!isLoggedIn">
-          <a href="/register" routerLink="register">{{'Sign Up' | translate}}</a>&nbsp;  &nbsp;&nbsp;
-          <a href="/login" routerLink="login">{{'Login' | translate}}</a>
-        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-default  myHeader">
+      <div>
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active">
+            <a routerLink="home">
+              {{'Home' | translate}}
+            </a>
+          </li>
+          <li routerLinkActive="active">
+            <a routerLink="list">{{'Employees' | translate}}</a>
+            <ul>
+              <a routerLink="list">{{'Employee List' | translate}}</a>
+              <a routerLink="editEmployee/0">{{'Create Employee' | translate}}</a>
+            </ul>
+          </li>
+          <li><a routerLink="customers">{{'Customers' | translate}}</a></li>
+          <li routerLinkActive="active">
+            <a routerLink="merchants">{{'Merchants' | translate}}</a>
+            <ul>
+              <a routerLink="merchants">{{'Merchants List' | translate}}</a>
+              <a routerLink="editMerchant/0">{{'Create Merchants' | translate}}</a>
+            </ul>
+          </li>
+          <!-- <li routerLinkActive="active">
+          <a routerLink="list">{{'Employee List' | translate}}</a>
+        </li>
+        <li routerLinkActive="active">
+          <a routerLink="edit/0">{{'Create Employee' | translate}}</a>
+        </li> -->
+        </ul>
+      </div>
+      <div class="pull-right div_aLog">
+        <app-navlogin [userIsLogged] ="userIsLogged"></app-navlogin>
+          <!-- <div  class="aLog">
+            <a href="/register" routerLink="register">{{'Sign Up' | translate}}</a>&nbsp; &nbsp;&nbsp;
+          </div>
+          <div class="aLog" *ngIf="!isLoggedIn">
+            <a href="/mylogin" routerLink="mylogin">{{'Login' | translate}}</a>&nbsp; &nbsp;&nbsp;
+          </div>
+          <div class="aLog" *ngIf="isLoggedIn">
+            <a href="/mylogin" routerLink="mylogin">{{'LogOff' | translate}}</a>
+          </div> -->
       </div>
     </nav>
+
     <br />
     <div *ngIf="showLoadingIndicator" class="loader"></div>
-    <router-outlet></router-outlet>
+    <router-outlet  ></router-outlet>
   </div>
 </div>

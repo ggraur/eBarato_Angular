@@ -12,3 +12,9 @@
     ng g c merchant/create-merchant --skip-tests=true --flat
 //angular generate pipe command line 
     ng generate pipe custom
+//add encription library to angular 
+    npm i --save-dev @types/crypto-js
+    //https://sstarx.medium.com/encryption-and-decryption-in-angular-asp-net-core-application-1f55bfa3d8bd
+
+// Add auth tokens
+npm install @auth0/angular-jwt --save

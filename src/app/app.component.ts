@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { IEvent } from './Models/event.module';
 
 import { TokenStorageService } from './_services/token-storage.service';
 
@@ -14,7 +15,7 @@ import { TokenStorageService } from './_services/token-storage.service';
 export class AppComponent implements OnInit {
   
   private roles: string[] = [];
-  isLoggedIn = false;
+  userIsLogged : boolean = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
@@ -51,21 +52,29 @@ export class AppComponent implements OnInit {
     // console.log("Language used: " + lang)
   }
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    this.userIsLogged = !!this.tokenStorageService.getToken();
 
-    if (this.isLoggedIn) {
+    if (this.userIsLogged) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
+      console.log("Roles: " + JSON.stringify(this.roles));
 
+      /*
+      // review and solve that situation.
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-
+      */
       this.username = user.username;
     }
   }
+  
+ 
 
   logout(): void {
+    localStorage.removeItem("jwt");
+
     this.tokenStorageService.signOut();
     window.location.reload();
   }
+  
 }
