@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, NgModule, OnInit, Output, ViewChild } from '@angular/core';
 import { IAddress } from '../Models/address.module';
 import { NgForm, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class AddressComponent implements OnInit {
     county: null,
     postCode: null
   };
-  constructor() { }
+  constructor(public translate: TranslateService,) { }
 
   onChangeEventA1(event: any) {
     const value: string = event.target.value;

@@ -5,7 +5,9 @@ import { IMerchant } from '../Models/merchant.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
+import { AppConstants } from '../app.constant';
 
+const AUTH_API = AppConstants.Https_API_URL + 'merchants';
 
 @Injectable()
 export class MerchantService {
@@ -14,7 +16,7 @@ export class MerchantService {
   }
 
 //   baseUrl = 'http://localhost:3000/merchants';
-  baseUrl = 'https://localhost:5000/api/merchants';
+// baseUrl = 'https://localhost:5000/api/merchants';
 //baseUrl = 'https://localhost:44331/api/merchants';
   
   
@@ -32,9 +34,7 @@ export class MerchantService {
   }
 
   getMerchants(): Observable<IMerchant[]> {
-
-    
-    return this._httpClient.get<IMerchant[]>(this.baseUrl)
+    return this._httpClient.get<IMerchant[]>(AUTH_API  )
       .pipe(
         catchError(error => {
           let errorMsg: string;
@@ -79,13 +79,13 @@ export class MerchantService {
   //   return this.listEmployees.length;
   // }
   getMerchant(employeeId: number): Observable<IMerchant> {
-    return this._httpClient.get<IMerchant>(`${this.baseUrl}/${employeeId}`)
+    return this._httpClient.get<IMerchant>(`${AUTH_API}/${employeeId}`)
       .pipe(catchError(this.handleError));
   }
 
 
   delete(id: number): Observable<void> {
-    return this._httpClient.delete<void>(`${this.baseUrl}/${id}`)
+    return this._httpClient.delete<void>(`${AUTH_API}/${id}`)
       .pipe(catchError(this.handleError));
 
   }
@@ -98,7 +98,7 @@ export class MerchantService {
       })
     };
 
-    return this._httpClient.post<IMerchant>(this.baseUrl, merchant, httpOptions)
+    return this._httpClient.post<IMerchant>(AUTH_API, merchant, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
@@ -108,7 +108,7 @@ export class MerchantService {
         'Content-Type': 'application/json'
       })
     };
-    return this._httpClient.put<void>(`${this.baseUrl}/${merchant.id}`, merchant, httpOptions)
+    return this._httpClient.put<void>(`${AUTH_API}/${merchant.id}`, merchant, httpOptions)
       .pipe(catchError(this.handleError));
   }
 

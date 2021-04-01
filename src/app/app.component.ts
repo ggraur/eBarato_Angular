@@ -54,12 +54,12 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.userIsLogged = !!this.tokenStorageService.getToken();
     
-    console.log("Roles: " + JSON.stringify(this.userIsLogged));
+    // console.log("Roles: " + JSON.stringify(this.userIsLogged));
 
     if (this.userIsLogged) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
-      console.log("Roles: " + JSON.stringify(this.roles));
+     // console.log("Roles: " + JSON.stringify(this.roles));
 
       /*
       // review and solve that situation.

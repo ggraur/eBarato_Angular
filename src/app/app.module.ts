@@ -55,6 +55,7 @@ import { AuthGuard } from './guards/auth-guard.service';
 import { CustomerComponent } from './customer/customer.component';
 import { NavloginComponent } from './mylogin/navlogin.component';
 import { ClaimComponent } from './claim/claim.component';
+import { UserComponent } from './user/user.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -95,7 +96,8 @@ export function tokenGetter(){
     MyloginComponent,
     CustomerComponent,
     NavloginComponent,
-    ClaimComponent 
+    ClaimComponent,
+    UserComponent 
   ],
   imports: [
     BrowserModule,

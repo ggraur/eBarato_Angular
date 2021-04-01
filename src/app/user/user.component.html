@@ -1,0 +1,47 @@
+<h1>User Registration</h1>
+
+
+<div class="col-md-12">
+    <div class="card card-container">
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div>
+                <label for="merchantId" class="control-label">
+                    {{'Merchant/Client/Company' | translate}}
+                </label>
+                <select id="merchantId" appSelectorValidator="-1" name="merchantId" class="form-control" #merchantId="ngModel" [(ngModel)]='merchantCode' (change)="selected()">
+                    <option *ngFor="let mct of merchants" [value]="mct.id" >
+                        {{mct.merchantName}}
+                    </option>
+                </select>
+
+                <span class="help-block" *ngIf="merchantId.touched && merchantId.errors?.defaultSelected">  
+                    Merchant is required
+                </span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel" />
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="form.confirmPassword" required minlength="6" #password="ngModel" />
+
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">Register User</button>
+            </div>
+
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Signup failed!<br />{{ errorMessage }}
+            </div>
+        </form>
+        <div class="alert alert-success" *ngIf="isSuccessful">
+            Your registration is successful! Please check your email and fallow the link to activate your account.
+        </div>
+    </div>
+</div>

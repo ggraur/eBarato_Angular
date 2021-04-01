@@ -30,7 +30,7 @@ ul {
     font-family: Arial, Verdana;
     font-size: 14px;
     margin: 0;
-    padding: 0;
+    padding: 5px;
     list-style: none;
     color: aquamarine !important;
 }
@@ -39,6 +39,7 @@ ul li {
     display: block;
     position: relative;
     float: left;
+    height: 145px im !important;
 }
 
 li ul {
@@ -58,6 +59,11 @@ ul li a {
     background: #2C5463;
     margin-left: 1px;
     white-space: nowrap;
+}
+
+li a {
+    width: auto;
+    min-width: 100px !important;
 }
 
 ul li a:hover {
@@ -80,10 +86,6 @@ li:hover a {
 
 li:hover li a:hover {
     background: #95A9B1;
-}
-
-.myHeader {
-    padding: 5px;
 }
 
 .logo {

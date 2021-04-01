@@ -32,7 +32,7 @@ export class TokenStorageService {
 
   public saveUser(user: any): void {
      let sUser = JSON.stringify(user);
-     console.log("Logged User is: " + sUser);
+   // console.log("Logged User is: " + sUser);
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }

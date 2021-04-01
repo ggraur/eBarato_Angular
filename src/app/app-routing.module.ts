@@ -24,6 +24,7 @@ import { ActivateAccountComponent } from './activate_account/activate-account.co
 import { MyloginComponent } from './mylogin/mylogin.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { CustomerComponent } from './customer/customer.component';
+import { UserComponent } from './user/user.component';
 
 
 const routes: Routes = [
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'mylogin', component: MyloginComponent },
 
   { path: 'register', component: RegisterComponent },
+  { path: 'createusers', component: UserComponent },
   { path: 'activate_account/:id', component:ActivateAccountComponent},
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
@@ -43,7 +45,7 @@ const routes: Routes = [
   { path: 'editEmployee/:id', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService]},
   { path: 'employees/:id', component: EmployeeDetailsComponent, canActivate: [EmployeeDetailsGuardService]},
   
-  { path: 'merchants', component: ListMerchantsComponent, resolve: {merchantList: MerchantListResolverService}, canActivate:[AuthGuard]},
+  { path: 'merchants', component: ListMerchantsComponent, resolve: {merchantList: MerchantListResolverService}},
   { path: 'editMerchant/:id', component: CreateMerchantComponent
    // ,    canDeactivate:[CreateEmployeeCanDeactivateGuardService]
   },

@@ -35,9 +35,9 @@ export class MyloginComponent implements OnInit {
   signedUser! : IUser;
 
   public login = (form: NgForm) => {
-    console.log("login:  " + API_URL)
+   // console.log("login:  " + API_URL)
     const credentials = JSON.stringify(form.value);
-    console.log("login:  " + API_URL + " " + credentials);
+   // console.log("login:  " + API_URL + " " + credentials);
     this.http.post(API_URL + "auth/login",
       credentials, {
       headers: new HttpHeaders({

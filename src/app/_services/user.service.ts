@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getPublicContent(): Observable<any> {
-    console.log('getPublicContent' + API_URL);
+   // console.log('getPublicContent: ' + API_URL);
     return this.http.get(API_URL + 'test/all', { responseType: 'text' })
     .pipe(catchError(this.handleErrors) );
   }
