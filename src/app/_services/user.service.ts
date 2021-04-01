@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AppConstants } from '../app.constant';
 
-const API_URL = AppConstants.Https_API_URL + 'test/';
+const API_URL = AppConstants.Https_API_URL ;
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +13,23 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' })
+    console.log('getPublicContent' + API_URL);
+    return this.http.get(API_URL + 'test/all', { responseType: 'text' })
     .pipe(catchError(this.handleErrors) );
   }
 
   getUserBoard(): Observable<any> {
+    console.log('getUserBoard');
     return this.http.get(API_URL + 'user', { responseType: 'text' }).pipe(catchError(this.handleErrors) );
   }
 
   getModeratorBoard(): Observable<any> {
+    console.log('getModeratorBoard');
     return this.http.get(API_URL + 'mod', { responseType: 'text' }).pipe(catchError(this.handleErrors) );
   }
 
   getAdminBoard(): Observable<any> {
+    console.log('getAdminBoard');
     return this.http.get(API_URL + 'admin', { responseType: 'text' }).pipe(catchError(this.handleErrors) );
   }
 

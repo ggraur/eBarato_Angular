@@ -54,6 +54,7 @@ import {JwtModule} from '@auth0/angular-jwt';
 import { AuthGuard } from './guards/auth-guard.service';
 import { CustomerComponent } from './customer/customer.component';
 import { NavloginComponent } from './mylogin/navlogin.component';
+import { ClaimComponent } from './claim/claim.component';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -93,7 +94,8 @@ export function tokenGetter(){
     ActivateAccountComponent,
     MyloginComponent,
     CustomerComponent,
-    NavloginComponent 
+    NavloginComponent,
+    ClaimComponent 
   ],
   imports: [
     BrowserModule,

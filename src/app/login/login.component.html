@@ -25,8 +25,7 @@
           <div
             class="alert alert-danger"
             role="alert"
-            *ngIf="email.errors && f.submitted"
-          >
+            *ngIf="email.errors && f.submitted">
             Username is required!
           </div>
         </div>
@@ -61,8 +60,7 @@
           <div
             class="alert alert-danger"
             role="alert"
-            *ngIf="f.submitted && isLoginFailed"
-          >
+            *ngIf="f.submitted && isLoginFailed">
             Login failed: {{ errorMessage }}
           </div>
         </div>

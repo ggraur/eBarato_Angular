@@ -1,11 +1,14 @@
 import { formatCurrency } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, Output , EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { isNumber } from 'ngx-bootstrap/chronos/utils/type-checks';
 import { AppConstants } from '../app.constant';
 import { IEvent } from '../Models/event.module';
+import { IUser } from '../Models/user.model';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 
 const API_URL = AppConstants.Https_API_URL;
@@ -19,28 +22,39 @@ export class MyloginComponent implements OnInit {
 
   invalidLogin!: boolean;
 
-  constructor(private router: Router, private http: HttpClient, public translate: TranslateService,) { }
+  constructor(private router: Router
+    , private http: HttpClient
+    , private translate: TranslateService
+    , private tokenStorage: TokenStorageService) { }
 
   //@Output() returnAknoledgeIsLoged:EventEmitter<boolean>=new EventEmitter<boolean>()
-  
 
-  childEvent:IEvent = new IEvent();
+
+  childEvent: IEvent = new IEvent();
+  
+  signedUser! : IUser;
 
   public login = (form: NgForm) => {
     console.log("login:  " + API_URL)
     const credentials = JSON.stringify(form.value);
     console.log("login:  " + API_URL + " " + credentials);
     this.http.post(API_URL + "auth/login",
-    credentials, {
+      credentials, {
       headers: new HttpHeaders({
         "Content-Type": "application/json; charset=UTF-8"
-      })          
-    }).subscribe(response => {      
-      const token = (<any>response).token;
-      const refreshToken = (<any>response).refreshToken;
-      localStorage.setItem("jwt", token);
-      localStorage.setItem("refreshToken", refreshToken);
+      })
+    }).subscribe(response => {
+    //  this.signedUser.accessToken = (<any>response).accessToken!;
+    //  this.signedUser.refreshToken = (<any>response).refreshToken!;
+    //  this.signedUser.logedIn = true;
+       const token = (<any>response).token;
+       const refreshToken = (<any>response).refreshToken;
+      //  this.signedUser.accessToken = token;
+      //  this.signedUser.refreshToken = refreshToken;
+      // localStorage.setItem("jwt", this.signedUser.accessToken!);
+      // localStorage.setItem("refreshToken", this.signedUser.refreshToken!);
       this.invalidLogin = false;
+      this.tokenStorage.saveUser(response);
       this.router.navigate(["/"]);
     }, err => {
       this.invalidLogin = true;

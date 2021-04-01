@@ -1,50 +1,55 @@
-.spiner{
-    border:16px solid silver;
-    border-top: 16px solid #337AB7 ;
-     border-radius: 50%;
-width: 80px;
-height: 80px;
-animation: spin 700ms linear infinite;
-top:50%;
-left:50%;
-position: absolute;
-}
-@keyframes spin {
-    0%{transform: rotate(0deg);}
-    100%{transform: rotate(-360deg);}
+.spiner {
+    border: 16px solid silver;
+    border-top: 16px solid #337AB7;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 700ms linear infinite;
+    top: 50%;
+    left: 50%;
+    position: absolute;
 }
 
-.lngClass
-{
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+.lngClass {
     position: relative;
     padding-top: 8px;
     padding-right: 5px;
     padding-bottom: 3px;
 }
 
-ul
-{
+ul {
     font-family: Arial, Verdana;
     font-size: 14px;
     margin: 0;
     padding: 0;
     list-style: none;
+    color: aquamarine !important;
 }
 
-ul li
-{
+ul li {
     display: block;
     position: relative;
     float: left;
 }
 
-li ul
-{
+li ul {
     display: none;
 }
 
-ul li a 
-{
+li ul li ul {
+    display: none;
+}
+
+ul li a {
     display: block;
     text-decoration: none;
     color: #ffffff;
@@ -55,36 +60,33 @@ ul li a
     white-space: nowrap;
 }
 
-ul li a:hover 
-{
+ul li a:hover {
     background: #617F8A;
 }
-li:hover ul 
-{
+
+li:hover ul {
     display: block;
     position: absolute;
 }
 
-li:hover li
-{
+li:hover li {
     float: none;
     font-size: 11px;
 }
 
-li:hover a 
-{
+li:hover a {
     background: #617F8A;
 }
 
-li:hover li a:hover 
-{
+li:hover li a:hover {
     background: #95A9B1;
 }
 
-.myHeader{
-     padding:5px ;
+.myHeader {
+    padding: 5px;
 }
-.logo{
+
+.logo {
     padding: 10px;
     font-size: large;
     font-weight: bold;
@@ -92,10 +94,17 @@ li:hover li a:hover
     color: #337AB7;
 }
 
-.div_aLog{
-    padding-top:15px !important ;
+.div_aLog {
+    padding-top: 15px !important;
 }
-.aLog{
+
+.aLog {
     display: inline;
     width: auto;
+}
+
+.subMenu:hover .sub2Menu {
+    display: block;
+    top: 0;
+    left: 100%;
 }
