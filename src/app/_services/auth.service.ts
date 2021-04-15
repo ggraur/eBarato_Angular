@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { AppConstants } from '../app.constant';
-
+// import * as moment from "moment";
 
 export class RegisterUser {
   email!: string;
@@ -22,25 +22,26 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AuthService {
+  setSession: any;
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
     console.log("Login method:" + AUTH_API );
-    return this.http.post(AUTH_API + 'auth/login', {
+    return this.http.post(AUTH_API + 'Account/Authenticate', {
       email,
       password
     }, httpOptions);
   }
   register(email: string, password: string, confirmPassword: string): Observable<any> {
 
-    console.log('username:' + email, 'password:' + password, 'confirmPassword:' + confirmPassword);
-    console.log(JSON.stringify({
-      email,
-      password,
-      confirmPassword
-    }));
+    // console.log('username:' + email, 'password:' + password, 'confirmPassword:' + confirmPassword);
+    // console.log(JSON.stringify({
+    //   email,
+    //   password,
+    //   confirmPassword
+    // }));
 
-    return this.http.post(AUTH_API + 'account/signup', JSON.stringify({
+    return this.http.post(AUTH_API + 'account/register', JSON.stringify({
       email,
       password,
       confirmPassword
@@ -64,4 +65,39 @@ export class AuthService {
   //     password
   //   }, httpOptions);
   // }
+
+  //#region angular method to sign in 
+//   login2Method(email:string, password:string ) {
+//     return this.http.post<User>('/api/login', {email, password})
+//         .do( res=>this.setSession2) 
+//         .shareReplay();
+// }
+
+// private setSession2(authResult :any ) {
+//   const expiresAt = moment().add(<any>authResult.expiresIn,'second');
+
+//   localStorage.setItem('id_token',<any>authResult.idToken);
+//   localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
+// }   
+
+// logout() {
+//   localStorage.removeItem("id_token");
+//   localStorage.removeItem("expires_at");
+// }
+
+// public isLoggedIn() {
+//   return moment().isBefore(this.getExpiration());
+// }
+
+// isLoggedOut() {
+//   return !this.isLoggedIn();
+// }
+
+// getExpiration() {
+//   const expiration = localStorage.getItem("expires_at");
+//   const expiresAt = JSON.parse(expiration!);
+//   return moment(expiresAt);
+// }  
+
+  //#endregion
 }

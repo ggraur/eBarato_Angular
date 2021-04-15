@@ -6,14 +6,23 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { AppConstants } from '../app.constant';
+import { AuthService } from '../_services/auth.service';
 
-const AUTH_API = AppConstants.Https_API_URL + 'merchants';
+const AUTH_API = AppConstants.Https_API_URL + 'newmerchants';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+    'X-Content-Type-Options': 'no-sniff'
+  })
+};
 
 @Injectable()
 export class MerchantService {
   constructor(private _httpClient: HttpClient, private _router: Router) {
 
   }
+
 
 //   baseUrl = 'http://localhost:3000/merchants';
 // baseUrl = 'https://localhost:5000/api/merchants';
@@ -33,8 +42,26 @@ export class MerchantService {
     return throwError('There is a problem with a service. We are notified & working on it. Please try again later.');
   }
 
+
+//   this.http.get<ProjectedBalance>(requestUrl, {headers: new HttpHeaders().set('Authorization', 'my-auth-token')})
+//   .subscribe(data => {
+//    this.projBalance = data.projBalance;
+//  }
+
+// let token: string = localStorage.getItem("jwt")!;
+// let myHeaders = new HttpHeaders().set('Authorization', token);
+
+getMerchants1(): Observable<IMerchant[]> {
+  var header = {
+    headers: new HttpHeaders()
+      .set('Authorization',  `Bearer ${localStorage.getItem("jwt")}`)
+  }
+  return this._httpClient.get<IMerchant[]>(AUTH_API,header);
+     
+ }
+
   getMerchants(): Observable<IMerchant[]> {
-    return this._httpClient.get<IMerchant[]>(AUTH_API  )
+    return this._httpClient.get<IMerchant[]>(AUTH_API)
       .pipe(
         catchError(error => {
           let errorMsg: string;
@@ -46,13 +73,7 @@ export class MerchantService {
           return throwError(errorMsg);
         })
       );
-
-
-    // .catch(this.handleError);
-
-    // return of(this.listEmployees).pipe(delay(2000));
-    // return of(this.listEmployees);
-  }
+   }
 
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {
@@ -92,11 +113,12 @@ export class MerchantService {
 
   addMerchant(merchant: IMerchant): Observable<IMerchant> | undefined | null {
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
+    // const httpOptions = {
+    //   headers: new HttpHeaders({
+    //     'Content-Type': 'application/json',
+    //     'X-Content-Type-Options': 'no-sniff'
+    //   })
+    // };
 
     return this._httpClient.post<IMerchant>(AUTH_API, merchant, httpOptions)
       .pipe(catchError(this.handleError));

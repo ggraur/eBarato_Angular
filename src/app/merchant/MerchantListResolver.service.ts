@@ -11,7 +11,7 @@ export class MerchantListResolverService implements Resolve<IMerchant[] | string
     constructor(private _merchantService: MerchantService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IMerchant[] | string> {
-        return this._merchantService.getMerchants()
+        return this._merchantService.getMerchants1()
             .pipe(
                 catchError((err: string ) => of( err))
             );

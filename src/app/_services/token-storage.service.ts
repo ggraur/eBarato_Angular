@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { IUser } from '../Models/user.model';
 
 
-const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
+// const TOKEN_KEY = 'auth-token';
+// const USER_KEY = 'auth-user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,9 @@ export class TokenStorageService {
   }
 
   public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
+    window.sessionStorage.removeItem("accessToken");
+    window.sessionStorage.setItem("accessToken", token);
+    
   }
 
   updateIsLoged(data:boolean){
@@ -27,28 +29,32 @@ export class TokenStorageService {
   } 
 
   public getToken(): string | null {
-    return window.sessionStorage.getItem(TOKEN_KEY);
+    return window.sessionStorage.getItem("accessToken");
   }
 
-  public saveUser(user: any): void {
-     let sUser = JSON.stringify(user);
-   // console.log("Logged User is: " + sUser);
-    window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  public saveUser(user: IUser): void {
+    let sUser = JSON.stringify(user);
+    //console.log("saveUser function Logged User is: " + sUser);
+
+    //  window.sessionStorage.removeItem("accessToken");
+    //  window.sessionStorage.setItem("accessToken", JSON.stringify(user));
+
+    sessionStorage.setItem("accessToken",<any>user.accessToken!);
+    sessionStorage.setItem("refreshToken", <any>user.refreshToken!); 
+    sessionStorage.setItem("email", <any>user.email!); 
+    //sessionStorage.setItem("email", <any>user.email!);
+
+    localStorage.setItem("accessToken",<any>user.accessToken!);
+    localStorage.setItem("refreshToken", <any>user.refreshToken!); 
+    localStorage.setItem("email", <any>user.email!); 
+
   }
-//   public saveUser(user: IUser): void {
-//     let sUser = JSON.stringify(user);
-//     console.log("Logged User is: " + sUser);
-//     window.sessionStorage.removeItem(USER_KEY);
-//     window.sessionStorage.setItem(USER_KEY, user.email!);
-//     localStorage.setItem("jwt",user.accessToken!);
-//     localStorage.setItem("refreshToken", user.refreshToken!);
-// }
+ 
 
   public getUser(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
+    const refreshToken = window.sessionStorage.getItem("refreshToken");
+    if (refreshToken) {
+      return refreshToken ;//JSON.parse(user);
     }
     return {};
   }

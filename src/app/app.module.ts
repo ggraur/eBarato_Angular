@@ -12,7 +12,6 @@ import { ListEmployeesComponent } from './employees/list-employees.component';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { ConfirmEqualValidatorDirective } from './shared/confirm-equal-validator.directive';
 
-
 import { SelectRequiredValidatorDirective } from './shared/select-required-validator.directive';
 import { FormsModule } from '@angular/forms';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -56,6 +55,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { NavloginComponent } from './mylogin/navlogin.component';
 import { ClaimComponent } from './claim/claim.component';
 import { UserComponent } from './user/user.component';
+import { transAnimation } from './animations';
 
 export function tokenGetter(){
   return localStorage.getItem("jwt");
@@ -103,6 +103,7 @@ export function tokenGetter(){
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    
     HttpClientModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
@@ -128,7 +129,7 @@ export function tokenGetter(){
              ,EmployeeListResolverService
              ,MerchantListResolverService
              ,EmployeeDetailsGuardService
-             ,authInterceptorProviders
+             ,authInterceptorProviders             
             ,AuthGuard],
   bootstrap: [AppComponent]
 })

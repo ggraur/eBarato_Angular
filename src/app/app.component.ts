@@ -4,12 +4,22 @@ import { TranslateService } from '@ngx-translate/core';
 import { IEvent } from './Models/event.module';
 
 import { TokenStorageService } from './_services/token-storage.service';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    // animation triggers go here
+  ]
 })
 
 export class AppComponent implements OnInit {
@@ -58,6 +68,8 @@ export class AppComponent implements OnInit {
 
     if (this.userIsLogged) {
       const user = this.tokenStorageService.getUser();
+      console.log("Loged User : " + JSON.stringify(user));
+
       this.roles = user.roles;
      // console.log("Roles: " + JSON.stringify(this.roles));
 

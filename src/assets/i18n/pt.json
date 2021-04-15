@@ -11,6 +11,7 @@
     "The full name is a mandatory field": "O nome do comerciante é um campo obrigatório",
     "New Merchant": "Novo Comerciante",
     "Create Merchants": "Criar Comerciantes",
+    "Confirm Password": "Confirmar senha",
     "county": "Distrito",
     "countyErr": "Distrito é um campo obrigatório",
 
@@ -30,6 +31,7 @@
     "TermsConditions": "Eu concordo com os termos e condições.",
     "Submit": "Submeter",
     "Sign Up": "Registrar",
+    "Signup failed!": "Falha na inscrição!",
     "Gender": "Gênero",
     "Customization": "Costumização",
     "Claims": "Direitos para diversas ações",
@@ -57,12 +59,14 @@
     "Merchant VAT": "NIF Empresa",
     "MerchantRequired": "NIF Empresa é um campo obrigatório",
     "mobileNumber": "Número de telemóvel",
+    "Not Found": "Não encontrado",
     "Email": "Endereço de email",
     "The email is a mandatory field": "O email é um campo obrigatório",
     "The email is invalid": "O email é inválido",
     "The resurse you are looking for cannot be found": "O recurso que você está procurando não pode ser encontrado",
     "User not found": "Utilizador não encontrado",
     "User successfully activated": "Utilizador ativado com sucesso",
+    "Username or password is incorrect": "Nome de usuário ou senha está incorreta",
     "Merchant Users": "Usuários do Comerciante",
     "Your registration is successful! Please check your email and fallow the link to activate your account.": "O seu registro foi realizado com sucesso! Verifique seu e-mail e siga o link para ativar sua conta."
 

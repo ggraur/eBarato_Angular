@@ -1,9 +1,9 @@
 
-export interface IUser {
-    email?: string | null;
-    password?: string | null;
-    accessToken?: string | null;
-    refreshToken?: string | null;
-    logedIn?: boolean | null;
+export class IUser {
+    email?: string;
+    password?: string;
+    accessToken?: string;
+    refreshToken?: string;
+    logedIn?: boolean;
 }
 

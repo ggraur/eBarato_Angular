@@ -84,3 +84,9 @@ https://efficientcoder.net/angular-11-httpclient-tutorial-example/
 
 //ThirdParty authorisation + google
 https://codinglatte.com/posts/angular/sign-in-with-google-angular/
+
+//Creating Custom CSVMediaTypeFormatter In ASP.NET Web API for Comma-Separated Values (CSV) Format
+https://www.tugberkugurlu.com/archive/creating-custom-csvmediatypeformatter-in-asp-net-web-api-for-comma-separated-values-csv-format
+
+//check if the generated tokes is correct 
+//https://jwt.io/

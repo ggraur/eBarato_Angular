@@ -3,7 +3,7 @@
         <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
         <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
             <div class="form-group">
-                <label for="email">Email</label>
+                <label for="email">{{'Email' | translate}}</label>
                 <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel" />
                 <!-- <div class="alert-danger" *ngIf="email.errors && f.submitted">
           <div *ngIf="email.errors.required">Email is required</div>
@@ -36,7 +36,7 @@
           </div>
         </div> -->
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">{{'Password' | translate}}</label>
                 <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required minlength="6" #password="ngModel" />
                 <!-- <div class="alert-danger" *ngIf="password.errors && f.submitted">
             <div *ngIf="password.errors.required">Password is required</div>
@@ -46,7 +46,7 @@
           </div> -->
             </div>
             <div class="form-group">
-                <label for="confirmPassword">Confirm Password</label>
+                <label for="confirmPassword">{{'Confirm Password' | translate}} </label>
                 <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="form.confirmPassword" required minlength="6" #password="ngModel" />
                 <!-- <div class="alert-danger" *ngIf="confirmPassword.errors && f.submitted">
             <div *ngIf="confirmPassword.errors.required">Confirm Password is required</div>
@@ -56,16 +56,16 @@
           </div> -->
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block">Sign Up</button>
+                <button class="btn btn-primary btn-block">{{'Sign Up' |translate}}</button>
             </div>
 
             <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-                Signup failed!<br />{{ errorMessage }}
+                {{'Signup failed!'| translate}} <br />{{ errorMessage }}
             </div>
         </form>
 
         <div class="alert alert-success" *ngIf="isSuccessful">
-            Your registration is successful! Please check your email and fallow the link to activate your account.
+            {{'Your registration is successful! Please check your email and fallow the link to activate your account.' | translate }}
         </div>
     </div>
 </div>

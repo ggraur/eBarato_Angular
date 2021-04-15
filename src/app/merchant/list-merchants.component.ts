@@ -45,7 +45,6 @@ export class ListMerchantsComponent implements OnInit {
       this.error = resolvedData!;
     }
 
-
     if (Array.isArray(this.merchants)) {
       if (this._route.snapshot.queryParamMap.has('searchTerm')) {
         this.searchTerm = this._route.snapshot.queryParamMap.get('searchTerm') || '';

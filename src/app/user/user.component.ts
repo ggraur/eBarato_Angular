@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
     password: null,
     confirmPassword: null
   };
-  
+
   public error!: string;
 
   @Input('merchantCode') merchantCode!: number;

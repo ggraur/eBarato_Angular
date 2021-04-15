@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { transition, trigger, useAnimation } from '@angular/animations';
+import { transAnimation } from '../animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'] 
+   
 })
 export class LoginComponent implements OnInit {
 
@@ -40,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
-        this.reloadPage();
+      //        this.reloadPage();
       },
       err => {
         console.log(JSON.stringify(err));
