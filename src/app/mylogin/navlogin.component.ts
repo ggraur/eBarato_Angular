@@ -12,20 +12,23 @@ import {Directive, HostListener, ElementRef} from '@angular/core';
 export class NavloginComponent implements OnInit {
   hoverClass: any;
   userIsLogged = false;
+  emailLogin!:string | null;
 
   constructor(private tokenStorage: TokenStorageService, 
               private translate: TranslateService,
               public elementRef: ElementRef) { }
 
   ngOnInit(): void {
-    this.tokenStorage.data$.subscribe(data => {
+    this.tokenStorage.data$.subscribe((data: any) => {
       this.userIsLogged = (data as any);
+      this.emailLogin = sessionStorage.getItem('email');
      });
   }
   logOut():void{
     console.log("clicked logout");
     this.userIsLogged=false;
-    this.tokenStorage.signOut();
+    this.emailLogin ='';
+    this.tokenStorage.signOut();   
   }
 
   mouseHover( ):void{

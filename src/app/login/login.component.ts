@@ -3,6 +3,7 @@ import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { transAnimation } from '../animations';
+import { IUser } from '../Models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -36,8 +37,8 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.form;
 
     this.authService.login(email, password).subscribe(
-      data => {
-        this.tokenStorage.saveToken(data.accessToken);
+      (      data: IUser) => {
+        this.tokenStorage.saveToken(<any>data.accessToken);
         this.tokenStorage.saveUser(data);
         this.logedUser = email;
         this.isLoginFailed = false;
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.roles = this.tokenStorage.getUser().roles;
       //        this.reloadPage();
       },
-      err => {
+      (      err: { error: { message: string; }; }) => {
         console.log(JSON.stringify(err));
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;

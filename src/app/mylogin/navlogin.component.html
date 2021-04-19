@@ -15,12 +15,12 @@
 </div> -->
 
 <div class="dropdown">
-    <button class="navbar-login">Button
+    <button id="btnLogin" class="navbar-login">
+        <span class="glyphicon glyphicon-user"></span>   {{emailLogin}}<span class="caret"></span>
          </button>
     <div class="dropdown-content">
         <a *ngIf="!userIsLogged" href="/mylogin" routerLink="mylogin">{{'Login' | translate}}</a>
         <a *ngIf="userIsLogged" href="#" (click)="logOut()">{{'LogOff' | translate}}</a>
-        <a class=".dropdown-divider"></a>
         <a href="/register" routerLink="register">{{'Sign Up' | translate}}</a>
     </div>
 </div>
