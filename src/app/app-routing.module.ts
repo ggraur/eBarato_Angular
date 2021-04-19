@@ -34,17 +34,17 @@ const routes: Routes = [
 
   { path: 'register', component: RegisterComponent },
   { path: 'createusers', component: UserComponent },
-  { path: 'activate_account/:id', component:ActivateAccountComponent},
+  { path: 'activate_account/:id', component: ActivateAccountComponent},
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: BoardUserComponent },
   { path: 'mod', component: BoardModeratorComponent },
   { path: 'admin', component: BoardAdminComponent },
 
-  { path: 'list', component: ListEmployeesComponent, resolve: {employeeList: EmployeeListResolverService}, canActivate:[AuthGuard]},
-  { path: 'customers', component: CustomerComponent, canActivate:[AuthGuard]},
+  { path: 'list', component: ListEmployeesComponent, resolve: {employeeList: EmployeeListResolverService}, canActivate: [AuthGuard]},
+  { path: 'customers', component: CustomerComponent, canActivate: [AuthGuard]},
   { path: 'editEmployee/:id', component: CreateEmployeeComponent, canDeactivate: [CreateEmployeeCanDeactivateGuardService]},
   { path: 'employees/:id', component: EmployeeDetailsComponent, canActivate: [EmployeeDetailsGuardService]},
-  
+
   { path: 'merchants', component: ListMerchantsComponent, resolve: {merchantList: MerchantListResolverService}},
   { path: 'editMerchant/:id', component: CreateMerchantComponent
    // ,    canDeactivate:[CreateEmployeeCanDeactivateGuardService]
@@ -54,7 +54,7 @@ const routes: Routes = [
 
   { path: 'notFound/:id', component: PageNotFoundComponent},
   { path: 'notFound', component: PageNotFoundComponent},
-  
+
 
   { path: '**', component: PageNotFoundComponent}
 

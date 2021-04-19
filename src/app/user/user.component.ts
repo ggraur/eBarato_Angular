@@ -17,8 +17,8 @@ export class UserComponent implements OnInit {
   public error!: string;
 
   @Input('merchantCode') merchantCode!: number;
-  
-  merchants! : IMerchant[];
+
+  merchants!: IMerchant[];
 
   selectedMerchantID!: number;
   isSuccessful = false;
@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
   errorMessage = '';
 
 
-  constructor(private _router: Router, private _route: ActivatedRoute) { 
+  constructor(private _router: Router, private _route: ActivatedRoute) {
     const resolvedData: IMerchant[] | string = this._route.snapshot.data.merchantList;
     if (Array.isArray(resolvedData)) {
       this.merchants = resolvedData;

@@ -7,8 +7,8 @@ import { transAnimation } from '../animations';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'] 
-   
+  styleUrls: ['./login.component.css']
+
 })
 export class LoginComponent implements OnInit {
 
@@ -17,8 +17,8 @@ export class LoginComponent implements OnInit {
     email: null,
     password: null
   };
-  isLoggedIn: boolean = false;
-  isLoginFailed: boolean = false;
+  isLoggedIn = false;
+  isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
 

@@ -23,9 +23,9 @@ import {
 })
 
 export class AppComponent implements OnInit {
-  
+
   private roles: string[] = [];
-  userIsLogged : boolean = false;
+  userIsLogged = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
@@ -63,12 +63,12 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.userIsLogged = !!this.tokenStorageService.getToken();
-    
+
     // console.log("Roles: " + JSON.stringify(this.userIsLogged));
 
     if (this.userIsLogged) {
       const user = this.tokenStorageService.getUser();
-      console.log("Loged User : " + JSON.stringify(user));
+     // console.log("Loged User : " + JSON.stringify(user));
 
       this.roles = user.roles;
      // console.log("Roles: " + JSON.stringify(this.roles));
@@ -81,14 +81,14 @@ export class AppComponent implements OnInit {
       this.username = user.username;
     }
   }
-  
- 
+
+
 
   logout(): void {
-    localStorage.removeItem("jwt");
+    localStorage.removeItem('jwt');
 
     this.tokenStorageService.signOut();
     window.location.reload();
   }
-  
+
 }

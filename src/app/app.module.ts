@@ -58,7 +58,7 @@ import { UserComponent } from './user/user.component';
 import { transAnimation } from './animations';
 
 export function tokenGetter(){
-  return localStorage.getItem("jwt");
+  return localStorage.getItem('jwt');
   // https://www.youtube.com/watch?v=NSQHiIAP7Z8
 }
 
@@ -97,13 +97,13 @@ export function tokenGetter(){
     CustomerComponent,
     NavloginComponent,
     ClaimComponent,
-    UserComponent 
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    
+
     HttpClientModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
@@ -115,10 +115,10 @@ export function tokenGetter(){
       }
     }),
     JwtModule.forRoot({
-      config:{
-        tokenGetter:tokenGetter,
-        allowedDomains:["localhost:5001"],
-        disallowedRoutes:[]
+      config: {
+        tokenGetter,
+        allowedDomains: ['localhost:5001'],
+        disallowedRoutes: []
       }
     })
   ],
@@ -126,11 +126,11 @@ export function tokenGetter(){
   providers: [EmployeeService,
               MerchantService
              , CreateEmployeeCanDeactivateGuardService
-             ,EmployeeListResolverService
-             ,MerchantListResolverService
-             ,EmployeeDetailsGuardService
-             ,authInterceptorProviders             
-            ,AuthGuard],
+             , EmployeeListResolverService
+             , MerchantListResolverService
+             , EmployeeDetailsGuardService
+             , authInterceptorProviders
+            , AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

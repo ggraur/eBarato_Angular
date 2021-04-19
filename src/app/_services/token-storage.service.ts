@@ -16,45 +16,37 @@ export class TokenStorageService {
 
   signOut(): void {
     window.sessionStorage.clear();
+    window.localStorage.clear();
+    this.updateIsLoged(false);
   }
 
   public saveToken(token: string): void {
-    window.sessionStorage.removeItem("accessToken");
-    window.sessionStorage.setItem("accessToken", token);
-    
+    window.sessionStorage.removeItem('accessToken');
+    window.sessionStorage.setItem('accessToken', token);
   }
 
-  updateIsLoged(data:boolean){
+  updateIsLoged(data: boolean): void{
     this.isLoged.next(data);
-  } 
-
+  }
   public getToken(): string | null {
-    return window.sessionStorage.getItem("accessToken");
+    return window.sessionStorage.getItem('accessToken');
   }
-
   public saveUser(user: IUser): void {
-    let sUser = JSON.stringify(user);
-    //console.log("saveUser function Logged User is: " + sUser);
-
-    //  window.sessionStorage.removeItem("accessToken");
-    //  window.sessionStorage.setItem("accessToken", JSON.stringify(user));
-
-    sessionStorage.setItem("accessToken",<any>user.accessToken!);
-    sessionStorage.setItem("refreshToken", <any>user.refreshToken!); 
-    sessionStorage.setItem("email", <any>user.email!); 
-    //sessionStorage.setItem("email", <any>user.email!);
-
-    localStorage.setItem("accessToken",<any>user.accessToken!);
-    localStorage.setItem("refreshToken", <any>user.refreshToken!); 
-    localStorage.setItem("email", <any>user.email!); 
-
+    const sUser = JSON.stringify(user);
+    sessionStorage.setItem('accessToken', user.accessToken! as any);
+    sessionStorage.setItem('refreshToken', user.refreshToken! as any);
+    sessionStorage.setItem('email', user.email! as any);
+    localStorage.setItem('accessToken', user.accessToken! as any);
+    localStorage.setItem('refreshToken', user.refreshToken! as any);
+    localStorage.setItem('email', user.email! as any);
+   // console.log('user loged:' + (user.logedIn as any));
+    this.updateIsLoged(user.logedIn as any);
+    //this.isLoged.next(user.logedIn as any);
   }
- 
-
   public getUser(): any {
-    const refreshToken = window.sessionStorage.getItem("refreshToken");
+    const refreshToken = window.sessionStorage.getItem('refreshToken');
     if (refreshToken) {
-      return refreshToken ;//JSON.parse(user);
+      return refreshToken ; // JSON.parse(user);
     }
     return {};
   }

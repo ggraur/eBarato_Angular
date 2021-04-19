@@ -14,16 +14,16 @@ export class CustomerComponent implements OnInit {
   customers: any;
 
   constructor(private http: HttpClient) { }
-//https://www.youtube.com/watch?v=NSQHiIAP7Z8
+// https://www.youtube.com/watch?v=NSQHiIAP7Z8
   ngOnInit(): void {
-    let _url = AUTH_API + "customers";
-    console.log("Customers1 URL: " + _url);
+    const _url = AUTH_API + 'customers';
+    console.log('Customers1 URL: ' + _url);
     this.http.get(_url).subscribe(response => {
       this.customers = response;
-      console.log("Customers list: " + JSON.stringify(this.customers));
+      console.log('Customers list: ' + JSON.stringify(this.customers));
     }, err => {
       console.log(err);
-    })
+    });
   }
 
 }

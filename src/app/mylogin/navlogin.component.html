@@ -1,9 +1,26 @@
-<div  class="aLog">
+<!-- <div class="aLog">
     <a href="/register" routerLink="register">{{'Sign Up' | translate}}</a>&nbsp; &nbsp;&nbsp;
-  </div>
-  <div class="aLog" *ngIf="!userIsLogged">
+</div>
+<div class="aLog" *ngIf="!userIsLogged">
     <a href="/mylogin" routerLink="mylogin">{{'Login' | translate}}</a>&nbsp; &nbsp;&nbsp;
-  </div>
-  <div class="aLog" *ngIf="userIsLogged">
-    <a href="/mylogin" routerLink="mylogin">{{'LogOff' | translate}}</a>
-  </div>
+</div>
+<div class="aLog" *ngIf="userIsLogged">
+    <a href="#" (click)="logOut()">{{'LogOff' | translate}}</a>&nbsp; &nbsp;&nbsp;
+</div> -->
+<!-- <button id="btnLogin" (mouseover)="mouseHover()" (mouseout)="mouseOut()">Login</button>
+<div class="LoginDivHide">
+    <a>Login</a>
+    <a>LogOut</a>
+    <a>SignUp</a>
+</div> -->
+
+<div class="dropdown">
+    <button class="navbar-login">Button
+         </button>
+    <div class="dropdown-content">
+        <a *ngIf="!userIsLogged" href="/mylogin" routerLink="mylogin">{{'Login' | translate}}</a>
+        <a *ngIf="userIsLogged" href="#" (click)="logOut()">{{'LogOff' | translate}}</a>
+        <a class=".dropdown-divider"></a>
+        <a href="/register" routerLink="register">{{'Sign Up' | translate}}</a>
+    </div>
+</div>

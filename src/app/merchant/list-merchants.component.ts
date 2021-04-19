@@ -8,7 +8,7 @@ import { IMerchant } from '../Models/merchant.model';
   styleUrls: ['./list-merchants.component.css']
 })
 export class ListMerchantsComponent implements OnInit {
-  
+
   public error!: string;
 
   filteredMerchants!: IMerchant[];
@@ -33,9 +33,9 @@ export class ListMerchantsComponent implements OnInit {
   }
 
   constructor(private _router: Router, private _route: ActivatedRoute) {
-    
+
     const resolvedData: IMerchant[] | string = this._route.snapshot.data.merchantList;
- 
+
     // console.log("Resolved Data: " + (resolvedData));
 
     if (Array.isArray(resolvedData)) {
@@ -51,7 +51,7 @@ export class ListMerchantsComponent implements OnInit {
       } else {
         this.filteredMerchants = this.merchants;
       }
-        this.merchantToDisplay = this.merchants[0];
+      this.merchantToDisplay = this.merchants[0];
       this.merchCount = this.merchants.length;
       console.log('Total number of merchants: ' + this.merchCount);
     }

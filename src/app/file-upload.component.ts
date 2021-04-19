@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileUploadComponent implements OnInit {
   // fileToUpload!: File | any;
-  
+
   selectedFile: File | any;
 
   constructor(private _httpClient: HttpClient) { }
@@ -20,7 +20,7 @@ export class FileUploadComponent implements OnInit {
 
   onFileSelected(event: any) {
 
-    this.selectedFile = <File>event.target.files[0];
+    this.selectedFile = (event.target.files[0] as File);
 
   }
   onUpload() {

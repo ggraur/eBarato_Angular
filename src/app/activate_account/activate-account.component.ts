@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Params, Router, RoutesRecognized } from '@angular/router';
 import { delay, expand, skip, startWith, switchMap } from 'rxjs/operators';
- 
+
 
 @Component({
   selector: 'app-activate-account',
@@ -12,10 +12,10 @@ export class ActivateAccountComponent implements OnInit, OnDestroy {
   // id!: any;
   // token!: any;
   // name!:any;
-    private sub:any;
+    private sub: any;
 
   routeParams!: Params;
-  
+
   queryParams!: Params;
   parentRouteParams!: Params;
   constructor(private activatedRoute: ActivatedRoute, private _router: Router ) { }
@@ -26,7 +26,7 @@ export class ActivateAccountComponent implements OnInit, OnDestroy {
   //   console.log('Method 1 id :' +this.id);
   //   this.activatedRoute.paramMap.pipe(delay(1500)).subscribe(params => {
   //     this.id = params.get("id")
-      
+
   //   });
   //   console.log('Method 2 id :' +this.id);
 
@@ -55,7 +55,7 @@ export class ActivateAccountComponent implements OnInit, OnDestroy {
   //   this.name = this.activatedRoute.paramMap.pipe(
   //     switchMap((params: ParamMap) : any  => {
   //       const id = +(params.get("id"))!;
-        
+
   //     })
   //   )
   //   console.log('Method 6 token :' + JSON.stringify( this.name) );
@@ -74,28 +74,28 @@ export class ActivateAccountComponent implements OnInit, OnDestroy {
   //   // this.activatedRoute.queryParams.pipe(delay(1500)).subscribe(params => {
   //   //   let productid = params['id'];
   //   //   let color = params['token'];
-      
+
   //   //   console.log(productid);// OUTPUT 1534
   //   //   console.log(color);// OUTPUT red
   //   // });
-    
+
   // }
   ngOnInit() {
     // this.getRouteParams();
-    
+
     this.activatedRoute.fragment.subscribe((fragment: string) => {
-	
-      console.log(fragment);// OUTPUT ?productid=1543&color=red
+
+      console.log(fragment); // OUTPUT ?productid=1543&color=red
 
       const urlParams = new URLSearchParams(fragment);
-	  
-      const token = urlParams.get('token')
+
+      const token = urlParams.get('token');
       console.log(token); // OUTPUT 1543
-	  
+
       // const color = urlParams.get('color')
       // console.log(color); // OUTPUT red
-	  
-    })
+
+    });
 
   }
 
@@ -150,5 +150,5 @@ export class ActivateAccountComponent implements OnInit, OnDestroy {
   //     return decodeURIComponent(results[2].replace(/+/g, " "));
   //   }
   // }
-    
+
 }

@@ -33,14 +33,14 @@ export class UserService {
     return this.http.get(API_URL + 'admin', { responseType: 'text' }).pipe(catchError(this.handleErrors) );
   }
 
-  private handleErrors(errorResponse:HttpErrorResponse){
-    // https://www.youtube.com/watch?v=X8hLraWnVhw, handle errors 
-    
-    if(errorResponse instanceof ErrorEvent){
+  private handleErrors(errorResponse: HttpErrorResponse){
+    // https://www.youtube.com/watch?v=X8hLraWnVhw, handle errors
+
+    if (errorResponse instanceof ErrorEvent){
        console.error('Client Side Error: ', errorResponse);
     }else {
-      console.error('Server Side Error',errorResponse);
-       
+      console.error('Server Side Error', errorResponse);
+
     }
 
     return   throwError('There is a problem with the service. We are notified & working on it. Please try again later.');

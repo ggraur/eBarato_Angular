@@ -1,8 +1,8 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { CanActivate, Router } from "@angular/router";
-import { JwtHelperService } from "@auth0/angular-jwt";
-import { AppConstants } from "../app.constant";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AppConstants } from '../app.constant';
 
 const API_URL = AppConstants.Https_API_URL;
 
@@ -15,9 +15,9 @@ export class AuthGuard implements CanActivate {
   }
   async canActivate() {
 
-    const token = localStorage.getItem("jwt")!;
+    const token = localStorage.getItem('jwt')!;
 
-    let tkIsExpired = this.jwtHelper.isTokenExpired(token);
+    const tkIsExpired = this.jwtHelper.isTokenExpired(token);
 
     if (token && !tkIsExpired) {
       return true;
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
 
     if (isRefreshSuccess === undefined || isRefreshSuccess === false) {
       console.log('navigate to login');
-      this.router.navigate(["mylogin"]);
+      this.router.navigate(['mylogin']);
 
     }
     return isRefreshSuccess;
@@ -35,23 +35,23 @@ export class AuthGuard implements CanActivate {
 
   private async tryRefreshingTokens(token: string | boolean): Promise<boolean> {
     // Try refreshing tokens using refresh token
-    const refreshToken: string | null = localStorage.getItem("refreshToken");
+    const refreshToken: string | null = localStorage.getItem('refreshToken');
     if (!token || !refreshToken) {
       return false;
     }
-    const credentials = JSON.stringify({ accessToken: token, refreshToken: refreshToken });
+    const credentials = JSON.stringify({ accessToken: token, refreshToken });
     try {
       // console.log("Passei por aqui:");
-      const response = await this.http.post(API_URL + "token/refresh", credentials, {
+      const response = await this.http.post(API_URL + 'token/refresh', credentials, {
         headers: new HttpHeaders({
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         }),
         observe: 'response'
       }).subscribe(response => {
-        const token = (<any>response).token;
-        const refreshToken = (<any>response).refreshToken;
-        localStorage.setItem("jwt", token);
-        localStorage.setItem("refreshToken", refreshToken);
+        const token = (response as any).token;
+        const refreshToken = (response as any).refreshToken;
+        localStorage.setItem('jwt', token);
+        localStorage.setItem('refreshToken', refreshToken);
         this.isRefreshSuccess = true;
         return this.isRefreshSuccess;
       }, err => {
@@ -65,5 +65,5 @@ export class AuthGuard implements CanActivate {
     return this.isRefreshSuccess;
   }
 }
-//example on
-//https://www.youtube.com/watch?v=NSQHiIAP7Z8
+// example on
+// https://www.youtube.com/watch?v=NSQHiIAP7Z8

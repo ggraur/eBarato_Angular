@@ -26,10 +26,10 @@ export class MerchantService {
 
 //   baseUrl = 'http://localhost:3000/merchants';
 // baseUrl = 'https://localhost:5000/api/merchants';
-//baseUrl = 'https://localhost:44331/api/merchants';
-  
-  
-  //https://www.youtube.com/watch?v=X8hLraWnVhw
+// baseUrl = 'https://localhost:44331/api/merchants';
+
+
+  // https://www.youtube.com/watch?v=X8hLraWnVhw
 
 
   private handleError(errorResponse: HttpErrorResponse) {
@@ -52,12 +52,12 @@ export class MerchantService {
 // let myHeaders = new HttpHeaders().set('Authorization', token);
 
 getMerchants1(): Observable<IMerchant[]> {
-  var header = {
+  const header = {
     headers: new HttpHeaders()
-      .set('Authorization',  `Bearer ${localStorage.getItem("jwt")}`)
-  }
-  return this._httpClient.get<IMerchant[]>(AUTH_API,header);
-     
+      .set('Authorization',  `Bearer ${localStorage.getItem('jwt')}`)
+  };
+  return this._httpClient.get<IMerchant[]>(AUTH_API, header);
+
  }
 
   getMerchants(): Observable<IMerchant[]> {

@@ -27,7 +27,7 @@ export class ListEmployeesComponent implements OnInit {
     if (Array.isArray(resolvedData)) {
       this.employees = resolvedData;
     } else {
-      
+
       this.error = resolvedData!;
     }
 

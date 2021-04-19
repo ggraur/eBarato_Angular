@@ -8,11 +8,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  errDesc: string = 'The resurse you are looking for cannot be found';
+  errDesc = 'The resurse you are looking for cannot be found';
   routeParams: Params | undefined;
   queryParams: Params | undefined;
   id!: string;
- 
+
   constructor(private activatedRoute: ActivatedRoute) {
     this.getRouteParams();
   }
@@ -23,27 +23,27 @@ export class PageNotFoundComponent implements OnInit {
     // Route parameters
     this.activatedRoute.params.subscribe(params => {
       this.routeParams = params;
-      this.id = params['one']
-      console.log("ID: " + this.id);
+      this.id = params.one;
+      console.log('ID: ' + this.id);
     });
 
     // URL query parameters
     this.activatedRoute.queryParams.subscribe(params => {
       this.queryParams = params;
-      this.id = params['id'];
+      this.id = params.id;
       //        console.log(this.queryParams);
     });
 
-    if(this.id=='1201'){
+    if (this.id == '1201'){
       this.errDesc = 'Invalid activation link';
     }
-    if(this.id=='1202'){
+    if (this.id == '1202'){
       this.errDesc = 'User not found';
     }
-    if(this.id=='200'){
+    if (this.id == '200'){
       this.errDesc = 'User successfully activated';
     }
   }
 }
 
-// https://www.kevinleary.net/angular-component-url-parameters/ parsing 
+// https://www.kevinleary.net/angular-component-url-parameters/ parsing

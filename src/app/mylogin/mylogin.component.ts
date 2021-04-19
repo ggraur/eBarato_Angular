@@ -24,40 +24,40 @@ export class MyloginComponent implements OnInit {
 
 
   constructor(private router: Router
-    , private http: HttpClient
-    , private translate: TranslateService
-    , private tokenStorage: TokenStorageService) {
+    ,         private http: HttpClient
+    ,         private translate: TranslateService
+    ,         private tokenStorage: TokenStorageService) {
   }
 
-  //@Output() returnAknoledgeIsLoged:EventEmitter<boolean>=new EventEmitter<boolean>()
+  // @Output() returnAknoledgeIsLoged:EventEmitter<boolean>=new EventEmitter<boolean>()
 
-errorMessage!:string;
+errorMessage!: string;
   childEvent: IEvent = new IEvent();
-  signedUser: IUser = new IUser();;
-
+  signedUser: IUser = new IUser();
+  changeText:any ;
   public login = (form: NgForm) => {
     const credentials = JSON.stringify(form.value).replace('Email', 'Username');
-    let str = JSON.parse(credentials);
-    
-    //console.log("str:" + credentials);
+    const str = JSON.parse(credentials);
 
-    this.http.post(API_URL + "account/authenticate",
+    // console.log("str:" + credentials);
+
+    this.http.post(API_URL + 'account/authenticate',
       credentials, {
       headers: new HttpHeaders({
-        "Content-Type": "application/json; charset=UTF-8"
+        'Content-Type': 'application/json; charset=UTF-8'
       })
     }).subscribe(response => {
 
-      let aToken: string = (<any>response).accessToken!;
-      let rToken: string = (<any>response).refreshToken!;
-      this.signedUser.email=str.Username;
-      this.signedUser.password=str.password;
+      const aToken: string = (response as any).accessToken!;
+      const rToken: string = (response as any).refreshToken!;
+      this.signedUser.email = str.Username;
+      this.signedUser.password = str.password;
       this.signedUser.accessToken = aToken;
       this.signedUser.refreshToken = rToken;
       this.signedUser.logedIn = true;
       this.invalidLogin = false;
       this.tokenStorage.saveUser(this.signedUser);
-      this.router.navigate(["/"]);
+      this.router.navigate(['/']);
     }, err => {
         this.errorMessage = err.error.message;
         this.invalidLogin = true;

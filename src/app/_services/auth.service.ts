@@ -26,7 +26,7 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
-    console.log("Login method:" + AUTH_API );
+    console.log('Login method:' + AUTH_API );
     return this.http.post(AUTH_API + 'Account/Authenticate', {
       email,
       password
@@ -47,14 +47,18 @@ export class AuthService {
       confirmPassword
     }), httpOptions);
   }
-  handleError(err: any) {
+  handleError(err: any): any{
     let message = '';
-    if (err.error instanceof ErrorEvent) {
-      message = err.error!.message;
-    } else {
-      message = `Error Code: ${err.status}\nMessage: ${err!.message}`;
+    if (err){
+      if (err.error instanceof ErrorEvent) {
+        message = err.error.message;
+      } else {
+        message = `Error Code: ${err.status}\nMessage: ${err.message}`;
+      }
     }
-    console.log(message);
+
+
+    // console.log(message);
     return throwError(message);
   }
 
@@ -66,10 +70,10 @@ export class AuthService {
   //   }, httpOptions);
   // }
 
-  //#region angular method to sign in 
+  //#region angular method to sign in
 //   login2Method(email:string, password:string ) {
 //     return this.http.post<User>('/api/login', {email, password})
-//         .do( res=>this.setSession2) 
+//         .do( res=>this.setSession2)
 //         .shareReplay();
 // }
 
@@ -78,7 +82,7 @@ export class AuthService {
 
 //   localStorage.setItem('id_token',<any>authResult.idToken);
 //   localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
-// }   
+// }
 
 // logout() {
 //   localStorage.removeItem("id_token");
@@ -97,7 +101,7 @@ export class AuthService {
 //   const expiration = localStorage.getItem("expires_at");
 //   const expiresAt = JSON.parse(expiration!);
 //   return moment(expiresAt);
-// }  
+// }
 
   //#endregion
 }

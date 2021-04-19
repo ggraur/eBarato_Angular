@@ -33,6 +33,8 @@ https://angular.io/guide/http
 //angular post/put/get/delete
 https://www.youtube.com/watch?v=7_a-ROt8z_4
 
+//Angular component input property change detection
+https://www.youtube.com/watch?v=E9wqQw3JLvM
 
 
 

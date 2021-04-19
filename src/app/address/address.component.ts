@@ -32,7 +32,7 @@ export class AddressComponent implements OnInit {
     county: null,
     postCode: null
   };
-  constructor(public translate: TranslateService,) { }
+  constructor(public translate: TranslateService, ) { }
 
   onChangeEventA1(event: any) {
     const value: string = event.target.value;

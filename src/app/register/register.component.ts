@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(email, password, confirmPassword).subscribe(
       data => {
-        console.log("data returned" + data);
+        console.log('data returned' + data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
       },

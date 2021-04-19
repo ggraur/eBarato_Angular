@@ -40,7 +40,7 @@ export class DisplayMerchantComponent implements OnInit {
     return this._merchant;
   }
 
-   
+
 
   constructor(private _route: ActivatedRoute, private _mrchService: MerchantService,
               private _router: Router, ) {
@@ -72,9 +72,9 @@ export class DisplayMerchantComponent implements OnInit {
       queryParams: { searchTerm: this.searchTerm}
     });
   }
- 
 
-  
+
+
   deleteMerchant(){
 
   }
