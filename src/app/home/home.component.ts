@@ -42,7 +42,8 @@ export class HomeComponent implements OnInit {
     );
   }
   isUserAuthenticated() {
-    const token: string = localStorage.getItem('jwt')!;
+    console.log("isUserAuthenticated" );
+    const token: string = localStorage.getItem('accessToken')!;
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       return true;
     }
@@ -52,7 +53,7 @@ export class HomeComponent implements OnInit {
   }
 
   logOut() {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
   }
 

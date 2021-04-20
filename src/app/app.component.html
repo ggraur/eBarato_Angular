@@ -333,7 +333,6 @@
                 </span>
             </div>
         </div>
-
         <nav class="navbar navbar-default">
             <div>
                 <ul class="nav navbar-nav">
@@ -379,19 +378,8 @@
             </div>
             <div class="pull-right div_aLog">
                 <app-navlogin [userIsLogged]="userIsLogged"></app-navlogin>
-                <!-- <div  class="aLog">
-            <a href="/register" routerLink="register">{{'Sign Up' | translate}}</a>&nbsp; &nbsp;&nbsp;
-          </div>
-          <div class="aLog" *ngIf="!isLoggedIn">
-            <a href="/mylogin" routerLink="mylogin">{{'Login' | translate}}</a>&nbsp; &nbsp;&nbsp;
-          </div>
-          <div class="aLog" *ngIf="isLoggedIn">
-            <a href="/mylogin" routerLink="mylogin">{{'LogOff' | translate}}</a>
-          </div> -->
             </div>
         </nav>
-        <img style="border: #177bd8 1px solid;">
-        <br />
         <div *ngIf="showLoadingIndicator" class="loader"></div>
         <router-outlet></router-outlet>
     </div>

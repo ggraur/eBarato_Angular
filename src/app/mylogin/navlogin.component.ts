@@ -31,18 +31,6 @@ export class NavloginComponent implements OnInit {
     this.tokenStorage.signOut();   
   }
 
-  mouseHover( ):void{
-   
-    //https://stackoverflow.com/questions/42633117/how-can-i-add-a-class-to-an-element-on-hover
-    console.log("ddfgsdfgsdfg");
-    this.elementRef.nativeElement.classList.remove('LoginDivHide');
-    //this.elementRef.nativeElement.classList.add('LoginDivShow');
-  }
-  
-  mouseOut():void{
-    console.log("saaaaaaaaaa");
-    // this.elementRef.nativeElement.classList.remove('LoginDivShow');
-    // this.elementRef.nativeElement.classList.add('LoginDivHide');
-  }
+
 
 }

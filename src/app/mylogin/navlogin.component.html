@@ -16,7 +16,7 @@
 
 <div class="dropdown">
     <button id="btnLogin" class="navbar-login">
-        <span class="glyphicon glyphicon-user"></span>   {{emailLogin}}<span class="caret"></span>
+        <span class="glyphicon glyphicon-user"></span>&nbsp;{{emailLogin}}&nbsp;<span class="caret"></span>
          </button>
     <div class="dropdown-content">
         <a *ngIf="!userIsLogged" href="/mylogin" routerLink="mylogin">{{'Login' | translate}}</a>

@@ -5,17 +5,22 @@ import { IEmployee } from '../Models/employee.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
+import { AppConstants } from '../app.constant';
 
+const API_URL = AppConstants.Https_API_URL;
 
+const refreshToken: string | null = localStorage.getItem('refreshToken');
+
+const token = localStorage.getItem('accessToken')!;
+
+const credentials = JSON.stringify({ accessToken: token, refreshToken });
 
 @Injectable()
 export class EmployeeService {
   constructor(private _httpClient: HttpClient, private _router: Router) {
 
   }
-
-  baseUrl = 'http://localhost:3000/employees';
-
+ 
   private listEmployees: IEmployee[] = [
     {
       id: 1,
@@ -96,7 +101,7 @@ export class EmployeeService {
     return throwError('There is a problem with a service. We are notified & working on it. Please try again later.');
   }
   getEmployees(): Observable<IEmployee[]> {
-    return this._httpClient.get<IEmployee[]>(this.baseUrl)
+    return this._httpClient.get<IEmployee[]>(API_URL + 'employees')
       .pipe(
         catchError(error => {
           let errorMsg: string;
@@ -115,7 +120,27 @@ export class EmployeeService {
     // return of(this.listEmployees).pipe(delay(2000));
     // return of(this.listEmployees);
   }
+  getEmployees1(): Observable<IEmployee[]> {
+    return this._httpClient.get<IEmployee[]>(API_URL +'employees')
+      .pipe(
+        catchError(error => {
+          let errorMsg: string;
+          if (error.error instanceof ErrorEvent) {
+            errorMsg = `Error: ${error.error.message}`;
+          } else {
+            errorMsg = this.getServerErrorMessage(error);
+          }
+          return throwError(errorMsg);
+        })
+      );
 
+
+    // .catch(this.handleError);
+
+    // return of(this.listEmployees).pipe(delay(2000));
+    // return of(this.listEmployees);
+  }
+  
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {
       case 404: {
@@ -141,13 +166,11 @@ export class EmployeeService {
     return this.listEmployees.length;
   }
   getEmployee(employeeId: number): Observable<IEmployee> {
-    return this._httpClient.get<IEmployee>(`${this.baseUrl}/${employeeId}`)
+    return this._httpClient.get<IEmployee>(`${API_URL}/${employeeId}`)
       .pipe(catchError(this.handleError));
   }
-
-
   delete(id: number): Observable<void> {
-    return this._httpClient.delete<void>(`${this.baseUrl}/${id}`)
+    return this._httpClient.delete<void>(`${API_URL}/${id}`)
       .pipe(catchError(this.handleError));
 
     // const deleteId = this.listEmployees.findIndex(e => e.id == id);
@@ -164,7 +187,7 @@ export class EmployeeService {
       })
     };
 
-    return this._httpClient.post<IEmployee>(this.baseUrl, employee, httpOptions)
+    return this._httpClient.post<IEmployee>(API_URL, employee, httpOptions)
       .pipe(catchError(this.handleError));
 
 
@@ -176,9 +199,8 @@ export class EmployeeService {
         'Content-Type': 'application/json'
       })
     };
-    return this._httpClient.put<void>(`${this.baseUrl}/${employee.id}`, employee, httpOptions)
+    return this._httpClient.put<void>(`${API_URL}/${employee.id}`, employee, httpOptions)
       .pipe(catchError(this.handleError));
   }
-
 
 }

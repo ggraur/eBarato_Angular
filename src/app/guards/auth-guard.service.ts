@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
   }
   async canActivate() {
 
-    const token = localStorage.getItem('jwt')!;
+    const token = localStorage.getItem('accessToken')!;
 
     const tkIsExpired = this.jwtHelper.isTokenExpired(token);
 
@@ -50,7 +50,7 @@ export class AuthGuard implements CanActivate {
       }).subscribe(response => {
         const token = (response as any).token;
         const refreshToken = (response as any).refreshToken;
-        localStorage.setItem('jwt', token);
+        localStorage.setItem('accessToken', token);
         localStorage.setItem('refreshToken', refreshToken);
         this.isRefreshSuccess = true;
         return this.isRefreshSuccess;

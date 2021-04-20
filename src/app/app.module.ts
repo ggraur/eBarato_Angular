@@ -57,8 +57,10 @@ import { ClaimComponent } from './claim/claim.component';
 import { UserComponent } from './user/user.component';
 import { transAnimation } from './animations';
 
+import { cacheInterceptorProviders } from './_helpers/cache.interceptor';
+
 export function tokenGetter(){
-  return localStorage.getItem('jwt');
+  return localStorage.getItem('accessToken');
   // https://www.youtube.com/watch?v=NSQHiIAP7Z8
 }
 
@@ -103,7 +105,7 @@ export function tokenGetter(){
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-
+   
     HttpClientModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
@@ -123,13 +125,14 @@ export function tokenGetter(){
     })
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [EmployeeService,
-              MerchantService
+  providers: [ EmployeeService
+             , MerchantService
              , CreateEmployeeCanDeactivateGuardService
              , EmployeeListResolverService
              , MerchantListResolverService
              , EmployeeDetailsGuardService
              , authInterceptorProviders
+             , cacheInterceptorProviders
             , AuthGuard],
   bootstrap: [AppComponent]
 })

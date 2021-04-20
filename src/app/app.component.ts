@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
 
 
   logout(): void {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('accessToken');
 
     this.tokenStorageService.signOut();
     window.location.reload();
