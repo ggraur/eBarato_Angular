@@ -21,7 +21,7 @@ export class NavloginComponent implements OnInit {
   ngOnInit(): void {
     this.tokenStorage.data$.subscribe((data: any) => {
       this.userIsLogged = (data as any);
-      this.emailLogin = sessionStorage.getItem('email');
+      this.emailLogin = localStorage.getItem('email');
      });
   }
   logOut():void{

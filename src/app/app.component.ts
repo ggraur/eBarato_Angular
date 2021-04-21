@@ -40,7 +40,8 @@ export class AppComponent implements OnInit {
   constructor(private _router: Router
             , public translate: TranslateService
             , private tokenStorageService: TokenStorageService
-            , private authGuard: AuthGuard) {
+            , private authGuard: AuthGuard
+            ) {
 
     translate.addLangs(['en', 'pt']);
     translate.setDefaultLang('en');
@@ -66,25 +67,27 @@ export class AppComponent implements OnInit {
     this.translate.use(lang);
     // console.log("Language used: " + lang)
   }
-  ngOnInit(): void {
-    //let _canActivate : any = this.authGuard.canActivate()
+  async ngOnInit(): Promise<void> {
+    let _canActivate : any = await this.authGuard.canActivate()
     //this.userIsLogged = !!this.tokenStorageService.getToken();
 
     // console.log("Roles: " + JSON.stringify(this.userIsLogged));
+//console.log("_canActivate :" + _canActivate);
+    if ( _canActivate) {
+      this.tokenStorageService.updateIsLoged(_canActivate);
 
-    if (this.userIsLogged) {
-      const user = this.tokenStorageService.getUser();
-     // console.log("Loged User : " + JSON.stringify(user));
+    //   const user = this.tokenStorageService.getUser();
+    //  // console.log("Loged User : " + JSON.stringify(user));
 
-      this.roles = user.roles;
-     // console.log("Roles: " + JSON.stringify(this.roles));
+    //   this.roles = user.roles;
+    //  // console.log("Roles: " + JSON.stringify(this.roles));
 
-      /*
-      // review and solve that situation.
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-      */
-      this.username = user.username;
+    //   /*
+    //   // review and solve that situation.
+    //   this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+    //   this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+    //   */
+    //   this.username = user.username;
     }
   }
 
