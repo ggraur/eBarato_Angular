@@ -53,20 +53,20 @@ export class cacheInterceptor implements HttpInterceptor {
     // }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log("Hi, this is an Cache interceptor");
-        if (req.urlWithParams.indexOf("/Token") < 0) {
+        //console.log("Hi, this is an Cache interceptor");
+        if (req.urlWithParams.indexOf("/authenticate") < 0) {
             const cacheResponse = this.cacheService[req.urlWithParams] || null;
             if (cacheResponse) {
-                console.log('Response from cache');
+          //      console.log('Response from cache');
                 return of(cacheResponse);
             }
 
         }
 
         return next.handle(req).pipe(tap((event: any) => {
-            if (event instanceof HttpResponse && req.urlWithParams.indexOf("/Token") < 0) {
+            if (event instanceof HttpResponse && req.urlWithParams.indexOf("/authenticate") < 0) {
                 this.cacheService[req.urlWithParams] = event;
-                console.log('Response from server');
+            //    console.log('Response from server');
             }
         }));
     }

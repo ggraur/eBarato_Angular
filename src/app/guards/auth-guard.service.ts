@@ -42,7 +42,7 @@ export class AuthGuard implements CanActivate {
     const credentials = JSON.stringify({ accessToken: token, refreshToken });
     try {
       // console.log("Passei por aqui:");
-      const response = await this.http.post(API_URL + 'token/refresh', credentials, {
+      const response = this.http.post(API_URL + 'token/refresh', credentials, {
         headers: new HttpHeaders({
           'Content-Type': 'application/json'
         }),

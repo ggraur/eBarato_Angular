@@ -23,7 +23,9 @@ const httpOptions = {
 })
 export class AuthService {
   setSession: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    //let v:number=10;
+  }
 
   login(email: string, password: string): Observable<any> {
     console.log('Login method:' + AUTH_API );
@@ -32,6 +34,14 @@ export class AuthService {
       password
     }, httpOptions);
   }
+
+  refreshToken(token:string | null){
+    console.log('Refresh Token method:' + AUTH_API );
+    return this.http.post(AUTH_API + 'Account/refresh-token', {
+      token
+    }, httpOptions);
+  }
+
   register(email: string, password: string, confirmPassword: string): Observable<any> {
 
     // console.log('username:' + email, 'password:' + password, 'confirmPassword:' + confirmPassword);
@@ -47,6 +57,7 @@ export class AuthService {
       confirmPassword
     }), httpOptions);
   }
+
   handleError(err: any): any{
     let message = '';
     if (err){

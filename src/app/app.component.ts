@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { IEvent } from './Models/event.module';
 
 import { TokenStorageService } from './_services/token-storage.service';
+import { AuthService } from './_services/auth.service'
 import {
   trigger,
   state,
@@ -12,6 +13,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { AuthGuard } from './guards/auth-guard.service';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +37,10 @@ export class AppComponent implements OnInit {
   title = 'eBarato';
   // public selectedLng: string  = 'pt';
   showLoadingIndicator = true;
-  constructor(private _router: Router, public translate: TranslateService, private tokenStorageService: TokenStorageService) {
+  constructor(private _router: Router
+            , public translate: TranslateService
+            , private tokenStorageService: TokenStorageService
+            , private authGuard: AuthGuard) {
 
     translate.addLangs(['en', 'pt']);
     translate.setDefaultLang('en');
@@ -62,7 +67,8 @@ export class AppComponent implements OnInit {
     // console.log("Language used: " + lang)
   }
   ngOnInit(): void {
-    this.userIsLogged = !!this.tokenStorageService.getToken();
+    //let _canActivate : any = this.authGuard.canActivate()
+    //this.userIsLogged = !!this.tokenStorageService.getToken();
 
     // console.log("Roles: " + JSON.stringify(this.userIsLogged));
 

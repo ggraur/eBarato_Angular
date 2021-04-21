@@ -36,7 +36,8 @@ https://www.youtube.com/watch?v=7_a-ROt8z_4
 //Angular component input property change detection
 https://www.youtube.com/watch?v=E9wqQw3JLvM
 
-
+// debug not working in angular 
+https://github.com/microsoft/vscode-recipes/tree/main/Angular-CLI
 
 //numero contribuinte portugues 
 1 ou 2 (pessoa singular)
