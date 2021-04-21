@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 //import 'rxjs/add/operator/do';
 import { HTTP_INTERCEPTORS, HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse } from '@angular/common/http';
 
-import { HttpCasheService } from './cache.service';
+import { HttpCasheService } from '../_services/cache.service';
 import { tap } from 'rxjs/operators';
 
 // https://floyk.com/en/post/angular-cache-requests

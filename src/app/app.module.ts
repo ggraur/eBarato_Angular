@@ -58,6 +58,7 @@ import { UserComponent } from './user/user.component';
 import { transAnimation } from './animations';
 
 import { cacheInterceptorProviders } from './_helpers/cache.interceptor';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 export function tokenGetter(){
   return localStorage.getItem('accessToken');
@@ -99,7 +100,8 @@ export function tokenGetter(){
     CustomerComponent,
     NavloginComponent,
     ClaimComponent,
-    UserComponent
+    UserComponent,
+    MyAccountComponent
   ],
   imports: [
     BrowserModule,

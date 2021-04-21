@@ -2,7 +2,7 @@ import { HttpRequest, HttpResponse, HttpInterceptor, HttpHandler, HttpEvent } fr
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs'
 import { AppConstants } from '../app.constant';
-import { TokenStorageService } from '../_services/token-storage.service';
+import { TokenStorageService } from './token-storage.service';
 
 
 

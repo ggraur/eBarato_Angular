@@ -16,8 +16,8 @@ export class TokenStorageService {
   data$ = this.isLoged.asObservable();
 
  public signOut(): void {
-  //  window.sessionStorage.clear();
-  // window.localStorage.clear();
+    window.sessionStorage.clear();
+    window.localStorage.clear();
     this.updateIsLoged(false);
   }
 
