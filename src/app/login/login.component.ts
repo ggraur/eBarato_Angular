@@ -4,6 +4,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { transAnimation } from '../animations';
 import { IUser } from '../Models/user.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,9 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
 
   constructor(private authService: AuthService
-    , private tokenStorage: TokenStorageService) { }
+    , private tokenStorage: TokenStorageService
+    , private _router: Router
+  ) { }
 
   ngOnInit(): void {
     console.log('login component ');
@@ -47,8 +50,10 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.firstLogin = <any>data.firstLogin;
         this.roles = this.tokenStorage.getUser().roles;
-        if (this.firstLogin == true) {
 
+        console.log(`first login value: ${this.firstLogin}`);
+        if (this.firstLogin == true) {
+          this._router.navigate['myaccount'];
         }
         //        this.reloadPage();
       },

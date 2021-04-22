@@ -18,7 +18,7 @@ export class HttpCasheService implements HttpCache {
     private cache: any = {};
 
     doNotCache = [
-        this.tokenStorage.signOut()
+     //   this.tokenStorage.signOut()
     ]
 
     constructor(private tokenStorage: TokenStorageService) { }

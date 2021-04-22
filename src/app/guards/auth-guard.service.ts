@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
     const isRefreshSuccess = await this.tryRefreshingTokens(token);
 
     if (isRefreshSuccess === undefined || isRefreshSuccess === false) {
-      console.log('navigate to login');
+     // console.log('navigate to login');
       this.router.navigate(['mylogin']);
 
     }

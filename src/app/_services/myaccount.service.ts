@@ -21,7 +21,7 @@ export class MyAccountService{
         , private error:ErrorService) { }
     getUserFirstLogin():Observable<any> {
         console.log("getUserFirstLogin:" + "getUserFirstLogin")
-        return this.http.get(API_URL + 'test/all', { responseType: 'text' })
-    .pipe(catchError(this.error.handleErrors) );
+        return this.http.get(API_URL + 'user/first-login', { responseType: 'text' })
+    .pipe(catchError(this.error.handleErrors));
     }
 }

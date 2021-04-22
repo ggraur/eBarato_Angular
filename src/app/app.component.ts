@@ -31,9 +31,6 @@ export class AppComponent implements OnInit {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
-
-
-
   title = 'eBarato';
   // public selectedLng: string  = 'pt';
   showLoadingIndicator = true;
@@ -93,11 +90,9 @@ export class AppComponent implements OnInit {
 
 
 
-  logout(): void {
-    localStorage.removeItem('accessToken');
-
-    this.tokenStorageService.signOut();
-    window.location.reload();
-  }
+  // logout(): void {
+  //   this.tokenStorageService.signOut();
+  //   window.location.reload();
+  // }
 
 }

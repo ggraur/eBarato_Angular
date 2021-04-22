@@ -25,13 +25,14 @@ import { MyloginComponent } from './mylogin/mylogin.component';
 import { AuthGuard } from './guards/auth-guard.service';
 import { CustomerComponent } from './customer/customer.component';
 import { UserComponent } from './user/user.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'mylogin', component: MyloginComponent },
-
+  { path: 'myaccount', component: MyAccountComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'createusers', component: UserComponent },
   { path: 'activate_account/:id', component: ActivateAccountComponent},
