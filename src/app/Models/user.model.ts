@@ -6,5 +6,6 @@ export class IUser {
     accessToken?: string;
     refreshToken?: string;
     logedIn?: boolean;
+    firstLogin?: boolean;
 }
 
