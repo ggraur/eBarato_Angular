@@ -15,7 +15,8 @@ export class NavloginComponent implements OnInit {
   emailLogin!:string | null;
 
   constructor(private tokenStorage: TokenStorageService, 
-              public elementRef: ElementRef) { }
+              public elementRef: ElementRef,
+              public translate: TranslateService) { }
 
   ngOnInit(): void {
     this.tokenStorage.data$.subscribe((data: any) => {

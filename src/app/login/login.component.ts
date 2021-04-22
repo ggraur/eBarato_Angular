@@ -37,10 +37,10 @@ export class LoginComponent implements OnInit {
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
-
+  
   onSubmit(): void {
     const { email, password } = this.form;
-
+    console.log(`login button pressedkeybindings.json`);
     this.authService.login(email, password).subscribe(
       (data: IUser) => {
         this.tokenStorage.saveToken(<any>data.accessToken);
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.firstLogin = <any>data.firstLogin;
-        this.roles = this.tokenStorage.getUser().roles;
+       // this.roles = this.tokenStorage.getUser().roles;
 
         console.log(`first login value: ${this.firstLogin}`);
         if (this.firstLogin == true) {
