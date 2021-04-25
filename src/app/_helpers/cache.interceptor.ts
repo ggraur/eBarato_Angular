@@ -18,58 +18,62 @@ export class cacheInterceptor implements HttpInterceptor {
     constructor(private cacheService: HttpCasheService) { }
 
 
-    // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-    //     if(req.method !== 'GET'){
-    //         // delete cache on any other request type  - if you want
-    //        //this.cacheService.clearCache();
-
-    //      }else{
-    //        if(!this.cacheService.includesDoNotCache(req.url)){
-    //          // check do we have this request cached and return it
-    //          const cachedResponse = this.cacheService.getCachedResponse(this.cacheService.encodeURL(req.url));
-    //          if (cachedResponse) {
-    //            console.log("serving from cache");
-    //            return of(cachedResponse);
-    //          }
-    //        }
-    //      }
-
-    //      return next.handle(req)
-    //      .pipe(
-    //        tap(event => {
-    //          if (event instanceof HttpResponse) {
-    //            // should we cache reqeust?
-    //            if(req.method === 'GET' &&
-    //              !this.cacheService.includesDoNotCache(req.url) &&
-    //              req.url.includes('/api/')
-    //            ){
-
-    //              this.cacheService.cacheResponse(this.cacheService.encodeURL(req.url), event);
-
-    //            }
-    //         }
-    //     }));
-    // }
-
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        //console.log("Hi, this is an Cache interceptor");
-        if (req.urlWithParams.indexOf("/authenticate") < 0) {
-            const cacheResponse = this.cacheService[req.urlWithParams] || null;
-            if (cacheResponse) {
-          //      console.log('Response from cache');
-                return of(cacheResponse);
-            }
 
-        }
+        if(req.method !== 'GET'){
+            // delete cache on any other request type  - if you want
+           //this.cacheService.clearCache();
 
-        return next.handle(req).pipe(tap((event: any) => {
-            if (event instanceof HttpResponse && req.urlWithParams.indexOf("/authenticate") < 0) {
-                this.cacheService[req.urlWithParams] = event;
-            //    console.log('Response from server');
+         }else{
+           if(!this.cacheService.includesDoNotCache(req.url)){
+             // check do we have this request cached and return it
+             const cachedResponse = this.cacheService.getCachedResponse(this.cacheService.encodeURL(req.url));
+             if (cachedResponse) {
+              // console.log("serving from cache");
+               return of(cachedResponse);
+             }
+           }
+         }
+
+         return next.handle(req)
+         .pipe(
+           tap(event => {
+             if (event instanceof HttpResponse) {
+               // should we cache reqeust?
+               if(req.method === 'GET' &&
+                 !this.cacheService.includesDoNotCache(req.url) &&
+                 req.url.includes('/api/')
+               ){
+
+                 this.cacheService.cacheResponse(this.cacheService.encodeURL(req.url), event);
+
+               }
             }
         }));
     }
+
+    // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    //     //console.log("Hi, this is an Cache interceptor");
+    //     let _indexOf = req.urlWithParams.indexOf("/authenticate"  || !"/SaveAccountInfo");
+        
+    //     console.log(`Index of: ${_indexOf}` );
+
+    //     if (req.urlWithParams.indexOf("/authenticate") < 0) {
+    //         const cacheResponse = this.cacheService[req.urlWithParams] || null;
+    //         if (cacheResponse) {
+    //       //      console.log('Response from cache');
+    //             return of(cacheResponse);
+    //         }
+
+    //     }
+
+    //     return next.handle(req).pipe(tap((event: any) => {
+    //         if (event instanceof HttpResponse && req.urlWithParams.indexOf("/authenticate") < 0) {
+    //             this.cacheService[req.urlWithParams] = event;
+    //         //    console.log('Response from server');
+    //         }
+    //     }));
+    // }
 
 }
 

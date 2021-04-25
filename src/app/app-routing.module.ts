@@ -6,7 +6,7 @@ import { EmployeeDetailsGuardService } from './employees/employee-details-guard.
 
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
 import { EmployeeListResolverService } from './employees/employee-list-resolver.service';
-import { EmployeesComponent } from './employees/employees.component';
+// import { EmployeesComponent } from './employees/employees.component';
 import { ListEmployeesComponent } from './employees/list-employees.component';
 import { HomeComponent } from './home/home.component';
 import { CreateMerchantComponent } from './merchant/create-merchant.component';
@@ -15,7 +15,7 @@ import { MerchantListResolverService } from './merchant/MerchantListResolver.ser
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+// import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
@@ -30,7 +30,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent },
+  //{ path: 'login', component: LoginComponent },
   { path: 'mylogin', component: MyloginComponent },
   { path: 'myaccount', component: MyAccountComponent },
   { path: 'register', component: RegisterComponent },

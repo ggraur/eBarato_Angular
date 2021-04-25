@@ -59,6 +59,7 @@ import { transAnimation } from './animations';
 
 import { cacheInterceptorProviders } from './_helpers/cache.interceptor';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { AccountInfoService } from './my-account/my-account.service';
 
 export function tokenGetter(){
   return localStorage.getItem('accessToken');
@@ -129,6 +130,7 @@ export function tokenGetter(){
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ EmployeeService
              , MerchantService
+             , AccountInfoService
              , CreateEmployeeCanDeactivateGuardService
              , EmployeeListResolverService
              , MerchantListResolverService

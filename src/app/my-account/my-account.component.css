@@ -1,0 +1,16 @@
+.myCheckbox {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+.disableDiv {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: gray;
+}
+
+.EnableDiv {
+    cursor: default;
+    pointer-events: all;
+    color: black;
+}

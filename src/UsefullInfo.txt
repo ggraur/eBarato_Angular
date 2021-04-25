@@ -36,6 +36,27 @@ https://www.youtube.com/watch?v=7_a-ROt8z_4
 //Angular component input property change detection
 https://www.youtube.com/watch?v=E9wqQw3JLvM
 
+
+//Angular cors problems 
+https://httptoolkit.tech/blog/how-to-debug-cors-errors/
+include next to resolve cors issue: 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'  ,
+    'X-Content-Type-Options': 'no-sniff',
+    'Access-Control-Allow-Credentials': 'true'
+  })
+};
+
+ saveAccountInfo(accInfo: IAccountInfo): Observable<IAccountInfo> | undefined | null {
+       // console.log("URL: " + AUTH_API + 'user/SaveAccountInfo');
+       
+        return this._httpClient.post<IAccountInfo>(API_URL + 'user/SaveAccountInfo', accInfo, httpOptions)
+          .pipe(catchError(this._errorService.handleErrors));
+      }
+
+
+
 // debug not working in angular 
 https://github.com/microsoft/vscode-recipes/tree/main/Angular-CLI
 
