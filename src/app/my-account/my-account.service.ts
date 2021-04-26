@@ -11,14 +11,15 @@ import { IAccountInfo } from '../Models/accountinfo.model';
 
 
 const API_URL = AppConstants.Https_API_URL ;
+const httpOptions =AppConstants.ApplicationHeaders;
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-     'X-Content-Type-Options': 'no-sniff',
-     'Access-Control-Allow-Credentials': 'true'
-  })
-};
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Content-Type': 'application/json',
+//      'X-Content-Type-Options': 'no-sniff',
+//      'Access-Control-Allow-Credentials': 'true'
+//   })
+// };
 
 @Injectable()
 export class AccountInfoService{

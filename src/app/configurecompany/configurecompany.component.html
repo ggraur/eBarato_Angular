@@ -1,1 +1,114 @@
-<p>configurecompany works!</p>
+<form #myCompanyForm="ngForm" ngNativeValidate (ngSubmit)="saveCompanyInfo()">
+    <div class="panel panel-primary" *ngIf="companyInfo">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{ panelTitle | translate}}</h3>
+        </div>
+    </div>
+    <div *ngIf="updateSuccess" class="alert alert-success box-msg" role="alert">
+        <strong>{{'Your changes has been saved!' | translate}}</strong>
+        <button (click)="closeUpdateSuccess()" type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="panel-body">
+        <div class="form-group" [class.has-error]="companyName.invalid && companyName.touched" [class.has-success]="companyName.valid">
+            <label for="companyName" class="control-label">{{ 'Company Name' | translate}}</label>
+            <input required id="companyName" name="companyName" [(ngModel)]='companyInfo.companyName' type="text" class="form-control" #companyName="ngModel" />
+            <span class="help-block" *ngIf="companyName.invalid && companyName.touched">
+                {{'Company Name' | translate}}
+            </span>
+        </div>
+
+        <div class="form-group" [class.has-error]="tradeName.invalid && tradeName.touched" [class.has-success]="tradeName.valid">
+            <label for="tradeName" class="control-label">{{ 'Trade Name' | translate}}</label>
+            <input required id="tradeName" name="tradeName" [(ngModel)]='companyInfo.tradeName' type="text" class="form-control" #tradeName="ngModel" />
+            <span class="help-block" *ngIf="tradeName.invalid && tradeName.touched">
+                {{'Trade Name' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyVAT.invalid && companyVAT.touched" [class.has-success]="companyVAT.valid">
+            <label for="companyVAT" class="control-label">{{ 'Vat Number' | translate}}</label>
+            <input required id="companyVAT" name="companyVAT" [(ngModel)]='companyInfo.companyVAT' type="text" class="form-control" #companyVAT="ngModel" />
+            <span class="help-block" *ngIf="companyVAT.invalid && companyVAT.touched">
+                {{'Vat Number' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyBusinessPhone.invalid && companyBusinessPhone.touched" [class.has-success]="companyBusinessPhone.valid">
+            <label for="companyBusinessPhone" class="control-label">{{ 'Business phone' | translate}}</label>
+            <input required id="companyBusinessPhone" name="companyBusinessPhone" [(ngModel)]='companyInfo.companyBusinessPhone' type="text" class="form-control" #companyBusinessPhone="ngModel" />
+            <span class="help-block" *ngIf="companyBusinessPhone.invalid && companyBusinessPhone.touched">
+                {{'Business phone' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyWebsite.invalid && companyWebsite.touched" [class.has-success]="companyWebsite.valid">
+            <label for="companyWebsite" class="control-label">{{ 'Corporate website' | translate}}</label>
+            <input required id="companyWebsite" name="companyWebsite" [(ngModel)]='companyInfo.companyWebsite' type="text" class="form-control" #companyWebsite="ngModel" />
+            <span class="help-block" *ngIf="companyWebsite.invalid && companyWebsite.touched">
+                {{'Corporate website' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyEmail.invalid && companyEmail.touched" [class.has-success]="companyWebsite.valid">
+            <label for="companyEmail" class="control-label">{{ 'Corporate email' | translate}}</label>
+            <input required id="companyEmail" name="companyEmail" [(ngModel)]='companyInfo.companyEmail' type="text" class="form-control" #companyEmail="ngModel" />
+            <span class="help-block" *ngIf="companyEmail.invalid && companyEmail.touched">
+                {{'Corporate email' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyCountry.invalid && companyCountry.touched" [class.has-success]="companyCountry.valid">
+            <label for="companyCountry" class="control-label">{{ 'Country there the company are registered' | translate}}</label>
+            <input required id="companyCountry" name="companyCountry" [(ngModel)]='companyInfo.companyCountry' type="text" class="form-control" #companyCountry="ngModel" />
+            <span class="help-block" *ngIf="companyCountry.invalid && companyCountry.touched">
+                {{'Country there the company are registered' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyAddress.invalid && companyAddress.touched" [class.has-success]="companyAddress.valid">
+            <label for="companyAddress" class="control-label">{{ 'Company main office address' | translate}}</label>
+            <input required id="companyAddress" name="companyAddress" [(ngModel)]='companyInfo.companyAddress' type="text" class="form-control" #companyAddress="ngModel" />
+            <span class="help-block" *ngIf="companyAddress.invalid && companyAddress.touched">
+                {{'Company main office address' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyTown.invalid && companyTown.touched" [class.has-success]="companyTown.valid">
+            <label for="companyTown" class="control-label">{{ 'Town/City' | translate}}</label>
+            <input required id="companyTown" name="companyTown" [(ngModel)]='companyInfo.companyTown' type="text" class="form-control" #companyTown="ngModel" />
+            <span class="help-block" *ngIf="companyTown.invalid && companyTown.touched">
+                {{'Town/City' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyState.invalid && companyState.touched" [class.has-success]="companyState.valid">
+            <label for="companyState" class="control-label">{{ 'State/Province' | translate}}</label>
+            <input required id="companyState" name="companyState" [(ngModel)]='companyInfo.companyState' type="text" class="form-control" #companyState="ngModel" />
+            <span class="help-block" *ngIf="companyState.invalid && companyState.touched">
+                {{'State/Province' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyPostCode.invalid && companyPostCode.touched" [class.has-success]="companyPostCode.valid">
+            <label for="companyPostCode" class="control-label">{{ 'Postcode' | translate}}</label>
+            <input required id="companyPostCode" name="companyPostCode" [(ngModel)]='companyInfo.companyPostCode' type="text" class="form-control" #companyPostCode="ngModel" />
+            <span class="help-block" *ngIf="companyPostCode.invalid && companyPostCode.touched">
+                {{'Postcode' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyContactPerson.invalid && companyContactPerson.touched" [class.has-success]="companyContactPerson.valid">
+            <label for="companyContactPerson" class="control-label">{{ 'Contact person' | translate}}</label>
+            <input required id="companyContactPerson" name="companyContactPerson" [(ngModel)]='companyInfo.companyContactPerson' type="text" class="form-control" #companyContactPerson="ngModel" />
+            <span class="help-block" *ngIf="companyContactPerson.invalid && companyContactPerson.touched">
+                {{'Contact person' | translate}}
+            </span>
+        </div>
+        <div class="form-group" [class.has-error]="companyContactPhone.invalid && companyContactPhone.touched" [class.has-success]="companyContactPhone.valid">
+            <label for="companyContactPhone" class="control-label">{{ 'Contact telephone number' | translate}}</label>
+            <input required id="companyContactPhone" name="companyContactPhone" [(ngModel)]='companyInfo.companyContactPhone' type="text" class="form-control" #companyContactPhone="ngModel" />
+            <span class="help-block" *ngIf="companyContactPhone.invalid && companyContactPhone.touched">
+                {{'Contact telephone number' | translate}}
+            </span>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="btn-group btn-group-lg">
+            <button type="submit" class="btn btn-primary" [disabled]="myCompanyForm.invalid">{{'Save' | translate}}</button>
+            <button (click)="CloseForm()" type="button" class="btn btn-primary">{{'Close' | translate}}</button>
+        </div>
+    </div>
+
+</form>
