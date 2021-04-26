@@ -55,6 +55,7 @@ export class MyloginComponent implements OnInit {
       this.signedUser.refreshToken = rToken;
       this.signedUser.logedIn = true;
       this.signedUser.firstLogin = _firstLogin;
+      this.signedUser.isCompany = (response as any).isCompany;
 
       this.invalidLogin = false;
       this.tokenStorage.saveUser(this.signedUser);

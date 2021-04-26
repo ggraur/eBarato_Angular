@@ -13,6 +13,7 @@ export class NavloginComponent implements OnInit {
   hoverClass: any;
   userIsLogged = false;
   emailLogin!:string | null;
+  isCompany = false;
 
   constructor(private tokenStorage: TokenStorageService, 
               public elementRef: ElementRef,
@@ -22,7 +23,20 @@ export class NavloginComponent implements OnInit {
     this.tokenStorage.data$.subscribe((data: any) => {
       this.userIsLogged = (data as any);
       this.emailLogin = localStorage.getItem('email');
+
+      // let b = localStorage.getItem('isCompany');
+      // if(b===null || b ==='false' || b === 'undefined'){
+      //   this.isCompany = false;
+      // }
+      // if(b==='true'){
+      //   this.isCompany = true;
+      // }
      });
+     this.tokenStorage.dataIsCompany$.subscribe((dataIsCompany: any) => {
+      this.isCompany = (dataIsCompany as any);
+     });
+
+
   }
   logOut():void{
     console.log("clicked logout");

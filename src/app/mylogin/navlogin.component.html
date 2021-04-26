@@ -5,6 +5,7 @@
     <div class="dropdown-content">
         <a *ngIf="!userIsLogged" href="/mylogin" routerLink="mylogin">{{'Login' | translate}}</a>
         <a *ngIf="userIsLogged" href="/myaccount" routerLink="myaccount">{{'My Account' | translate}}</a>
+        <a *ngIf="isCompany" href="/configurecompany" routerLink="configurecompany">{{'Configure Company' | translate}}</a>
         <a *ngIf="userIsLogged" href="#" (click)="logOut()">{{'LogOff' | translate}}</a>
         <a href="/register" routerLink="register">{{'Sign Up' | translate}}</a>
     </div>

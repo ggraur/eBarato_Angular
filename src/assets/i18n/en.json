@@ -76,7 +76,7 @@
     "The email is a mandatory field": "The email is a mandatory field",
     "The email is invalid": "The email is invalid",
     "The resurse you are looking for cannot be found": "The resurse you are looking for cannot be found",
-    "This operation has no undo. After save operation you will be redirected to configure the company!": "This operation has no undo. After save operation you will be redirected to configure the company!",
+    "This operation has no undo, after save operation you will be redirected to configure the company.": "This operation has no undo, after save operation you will be redirected to configure the company.",
     "User not found": "User not found",
     "User successfully activated": "User successfully activated",
     "Username or password is incorrect": "Username or password is incorrect",

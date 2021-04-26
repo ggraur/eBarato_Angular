@@ -7,5 +7,6 @@ export class IUser {
     refreshToken?: string;
     logedIn?: boolean;
     firstLogin?: boolean;
+    isCompany?:boolean;
 }
 

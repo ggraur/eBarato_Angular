@@ -1,5 +1,8 @@
+<span name="timerSpan" class="hidden">{{counter.min}} : {{counter.sec}}</span>
+
 <form #myAccountForm="ngForm" ngNativeValidate (ngSubmit)="saveAccountInfo()">
     <div class="panel panel-primary" *ngIf="accountInfo">
+
         <div class="panel-heading">
             <h3 class="panel-title">{{ panelTitle | translate}}</h3>
         </div>
@@ -38,12 +41,11 @@
                 <div class="well hidden" name="divWell">
                     <div class="alert alert-warning">
                         <span><strong>{{'Attention' | translate}}!</strong></span><span class="pull-right" aria-hidden="true">&times;</span> <br>
-                        <span>{{'This operation has no undo. After save operation you will be redirected to configure the company!' | translate}}</span><br>
-                        <span>{{'If you are sure that you want configure company account, please save the changes pressing save button?' | translate}}</span>
+                        <span>{{'This operation has no undo, after save operation you will be redirected to configure the company.' | translate}}</span><br>
+                        <span>{{'If you are sure that you want configure company account, please save the changes pressing button ' | translate}} <strong>{{'Save' | translate}}!</strong> </span>
                     </div>
                 </div>
             </div>
-
         </div>
         <div class="panel-footer">
             <div class="btn-group btn-group-lg">

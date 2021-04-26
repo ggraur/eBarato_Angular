@@ -12,8 +12,13 @@ import { AuthService } from './auth.service';
 })
 export class TokenStorageService {
   constructor(private authService: AuthService) { }
+  
   public isLoged = new Subject<boolean>();
   data$ = this.isLoged.asObservable();
+  
+  public isCompany = new Subject<boolean>();
+  dataIsCompany$ = this.isCompany.asObservable();
+
 
  public signOut(): void {
     window.sessionStorage.clear();
@@ -21,15 +26,12 @@ export class TokenStorageService {
     this.updateIsLoged(false);
   }
 
-  public saveToken(token: string): void {
-    window.sessionStorage.removeItem('accessToken');
-    window.sessionStorage.setItem('accessToken', token);
-    window.localStorage.removeItem('accessToken');
-    window.localStorage.setItem('accessToken', token);
-  }
-
   updateIsLoged(data: boolean): void{
     this.isLoged.next(data);
+  }
+
+  public updateIsCompany(data: boolean): void{
+    this.isCompany.next(data);
   }
   public getToken(): string | null {
     let _tknAccess: string | null = window.localStorage.getItem('accessToken');
@@ -57,12 +59,16 @@ export class TokenStorageService {
     sessionStorage.setItem('accessToken', user.accessToken! as any);
     sessionStorage.setItem('refreshToken', user.refreshToken! as any);
     sessionStorage.setItem('email', user.email! as any);
+    sessionStorage.setItem('isCompany', user.isCompany! as any);
+    
     localStorage.setItem('accessToken', user.accessToken! as any);
     localStorage.setItem('refreshToken', user.refreshToken! as any);
     localStorage.setItem('email', user.email! as any);
-   // console.log('user loged:' + (user.logedIn as any));
+    localStorage.setItem('isCompany', user.isCompany! as any);
+   
     this.updateIsLoged(user.logedIn as any);
-    //this.isLoged.next(user.logedIn as any);
+    this.updateIsCompany(user.isCompany as any);
+    
   }
   public getUser(): any {
     const refreshToken = window.sessionStorage.getItem('refreshToken');

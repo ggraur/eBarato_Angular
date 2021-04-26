@@ -38,7 +38,7 @@ import { MerchantService } from './merchant/merchant.service';
 import { DisplayMerchantComponent } from './merchant/display-merchant.component';
 import { MerchantListResolverService } from './merchant/MerchantListResolver.service';
 import { FileUploadComponent } from './file-upload.component';
-import { LoginComponent } from './login/login.component';
+//import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
@@ -60,6 +60,7 @@ import { transAnimation } from './animations';
 import { cacheInterceptorProviders } from './_helpers/cache.interceptor';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { AccountInfoService } from './my-account/my-account.service';
+import { ConfigurecompanyComponent } from './configurecompany/configurecompany.component';
 
 export function tokenGetter(){
   return localStorage.getItem('accessToken');
@@ -90,7 +91,7 @@ export function tokenGetter(){
     NifPipe,
     DisplayMerchantComponent,
     FileUploadComponent,
-    LoginComponent,
+    //LoginComponent,
     RegisterComponent,
     ProfileComponent,
     BoardAdminComponent,
@@ -102,7 +103,8 @@ export function tokenGetter(){
     NavloginComponent,
     ClaimComponent,
     UserComponent,
-    MyAccountComponent
+    MyAccountComponent,
+    ConfigurecompanyComponent 
   ],
   imports: [
     BrowserModule,

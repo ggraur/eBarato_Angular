@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 
 import { IAccountInfo } from '../Models/accountinfo.model';
+import { TokenStorageService } from '../_services/token-storage.service';
 import { AccountInfoService } from './my-account.service';
 
 const firstTime: boolean = true;
@@ -24,6 +25,9 @@ export class MyAccountComponent implements OnInit {
   divHideClassesToRemove: string = '';
   updateSuccess: boolean = false;
   isCompany: boolean = false;
+
+  counter: { min: number; sec: number; } = { min: 0, sec: 0 };
+
   accountInfo: IAccountInfo = {
     email: localStorage.getItem('email'),
     firstName: null,
@@ -34,7 +38,7 @@ export class MyAccountComponent implements OnInit {
     success: false
   };
 
-  constructor(private accountInfoService: AccountInfoService, private router: Router, private renderer: Renderer2) {
+  constructor(private accountInfoService: AccountInfoService, private router: Router, private renderer: Renderer2,  private tokenStorageService: TokenStorageService) {
     //2
     if (this.accountInfo.email != null) {
       this.accountInfoService.firstLogin(this.accountInfo).subscribe(
@@ -42,7 +46,6 @@ export class MyAccountComponent implements OnInit {
           this.accountInfo = response
           if (this.accountInfo.firstLogin === false) {
             this.panelTitle = 'Modify Info About You';
-            
           }
           this.isCompany = this.accountInfo.isCompany;
           this.changeDivClasees()
@@ -54,22 +57,20 @@ export class MyAccountComponent implements OnInit {
 
   ngOnInit(): void {
     //3
-   
+
   }
-  checkClick(){
+  checkClick() {
     let myDiv = document.getElementsByName('divWell')
     console.log(myDiv);
     myDiv.forEach(element => {
       if (element.classList) {
         if (!this.isCompany) {
           element.classList.remove('hidden');
-        }else
-        {
+        } else {
           element.classList.add('hidden');
         }
       }
-     //  element.classList.add('hidden');
-      //console.log(element)
+
     });
   }
 
@@ -105,22 +106,27 @@ export class MyAccountComponent implements OnInit {
         this.updateSuccess = this.accountInfo.success;
         this.panelTitle = 'Modify Info About You';
         this.isCompany = this.accountInfo.isCompany;
-        this.changeDivClasees();
-        this.changeDivCnfCompany();
+        this.startRedirect();
+        this.tokenStorageService.updateIsCompany(this.isCompany);
       },
       (error: any) => console.log(error)
     );
   }
 
-  changeDivCnfCompany(){
+  startRedirect(){
+    this.changeDivClasees();
+    this.changeDivCnfCompany();
+    this.startTimer(0, 5, true, "configurecompany");
+  }
+
+  changeDivCnfCompany() {
     //
     let myDiv = document.getElementsByName('divBtnCnfCompany')
     myDiv.forEach(element => {
       if (element.classList) {
         if (!this.isCompany) {
           element.classList.add('hidden');
-        }else
-        {
+        } else {
           element.classList.remove('hidden');
         }
       }
@@ -130,15 +136,30 @@ export class MyAccountComponent implements OnInit {
 
   changeDivClasees() {
     let myDiv = document.getElementsByName('divCheckBox')
-      myDiv.forEach(element => {
-        if (element.classList) {
-          if (this.isCompany) {
-            element.classList.add(this.divHideClassesToApply);
-          }
+    myDiv.forEach(element => {
+      if (element.classList) {
+        if (this.isCompany) {
+          element.classList.add(this.divHideClassesToApply);
         }
-        //console.log(element)
-      });
-   
+      }
+    });
+  }
+
+  startTimer(min: number, sec: number, redirect: boolean, redirectUrl: string) {
+    this.counter = { min: min, sec: sec }
+    let intervalId = setInterval(() => {
+      if (this.counter.sec - 1 == -1) {
+        this.counter.min -= 1;
+        this.counter.sec = 59
+      }
+      else this.counter.sec -= 1
+      if (this.counter.min === 0 && this.counter.sec == 0) {
+        if (redirect) {
+          this.router.navigate([redirectUrl]);
+        }
+        clearInterval(intervalId)
+      }
+    }, 1000)
   }
 }
 

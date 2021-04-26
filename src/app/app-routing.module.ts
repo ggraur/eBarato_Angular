@@ -26,10 +26,12 @@ import { AuthGuard } from './guards/auth-guard.service';
 import { CustomerComponent } from './customer/customer.component';
 import { UserComponent } from './user/user.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { ConfigurecompanyComponent } from './configurecompany/configurecompany.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
+  { path:'configurecompany',component: ConfigurecompanyComponent},
   //{ path: 'login', component: LoginComponent },
   { path: 'mylogin', component: MyloginComponent },
   { path: 'myaccount', component: MyAccountComponent },
