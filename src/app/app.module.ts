@@ -18,6 +18,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { EmployeeService } from './employees/employee.service';
+import { ConfigureCompanyService} from './configurecompany/configurecompany.service';
 
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-guard.service';
@@ -137,6 +138,7 @@ export function tokenGetter(){
              , EmployeeListResolverService
              , MerchantListResolverService
              , EmployeeDetailsGuardService
+             , ConfigureCompanyService
              , authInterceptorProviders
              , cacheInterceptorProviders
             , AuthGuard],

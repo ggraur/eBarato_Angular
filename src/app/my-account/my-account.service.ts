@@ -10,8 +10,8 @@ import { ErrorService } from '../_services/error.service';
 import { IAccountInfo } from '../Models/accountinfo.model';
 
 
-const API_URL = AppConstants.Https_API_URL ;
-const httpOptions =AppConstants.ApplicationHeaders;
+const API_URL = AppConstants.Https_API_URL;
+const httpOptions = AppConstants.ApplicationHeaders;
 
 // const httpOptions = {
 //   headers: new HttpHeaders({
@@ -22,30 +22,30 @@ const httpOptions =AppConstants.ApplicationHeaders;
 // };
 
 @Injectable()
-export class AccountInfoService{
-    constructor(
-          private _httpClient: HttpClient
-        , private _router: Router
-        , private _errorService : ErrorService) {
+export class AccountInfoService {
+  constructor(
+    private _httpClient: HttpClient
+    , private _router: Router
+    , private _errorService: ErrorService) {
 
-    }
+  }
 
-    saveAccountInfo(accInfo: IAccountInfo): Observable<IAccountInfo> | undefined | null {
-       // console.log("URL: " + AUTH_API + 'user/SaveAccountInfo');
-       
-        return this._httpClient.post<IAccountInfo>(API_URL + 'user/SaveAccountInfo', accInfo, httpOptions)
-          .pipe(catchError(this._errorService.handleErrors));
-      }
+  saveAccountInfo(accInfo: IAccountInfo): Observable<IAccountInfo> | undefined | null {
+    // console.log("URL: " + AUTH_API + 'user/SaveAccountInfo');
 
-      getAccountInfo(accInfo: IAccountInfo): Observable<IAccountInfo> {
-          return this._httpClient.post<IAccountInfo>(API_URL + 'user/getaccontinfo', accInfo, httpOptions)
-         .pipe(catchError(this._errorService.handleErrors));
-      }
+    return this._httpClient.post<IAccountInfo>(API_URL + 'user/SaveAccountInfo', accInfo, httpOptions)
+      .pipe(catchError(this._errorService.handleErrors));
+  }
 
-      public firstLogin(accInfo: IAccountInfo): Observable<IAccountInfo> {
-         return this._httpClient.post<IAccountInfo>(API_URL + 'user/firstlogin', accInfo, httpOptions)
-         .pipe(catchError(this._errorService.handleErrors));
-         //  return false;
-      }
+  getAccountInfo(accInfo: IAccountInfo): Observable<IAccountInfo> {
+    return this._httpClient.post<IAccountInfo>(API_URL + 'user/getaccontinfo', accInfo, httpOptions)
+      .pipe(catchError(this._errorService.handleErrors));
+  }
 
-    } 
+  public firstLogin(accInfo: IAccountInfo): Observable<IAccountInfo> {
+    return this._httpClient.post<IAccountInfo>(API_URL + 'user/firstlogin', accInfo, httpOptions)
+      .pipe(catchError(this._errorService.handleErrors));
+    //  return false;
+  }
+
+}
