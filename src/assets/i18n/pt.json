@@ -8,6 +8,13 @@
     "addressLineErr2": "Por favor, preencha a linha de endereço, é um campo obrigatório",
     "addressLineErr3": "Por favor, preencha a linha de endereço, é um campo obrigatório",
     "Attention": "Atenção",
+
+    "Business phone": "Telefone da empresa",
+
+    "Corporate website": "Pagina web da empresa",
+    "Country where the company are registered": "País onde a empresa está registrada",
+    "Company main office address": "Endereço da sede da empresa",
+
     "Merchants List": "Lista dos comerciantes",
     "Merchant Name": "Nome Comerciante/ Empresa",
     "The full name is a mandatory field": "O nome do comerciante é um campo obrigatório",
@@ -18,6 +25,11 @@
     "countyErr": "Distrito é um campo obrigatório",
     "Close": "Fechar",
     "Configure Company": "Configurar Empresa",
+    "Company Configuration": "Configurar Empresa",
+    "Company Name": "Nome Empresa",
+    "Contact person": "Pessoa de contato",
+    "Contact telephone number": "Número de telefone de contato",
+
     "First Name": "Nome Próprio",
     "Is the account for a company use or self-employed?": "A conta é para uso da empresa ou trabalhador independente?",
     "If you are sure that you want configure company account, please save the changes pressing save button?": "Se você tem certeza de que deseja configurar uma conta empresarial, guarda as alterações pressionando o botão Salvar?",
@@ -34,8 +46,14 @@
     "PhoneNo": "N. Telefone",
     "Password": "Palavra passe",
     "postCode": "Código Postal",
+    "Postcode": "Código Postal",
     "postCodeErr": "Código postal é um campo obrigatório",
     "TermsConditions": "Eu concordo com os termos e condições.",
+    "Trade Name": "Nome Comercial ou a Marca da empresa",
+    "Town/City": "Cidade/Localidade",
+
+    "State/Province": "Estado / Província / Distrito",
+
     "Save": "Guardar",
     "Submit": "Submeter",
     "Sign Up": "Registrar",
@@ -80,6 +98,9 @@
     "User successfully activated": "Utilizador ativado com sucesso",
     "Username or password is incorrect": "Nome de usuário ou senha está incorreta",
     "Merchant Users": "Usuários do Comerciante",
+
+    "Vat Number": "Contribuinte da empresa(NIF)",
+
     "Your registration is successful! Please check your email and fallow the link to activate your account.": "O seu registro foi realizado com sucesso! Verifique seu e-mail e siga o link para ativar sua conta.",
     "Your changes has been saved!": "As suas alterações foram salvas!"
 

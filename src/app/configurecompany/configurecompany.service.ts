@@ -16,16 +16,29 @@ const httpOptions = AppConstants.ApplicationHeaders;
 
 @Injectable()
 export class ConfigureCompanyService {
+
+
     constructor(
           private _httpClient: HttpClient
         , private _router: Router
         , private _errorService: ErrorService
-    ) { }
+      
+    ) { 
+
+      
+    }
     saveCompanyInfo(companyInfo: ICompanyInfo): Observable<ICompanyInfo> | undefined | null {
         
         //console.log("URL: " + API_URL + 'company/savecompany');
         companyInfo.login = localStorage.getItem('email')!;
         return this._httpClient.post<ICompanyInfo>(API_URL + 'Company/savecompany', companyInfo, httpOptions)
+          .pipe(catchError(this._errorService.handleErrors));
+      }
+
+  
+
+      getCompanyInfo(cmpInfo: ICompanyInfo): Observable<ICompanyInfo> {
+        return this._httpClient.post<ICompanyInfo>(API_URL + 'Company/getcompanybyuseremail', cmpInfo, httpOptions)
           .pipe(catchError(this._errorService.handleErrors));
       }
 }

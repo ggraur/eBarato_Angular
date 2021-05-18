@@ -116,7 +116,7 @@ export class MyAccountComponent implements OnInit {
   startRedirect(){
     this.changeDivClasees();
     this.changeDivCnfCompany();
-    this.startTimer(0, 5, true, "configurecompany");
+    this.startTimer(0, 3, true, "configurecompany");
   }
 
   changeDivCnfCompany() {

@@ -42,15 +42,28 @@ export class ConfigurecompanyComponent implements OnInit {
     companyPostCode:null,
     companyContactPerson:null,
     companyContactPhone:null,
-    login:null
+    login:  localStorage.getItem('email')
   }
+
   constructor(
     private _httpClient: HttpClient
   , private _router: Router
   , private _errorService : ErrorService
-  ,  private renderer: Renderer2
-  , private cmpService: ConfigureCompanyService
+  , private _renderer: Renderer2
+  , private _cmpService: ConfigureCompanyService
   ){
+    this._cmpService.getCompanyInfo(this.companyInfo).subscribe(
+      (response) => {
+        this.companyInfo = response;
+        // if (this.accountInfo.firstLogin === false) {
+        //   this.panelTitle = 'Modify Info About You';
+        // }
+        // this.isCompany = this.accountInfo.isCompany;
+        // this.changeDivClasees()
+        // this.changeDivCnfCompany();
+      }
+    ), (err: any) => console.log(err);
+
 
   }
 
@@ -60,9 +73,13 @@ export class ConfigurecompanyComponent implements OnInit {
     let id = Guid.create();
     const companyInfo: ICompanyInfo = Object.assign({}, this.companyInfo);
     this.companyInfo.companyId= '{' + id.toString() +'}';
-    this.cmpService.saveCompanyInfo(companyInfo)?.subscribe(
+    this._cmpService.saveCompanyInfo(companyInfo)?.subscribe(
       (data: any) => {
-        console.log("After company info update " + data.message + " " + data.value)
+       // console.log("After company info update " + data.message + " " + data.statusCode)
+        if(data.statusCode==201)
+        {
+          this.updateSuccess=true;
+        }
       },
       (error: any) => console.log(error)
     );
