@@ -38,10 +38,8 @@
                 <div class="well hidden" name="divWell">
                     <div class="alert alert-warning">
                         <span><strong>{{'Attention' | translate}}!</strong></span><span class="pull-right" aria-hidden="true">&times;</span> <br>
-                        <span>{{'This operation has no undo, after save operation you will be redirected to configure
-                            the company.' | translate}}</span><br>
-                        <span>{{'If you are sure that you want configure company account, please save the changes
-                            pressing button ' | translate}} <strong>{{'Save' | translate}}!</strong> </span>
+                        <span>{{'This operation has no undo, after save operation you will be redirected to configure the company.' | translate}}</span><br>
+                        <span>{{'If you are sure that you want configure company account, please save the changes pressing button ' | translate}} <strong>{{'Save' | translate}}!</strong> </span>
                     </div>
                 </div>
             </div>
@@ -53,7 +51,10 @@
             <div class="btn-group btn-group-lg">
                 <button type="submit" class="btn btn-primary" [disabled]="myAccountForm.invalid">{{'Save' | translate}}</button>
                 <button (click)="CloseForm()" type="button" class="btn btn-primary">{{'Close' | translate}}</button>
+
             </div>
         </div>
     </div>
 </form>
+
+{{myAccountForm.value | json}}

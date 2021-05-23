@@ -38,7 +38,9 @@ export class MyAccountComponent implements OnInit {
     success: false
   };
 
-  constructor(private accountInfoService: AccountInfoService, private router: Router, private renderer: Renderer2,  private tokenStorageService: TokenStorageService) {
+  constructor(private accountInfoService: AccountInfoService, 
+    private router: Router, 
+        private tokenStorageService: TokenStorageService) {
     //2
     if (this.accountInfo.email != null) {
       this.accountInfoService.firstLogin(this.accountInfo).subscribe(
@@ -90,6 +92,7 @@ export class MyAccountComponent implements OnInit {
   CloseForm() {
     this.router.navigate(['home']);
   }
+ 
   ConfigureCompany() {
     this.router.navigate(['merchant']);
   }
