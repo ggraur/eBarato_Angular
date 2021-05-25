@@ -45,7 +45,8 @@ export class MyAccountComponent implements OnInit {
     if (this.accountInfo.email != null) {
       this.accountInfoService.firstLogin(this.accountInfo).subscribe(
         (response) => {
-          this.accountInfo = response
+          this.accountInfo = response;
+          console.log(response);
           if (this.accountInfo.firstLogin === false) {
             this.panelTitle = 'Modify Info About You';
           }

@@ -37,8 +37,13 @@ export class ConfigureCompanyService {
 
   
 
-      getCompanyInfo(cmpInfo: ICompanyInfo): Observable<ICompanyInfo> {
+      getCompanyInfo1(cmpInfo: ICompanyInfo): Observable<ICompanyInfo> {
         return this._httpClient.post<ICompanyInfo>(API_URL + 'Company/getcompanybyuseremail', cmpInfo, httpOptions)
+          .pipe(catchError(this._errorService.handleErrors));
+      }
+
+      getCompanyInfo(cmpInfo: ICompanyInfo): Observable<ICompanyInfo> {
+        return this._httpClient.post<ICompanyInfo>(API_URL + 'Company/getcompany', cmpInfo, httpOptions)
           .pipe(catchError(this._errorService.handleErrors));
       }
 }

@@ -1,14 +1,8 @@
-import { Component, Injectable, Renderer2, ViewChild } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { mergeMap, delay, takeUntil, catchError } from 'rxjs/operators';
+import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
 
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { HttpHeaders } from '@angular/common/http';
-import { AppConstants } from '../app.constant';
-import { ErrorService } from '../_services/error.service';
-import { OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { ICompanyInfo } from '../Models/company.model';
 import { ConfigureCompanyService } from './configurecompany.service';
 import { Guid } from 'guid-typescript';
@@ -49,51 +43,56 @@ export class ConfigurecompanyComponent implements OnInit {
   };
 
   constructor(
-    private _cmpService: ConfigureCompanyService
+    private _cmpService: ConfigureCompanyService, private router: Router
   ) {
-    if (this.companyInfo.Login != null) {
-      this._cmpService.getCompanyInfo(this.companyInfo).subscribe(
-        (response) => {
-          this.companyInfo = response;
-          if (this.companyInfo.CompanyVAT != "" || !null) {
-            this.panelTitle = 'Modify Company Info';
-          }
-        }
-      ), (err: any) => console.log(err);
-    }
+    // if (this.companyInfo.Login != null) {
+    //   this._cmpService.getCompanyInfo(this.companyInfo).subscribe(
+    //     (response) => {
+    //       if (response.CompanyId != undefined) {
+    //         this.companyInfo = response;
+    //         console.log(response);
+    //         console.log(response.CompanyAddress);
+
+    //         // let tmpCmp!: ICompanyInfo ;
+    //         // tmpCmp.CompanyAddress = response.CompanyAddress;
+
+
+
+    //         console.log(response);
+    //         if (this.companyInfo.CompanyVAT != "" || !null) {
+    //           this.panelTitle = 'Modify Company Info';
+    //         }
+    //       }
+
+    //     }
+    //   ), (err: any) => console.log(err);
+    // }
   }
 
   ngOnInit(): void {
+    this.ShowReg();
   }
   saveCompanyInfo() {
     let id = Guid.create();
-    const companyInfo: ICompanyInfo = Object.assign({}, this.companyInfo);
+    const _companyInfo: ICompanyInfo = Object.assign({}, this.companyInfo);
     this.companyInfo.CompanyId = '{' + id.toString() + '}';
-    this._cmpService.saveCompanyInfo(companyInfo)?.subscribe(
+    this._cmpService.saveCompanyInfo(_companyInfo)?.subscribe(
       (data: any) => {
-        // console.log("After company info update " + data.message + " " + data.statusCode)
-        if (data.statusCode == 201) {
-          this.updateSuccess = true;
-        }
+        // if (data.statusCode == 201) {
+        this.companyInfo = data;
+        this.updateSuccess = true;
+
+        // }
       },
       (error: any) => console.log(error)
     );
   }
   ShowReg() {
-    let str = {"Login":"indo23md@gmail.com","CompanyId":"{6e7db843-ba8d-4197-bad2-52298f986e8d}","ApplicationUserId":"95d549c8-276c-4e55-935e-741222904f44","CompanyName":"Alegria Partilhada Lda1","TradeName":"eBarato","CompanyVAT":"514279699","CompanyBusinessPhone":"\u002B351969309119","CompanyWebsite":"ebarato.pt","CompanyEmail":"superadmin@ebarato.pt","CompanyCountry":"Portugal","CompanyAddress":"Rua Federigo George 29 b r/c","CompanyTown":"Lisboa","CompanyState":"Lisboa","CompanyPostCode":"1600-492","CompanyContactPerson":"Gheorghe Graur","CompanyContactPhone":"\u002B35196909119"}
-  
     this.companyInfo.Login = localStorage.getItem('email');
-    console.log(this.companyInfo.Login);
-
     this._cmpService.getCompanyInfo(this.companyInfo).subscribe(
       (response) => {
-        this.companyInfo = response;
-        // console.log(response);
-        // this.companyInfo = response;
-        // this.myCompanyForm.setValue(response);// = response;
-        // if (this.companyInfo.CompanyVAT != "" || !null) {
-        //   this.panelTitle = 'Modify Company Info';
-        // }
+        this.companyInfo  = response;
+        this.myCompanyForm.setValue(this.companyInfo);
       }
     ), (err: any) => console.log(err);
 
