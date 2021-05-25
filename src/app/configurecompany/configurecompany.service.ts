@@ -30,7 +30,7 @@ export class ConfigureCompanyService {
     saveCompanyInfo(companyInfo: ICompanyInfo): Observable<ICompanyInfo> | undefined | null {
         
         //console.log("URL: " + API_URL + 'company/savecompany');
-        companyInfo.Login = localStorage.getItem('email')!;
+        companyInfo.login = localStorage.getItem('email')!;
         return this._httpClient.post<ICompanyInfo>(API_URL + 'Company/savecompany', companyInfo, httpOptions)
           .pipe(catchError(this._errorService.handleErrors));
       }

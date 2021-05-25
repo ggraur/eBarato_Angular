@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { TokenStorageService } from '../_services/token-storage.service';
 import {Directive, HostListener, ElementRef} from '@angular/core';
+import { Router } from '@angular/router';
 
  
 @Component({
@@ -39,10 +40,11 @@ export class NavloginComponent implements OnInit {
 
   }
   logOut():void{
-    console.log("clicked logout");
+   // console.log("clicked logout");
     this.userIsLogged=false;
     this.emailLogin ='';
-    this.tokenStorage.signOut();   
+    this.tokenStorage.signOut();  
+     
   }
 
 

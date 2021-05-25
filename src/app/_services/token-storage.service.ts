@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { IUser } from '../Models/user.model';
 import { AuthService } from './auth.service';
@@ -11,7 +12,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class TokenStorageService {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private router: Router) { }
   
   public isLoged = new Subject<boolean>();
   data$ = this.isLoged.asObservable();
@@ -24,6 +25,7 @@ export class TokenStorageService {
     window.sessionStorage.clear();
     window.localStorage.clear();
     this.updateIsLoged(false);
+    this.router.navigate(['home']); 
   }
 
   updateIsLoged(data: boolean): void{
@@ -36,21 +38,7 @@ export class TokenStorageService {
   public getToken(): string | null {
     let _tknAccess: string | null = window.localStorage.getItem('accessToken');
     let _tknRefresh : string | null = window.localStorage.getItem('refreshToken');
-
-    // this.authService.refreshToken(_tknRefresh).subscribe(
-    //   (      data: IUser) => {
-    //     if(data)
-    //     {
-    //       this.saveUser(data);
-    //     }
  
-    //   },
-    //   (      err: { error: { message: string; }; }) => {
-    //     console.log(JSON.stringify(err));
-    //     // this.errorMessage = err.error.message;
-    //     // this.isLoginFailed = true;
-    //   }
-    //);
 
     return _tknAccess;
   }
