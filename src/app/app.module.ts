@@ -62,6 +62,8 @@ import { cacheInterceptorProviders } from './_helpers/cache.interceptor';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { AccountInfoService } from './my-account/my-account.service';
 import { ConfigurecompanyComponent } from './configurecompany/configurecompany.component';
+import { DisplayCompanyComponent } from './configurecompany/display-company.component';
+
 
 export function tokenGetter(){
   return localStorage.getItem('accessToken');
@@ -105,7 +107,8 @@ export function tokenGetter(){
     ClaimComponent,
     UserComponent,
     MyAccountComponent,
-    ConfigurecompanyComponent 
+    ConfigurecompanyComponent,
+    DisplayCompanyComponent
   ],
   imports: [
     BrowserModule,

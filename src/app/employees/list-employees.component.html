@@ -1,14 +1,12 @@
- 
 <div *ngIf="filteredEmployees">
     <div class="form-group">
         <input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="searchTerm">
     </div>
- 
+
     <div *ngFor="let employee of filteredEmployees">
-         <app-display-employee [employee]="employee" #childComponent [searchTerm]="searchTerm"
-            (notifyDelete)="onDeleteNotification($event)">
+        <app-display-employee [employee]="employee" #childComponent [searchTerm]="searchTerm" (notifyDelete)="onDeleteNotification($event)">
         </app-display-employee>
     </div>
     <error-alert *ngIf="errorMsg" [msg]="errorMsg"></error-alert>
-    <div *ngIf="error" class="danger" >{{error}}</div>
+    <div *ngIf="error" class="danger">{{error}}</div>
 </div>

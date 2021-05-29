@@ -25,6 +25,11 @@ export class MyAccountComponent implements OnInit {
   divHideClassesToRemove: string = '';
   updateSuccess: boolean = false;
   isCompany: boolean = false;
+  errorMsg!: string;
+  public error!: string;
+
+  filteredCompanies!: IAccountInfo[];
+  
 
   counter: { min: number; sec: number; } = { min: 0, sec: 0 };
 

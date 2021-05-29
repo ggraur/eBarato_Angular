@@ -38,8 +38,6 @@ export class TokenStorageService {
   public getToken(): string | null {
     let _tknAccess: string | null = window.localStorage.getItem('accessToken');
     let _tknRefresh : string | null = window.localStorage.getItem('refreshToken');
- 
-
     return _tknAccess;
   }
   public saveUser(user: IUser): void {

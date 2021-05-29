@@ -24,7 +24,8 @@ export class NavloginComponent implements OnInit {
     this.tokenStorage.data$.subscribe((data: any) => {
       this.userIsLogged = (data as any);
       this.emailLogin = localStorage.getItem('email');
-
+      let bRes =localStorage.getItem('isCompany');
+      this.isCompany = bRes==="true"?true:false;
       // let b = localStorage.getItem('isCompany');
       // if(b===null || b ==='false' || b === 'undefined'){
       //   this.isCompany = false;
