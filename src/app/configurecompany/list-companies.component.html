@@ -1,0 +1,17 @@
+<p>list-companies works!</p>
+<div *ngIf="filteredCompanies">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="searchTerm">
+    </div>
+
+    <div *ngFor="let company of filteredCompanies">
+        <!-- <app-display-company [company]="company" #childComponent [searchTerm]="searchTerm" (notifyDelete)="onDeleteNotification($event)"> -->
+        <app-display-company [company]="company" #childComponent [searchTerm]="searchTerm">
+        </app-display-company>
+
+        <!-- <app-display-employee [employee]="employee" #childComponent [searchTerm]="searchTerm" (notifyDelete)="onDeleteNotification($event)">
+        </app-display-employee> -->
+    </div>
+    <error-alert *ngIf="errorMsg" [msg]="errorMsg"></error-alert>
+    <div *ngIf="error" class="danger">{{error}}</div>
+</div>

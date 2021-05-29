@@ -57,6 +57,7 @@ export class ListEmployeesComponent implements OnInit {
   employeeToDisplay!: IEmployee;
   private empCount = -1;
   private indexArray = 1;
+  
   filterEmployees(searchString: string) {
     return this.employees.filter(
       employee => employee.fullName?.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);

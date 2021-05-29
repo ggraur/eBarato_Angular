@@ -24,6 +24,7 @@ import { DisplayEmployeeComponent } from './employees/display-employee.component
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-guard.service';
 import { EmployeeDetailsComponent } from './employees/employee-details.component';
 import { EmployeeFilterPipe } from './employees/employee-filter.pipe';
+
 import { EmployeeListResolverService } from './employees/employee-list-resolver.service';
 import { EmployeeDetailsGuardService } from './employees/employee-details-guard.service';
 import { AccordionComponent } from './shared/accordion/accordion.component';
@@ -63,6 +64,8 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { AccountInfoService } from './my-account/my-account.service';
 import { ConfigurecompanyComponent } from './configurecompany/configurecompany.component';
 import { DisplayCompanyComponent } from './configurecompany/display-company.component';
+import { ListCompaniesComponent } from './configurecompany/list-companies.component';
+import { CompanyListResolverService } from './configurecompany/company-list-resolver.service';
 
 
 export function tokenGetter(){
@@ -108,7 +111,8 @@ export function tokenGetter(){
     UserComponent,
     MyAccountComponent,
     ConfigurecompanyComponent,
-    DisplayCompanyComponent
+    DisplayCompanyComponent,
+    ListCompaniesComponent
   ],
   imports: [
     BrowserModule,
@@ -139,6 +143,7 @@ export function tokenGetter(){
              , AccountInfoService
              , CreateEmployeeCanDeactivateGuardService
              , EmployeeListResolverService
+             , CompanyListResolverService
              , MerchantListResolverService
              , EmployeeDetailsGuardService
              , ConfigureCompanyService

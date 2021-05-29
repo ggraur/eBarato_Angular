@@ -27,11 +27,15 @@ import { CustomerComponent } from './customer/customer.component';
 import { UserComponent } from './user/user.component';
 import { MyAccountComponent } from './my-account/my-account.component';
 import { ConfigurecompanyComponent } from './configurecompany/configurecompany.component';
+import { ListCompaniesComponent } from './configurecompany/list-companies.component';
+import { CompanyListResolverService } from './configurecompany/company-list-resolver.service';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path:'configurecompany',component: ConfigurecompanyComponent},
+  { path: 'companieslist', component: ListCompaniesComponent, resolve: {companiesList: CompanyListResolverService}, canActivate: [AuthGuard]},
+
   //{ path: 'login', component: LoginComponent },
   { path: 'mylogin', component: MyloginComponent },
   { path: 'myaccount', component: MyAccountComponent },
