@@ -47,7 +47,6 @@ export class ListCompaniesComponent implements OnInit {
     if (Array.isArray(resolvedData)) {
       this.companies = resolvedData;
     } else {
-
       this.error = resolvedData!;
     }
 

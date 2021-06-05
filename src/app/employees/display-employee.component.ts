@@ -60,7 +60,7 @@ export class DisplayEmployeeComponent implements OnInit {
   // }
 
   constructor(private _route: ActivatedRoute, private _empService: EmployeeService,
-              private _router: Router, ) {
+              private _router: Router ) {
     this._employeeId = 0;
 
   }

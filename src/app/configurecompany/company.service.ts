@@ -17,7 +17,7 @@ const credentials = JSON.stringify({ accessToken: token, refreshToken });
 
 @Injectable()
 export class CompanyService {
-  constructor(private _httpClient: HttpClient, private _router: Router) {}
+  constructor(private _httpClient: HttpClient, private _router: Router) { }
 
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
@@ -47,10 +47,10 @@ export class CompanyService {
     // return of(this.listEmployees);
   }
 
-  getListOfCompaniesByLogin(login :string|null): Observable<ICompanyInfo[]> {
-    console.log(login);
-//    return this._httpClient.get<ICompanyInfo[]>(API_URL + 'companieslist?loginId=' + login)
-return this._httpClient.get<ICompanyInfo[]>(API_URL + 'companieslist')
+  getListOfCompaniesByLogin(login: string | null): Observable<ICompanyInfo[]> {
+    //   console.log(login);
+    //    return this._httpClient.get<ICompanyInfo[]>(API_URL + 'companieslist?loginId=' + login)
+    return this._httpClient.get<ICompanyInfo[]>(API_URL + 'company/companieslist')
       .pipe(
         catchError(error => {
           let errorMsg: string;
@@ -83,7 +83,7 @@ return this._httpClient.get<ICompanyInfo[]>(API_URL + 'companieslist')
     switch (error.status) {
       case 404: {
         // this._router.navigate(['notfound'])
-        // console.error('The server not found: ${error.message}');
+        console.error('The server not found: ${error.message}');
         return `Not Found: ${error.message}`;
         // return `The server not found`;
       }
@@ -99,4 +99,27 @@ return this._httpClient.get<ICompanyInfo[]>(API_URL + 'companieslist')
 
     }
   }
+
+  delete(id: string): Observable<void> {
+    return this._httpClient.delete<void>(`${API_URL}/company/delete/${id}`)
+      .pipe(catchError(this.handleError));
+
+    // const deleteId = this.listEmployees.findIndex(e => e.id == id);
+    // if (deleteId !== -1) {
+    //   this.listEmployees.splice(deleteId, 1)
+    // }
+  }
+
+  addComapny(company: ICompanyInfo): Observable<ICompanyInfo> | undefined | null {
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this._httpClient.post<ICompanyInfo>(API_URL +'/company/savecompany', company, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+ 
 }

@@ -66,6 +66,7 @@ import { ConfigurecompanyComponent } from './configurecompany/configurecompany.c
 import { DisplayCompanyComponent } from './configurecompany/display-company.component';
 import { ListCompaniesComponent } from './configurecompany/list-companies.component';
 import { CompanyListResolverService } from './configurecompany/company-list-resolver.service';
+import { CompanyService } from './configurecompany/company.service';
 
 
 export function tokenGetter(){
@@ -147,6 +148,7 @@ export function tokenGetter(){
              , MerchantListResolverService
              , EmployeeDetailsGuardService
              , ConfigureCompanyService
+             , CompanyService
              , authInterceptorProviders
              , cacheInterceptorProviders
             , AuthGuard],

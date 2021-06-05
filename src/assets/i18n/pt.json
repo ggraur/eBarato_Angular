@@ -26,7 +26,7 @@
     "Close": "Fechar",
     "Configure Company": "Configurar Empresa",
     "Company Configuration": "Configurar Empresa",
-    "Company Name": "Nome Empresa",
+    "Company Name": "Nome da Empresa",
     "Contact person": "Pessoa de contato",
     "Contact telephone number": "Número de telefone de contato",
 
@@ -94,6 +94,8 @@
     "The email is invalid": "O email é inválido",
     "The resurse you are looking for cannot be found": "O recurso/pagina que você está procurando não pode ser encontrado/a!",
     "This operation has no undo, after save operation you will be redirected to configure the company.": "Esta operação não pode ser desfeita. Após a operação de salvar você será redirecionado para configurar a empresa!",
+    "The list of your companies": "A lista das suas empresas",
+
     "User not found": "Utilizador não encontrado",
     "User successfully activated": "Utilizador ativado com sucesso",
     "Username or password is incorrect": "Nome de usuário ou senha está incorreta",
