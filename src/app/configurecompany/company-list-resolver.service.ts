@@ -17,7 +17,9 @@ export class CompanyListResolverService implements Resolve<ICompanyInfo[] | stri
         this.login = localStorage.getItem('email');
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ICompanyInfo[] | string> {
-        return this._companyService.getListOfCompaniesByLogin(this.login)
+        
+        let _login : string | null = localStorage.getItem('email');
+        return this._companyService.getListOfCompaniesByLogin(_login)
             .pipe(
                 catchError((err: string) => of(err))
             );

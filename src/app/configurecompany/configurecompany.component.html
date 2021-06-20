@@ -1,11 +1,11 @@
 <form #myCompanyForm="ngForm" ngNativeValidate (ngSubmit)="saveCompanyInfo()">
     <div class="panel panel-primary" *ngIf="companyInfo">
         <div class="panel-heading">
-            <h3 class="panel-title">{{ panelTitle | translate}}</h3>
+            <h2 class="panel-title" ng-model="companyInfo.companyName">{{ panelTitle! | translate }} : {{(companyInfo.companyName)}}, {{'VAT'|translate}} {{(companyInfo.companyVAT)}}</h2>
         </div>
         <div *ngIf="updateSuccess" class="alert alert-success box-msg" role="alert">
             <strong>{{'Your changes has been saved!' | translate}}</strong>
-            <button (click)="closeUpdateSuccess()" type="button" class="close" aria-label="Close">
+            <button (click)="closeUpdateSuccess()" type="button" class="close btn btn-primary" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>

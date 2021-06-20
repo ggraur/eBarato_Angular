@@ -37,17 +37,11 @@ export class NavloginComponent implements OnInit {
      this.tokenStorage.dataIsCompany$.subscribe((dataIsCompany: any) => {
       this.isCompany = (dataIsCompany as any);
      });
-
-
   }
   logOut():void{
    // console.log("clicked logout");
     this.userIsLogged=false;
     this.emailLogin ='';
     this.tokenStorage.signOut();  
-     
   }
-
-
-
 }

@@ -18,7 +18,6 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { EmployeeService } from './employees/employee.service';
-import { ConfigureCompanyService} from './configurecompany/configurecompany.service';
 
 import { DisplayEmployeeComponent } from './employees/display-employee.component';
 import { CreateEmployeeCanDeactivateGuardService } from './employees/create-employee-can-deactivate-guard.service';
@@ -67,6 +66,7 @@ import { DisplayCompanyComponent } from './configurecompany/display-company.comp
 import { ListCompaniesComponent } from './configurecompany/list-companies.component';
 import { CompanyListResolverService } from './configurecompany/company-list-resolver.service';
 import { CompanyService } from './configurecompany/company.service';
+import { AdTypeComponent } from './ad-type/ad-type.component';
 
 
 export function tokenGetter(){
@@ -113,7 +113,8 @@ export function tokenGetter(){
     MyAccountComponent,
     ConfigurecompanyComponent,
     DisplayCompanyComponent,
-    ListCompaniesComponent
+    ListCompaniesComponent,
+    AdTypeComponent
   ],
   imports: [
     BrowserModule,
@@ -147,7 +148,6 @@ export function tokenGetter(){
              , CompanyListResolverService
              , MerchantListResolverService
              , EmployeeDetailsGuardService
-             , ConfigureCompanyService
              , CompanyService
              , authInterceptorProviders
              , cacheInterceptorProviders

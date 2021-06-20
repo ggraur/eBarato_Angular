@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IEmployee } from 'src/app/Models/employee.model';
 import { ICompanyInfo } from '../Models/company.model';
 
@@ -41,7 +41,7 @@ export class ListCompaniesComponent implements OnInit {
       this.filteredCompanies.splice(deleteId, 1);
     }
   }
-  constructor(private _route: ActivatedRoute) { 
+  constructor(private _route: ActivatedRoute, private _router: Router) { 
     
     const resolvedData: ICompanyInfo[] | string = this._route.snapshot.data.companiesList;
     if (Array.isArray(resolvedData)) {
@@ -52,6 +52,7 @@ export class ListCompaniesComponent implements OnInit {
 
        //      this.employees=this._route.snapshot.data['employeeList'];
       if (Array.isArray(this.companies)) {
+
         if (this._route.snapshot.queryParamMap.has('searchTerm')) {
           this.searchTerm = this._route.snapshot.queryParamMap.get('searchTerm') || '';
         } else {
@@ -60,10 +61,14 @@ export class ListCompaniesComponent implements OnInit {
         }
         // this.employeeId = 0;
   
+        if(this.companies.length===0){
+          this._router.navigate(['configurecompany']);
+        }
         this.companyToDisplay = this.companies[0];
         this.cmpCount = this.companies.length;
         console.log('Total number of companies: ' + this.cmpCount);
       }
+     
   }
 
   ngOnInit(): void {}

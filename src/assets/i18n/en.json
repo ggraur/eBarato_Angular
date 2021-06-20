@@ -8,7 +8,7 @@
     "addressLineErr2": "Please fill address line, is required field",
     "addressLineErr3": "Please fill address line, is required field",
     "Attention": "Attention",
-
+    "Are you sure you want to Delete the": "Are you sure you want to Delete the",
     "Business phone": "Business phone",
 
     "Company main office address": "Company main office address",
@@ -33,13 +33,18 @@
     "Customers": "Customers",
     "Contact person": "Contact person",
     "Contact telephone number": "Contact telephone number",
+    "Create New Company": "Create New Company",
+
 
     "Date Of Birth": "Date Of Birth",
     "Department": "Department",
+    "Delete": "Delete",
 
     "Employees": "Employees",
     "Employee List": "Employee List",
     "Email": "Email address",
+    "Edit": "Edit",
+
 
     "Full Name": "Full Name",
     "First Name": "First Name",
@@ -61,7 +66,9 @@
     "Merchant Users": "Merchant Users",
     "Merchants List": "Merchants List",
     "Merchant Name": "Merchant / Company full name",
+    "Modify company": "Modify company",
 
+    "No": "No",
     "Name": "Name",
     "NameError": "I am sure you must have a name!",
     "Not Found": "Not Found",
@@ -83,7 +90,7 @@
     "Say little more about you": "Say little more about you",
     "Service interrupted, check later please.": "Service interrupted, check later please.",
     "State/Province": "State/Province",
-
+    "Search by Name": "Search by Name",
     "title": "eBarato Marketplace",
     "town": "Town / City / Parish",
     "townErr": "Town/City is an required field",
@@ -113,7 +120,9 @@
     "Username or password is incorrect": "Username or password is incorrect",
 
     "Vat Number": "Vat Number",
-
+    "VAT": "VAT",
+    "View": "View",
+    "Yes": "Yes",
     "Your registration is successful! Please check your email and fallow the link to activate your account.": "Your registration is successful! Please check your email and fallow the link to activate your account.",
     "Your changes has been saved!": "Your changes has been saved!"
 

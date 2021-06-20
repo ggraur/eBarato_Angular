@@ -1,7 +1,7 @@
 <p>{{'The list of your companies' | translate }}</p>
 <div *ngIf="filteredCompanies">
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search by Name" [(ngModel)]="searchTerm">
+        <input type="text" class="form-control" placeholder="{{'Search by Name'|translate}}" [(ngModel)]="searchTerm">
     </div>
 
     <div *ngFor="let company of filteredCompanies">

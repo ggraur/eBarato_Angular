@@ -70,15 +70,15 @@
         </div>
     </div>
     <div class="myPanelFooter">
-        <button class="btn btn-primary" (click)="viewCompany()">View</button>
-        <button class="btn btn-primary" (click)="editCompany()">Edit</button>
+        <button class="btn btn-primary" (click)="viewCompany()">{{'View' | translate}}</button>
+        <button class="btn btn-primary" (click)="editCompany()">{{'Edit' | translate}}</button>
         <span *ngIf="confirmDelete">
             <span>
-                Are you sure you want to Delete the {{company?.companyName | uppercase}}? 
+                {{'Are you sure you want to Delete the'|translate}} {{company?.companyName | uppercase}}?
             </span>
-        <button class="btn btn-danger" (click)="deleteCompany()">Yes</button>
-        <button class="btn btn-primary" (click)="confirmDelete=false">No</button>
+        <button class="btn btn-danger" (click)="deleteCompany()">{{'Yes'|translate}}</button>
+        <button class="btn btn-primary" (click)="confirmDelete=false">{{'No'|translate}}</button>
         </span>
-        <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">Delete</button>
+        <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">{{'Delete'|translate}}</button>
     </div>
 </app-accordion>

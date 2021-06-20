@@ -33,9 +33,10 @@ import { CompanyListResolverService } from './configurecompany/company-list-reso
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path:'configurecompany',component: ConfigurecompanyComponent},
+  { path: 'configurecompany',component: ConfigurecompanyComponent, canActivate: [AuthGuard]},
+  { path: 'configurecompany/:companyId',component: ConfigurecompanyComponent, canActivate: [AuthGuard]},
   { path: 'companieslist', component: ListCompaniesComponent, resolve: {companiesList: CompanyListResolverService}, canActivate: [AuthGuard]},
-
+ 
   //{ path: 'login', component: LoginComponent },
   { path: 'mylogin', component: MyloginComponent },
   { path: 'myaccount', component: MyAccountComponent },
