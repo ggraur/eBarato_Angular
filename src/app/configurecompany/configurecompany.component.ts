@@ -133,6 +133,7 @@ export class ConfigurecompanyComponent implements OnInit {
         this.companyInfo = data;
         //this.companyInfo.CompanyName="asdfsdfsdfas"
         this.updateSuccess = true;
+
         // }
       },
       (error: any) => console.log(error)
@@ -165,8 +166,11 @@ export class ConfigurecompanyComponent implements OnInit {
   }
   closeUpdateSuccess() {
      this.router.navigate(['companieslist']);
+     this.ngOnInit();
    }
   CloseForm() {
     this.router.navigate(['companieslist']);
+    this.ngOnInit();
+
   }
 }

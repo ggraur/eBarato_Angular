@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { mergeMap, delay, takeUntil, catchError, tap } from 'rxjs/operators';
 import { ICompanyInfo } from '../Models/company.model';
@@ -19,10 +19,14 @@ const token = localStorage.getItem('accessToken')!;
 const credentials = JSON.stringify({ accessToken: token, refreshToken });
 
 @Injectable()
-export class CompanyService {
+export class CompanyService  implements OnInit  {
   constructor(private _httpClient: HttpClient
     , private _router: Router
     , private _errorService: ErrorService) { }
+
+  ngOnInit(): void {
+    this.getListOfCompanies();
+  }
 
   private handleError(errorResponse: HttpErrorResponse) {
     if (errorResponse.error instanceof ErrorEvent) {
@@ -187,8 +191,6 @@ export class CompanyService {
    // return of(this.listEmployees).pipe(delay(2000));
    // return of(this.listEmployees);
  }
-
-
 
   getCompaniesInfo(cmpInfo: ICompanyInfo): Observable<ICompanyInfo[]> {
     return this._httpClient.post<ICompanyInfo[]>(API_URL + 'Company/getcompanieslist', cmpInfo, httpOptions)

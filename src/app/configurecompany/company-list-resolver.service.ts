@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -10,11 +10,14 @@ import { CompanyService } from './company.service';
 
 
 @Injectable()
-export class CompanyListResolverService implements Resolve<ICompanyInfo[] | string>{
+export class CompanyListResolverService implements Resolve<ICompanyInfo[] | string>,OnInit{
     login!: string | null;
 
     constructor(private _companyService: CompanyService) {
         this.login = localStorage.getItem('email');
+    }
+    ngOnInit(): void {
+        
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ICompanyInfo[] | string> {
         
