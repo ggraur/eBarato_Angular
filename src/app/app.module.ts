@@ -67,7 +67,17 @@ import { ListCompaniesComponent } from './configurecompany/list-companies.compon
 import { CompanyListResolverService } from './configurecompany/company-list-resolver.service';
 import { CompanyService } from './configurecompany/company.service';
 import { AdTypeComponent } from './ad-type/ad-type.component';
+import { ResidentialForSaleComponent } from './residential-for-sale/residential-for-sale.component';
+import { AddsComponent } from './adds/adds.component';
+import { ListOfAddsComponent } from './adds/list-of-adds.component';
+import { DisplayAddsComponent } from './adds/display-adds.component';
+import {NotifierModule} from 'angular-notifier';
+ 
 
+
+ 
+import { NotificationgComponent } from './components/notif/notificationg.component';
+ 
 
 export function tokenGetter(){
   return localStorage.getItem('accessToken');
@@ -114,13 +124,33 @@ export function tokenGetter(){
     ConfigurecompanyComponent,
     DisplayCompanyComponent,
     ListCompaniesComponent,
-    AdTypeComponent
+    AdTypeComponent,
+    ResidentialForSaleComponent,
+    AddsComponent,
+    ListOfAddsComponent,
+    DisplayAddsComponent,
+   
+    NotificationgComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+  
     FormsModule,
-   
+    NotifierModule.withConfig({
+         position : {
+            horizontal:{ position:'middle', distance:4},
+            vertical:{ position:'bottom', distance:4 , gap:2}
+         },
+         behaviour:{
+           autoHide:500,
+           onClick:false,
+           onMouseover:'pauseAutoHide',
+           showDismissButton: true,
+           stacking:2
+         }
+         
+    }),    
     HttpClientModule,
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
@@ -139,6 +169,7 @@ export function tokenGetter(){
       }
     })
   ],
+  
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ EmployeeService
              , MerchantService
@@ -152,7 +183,7 @@ export function tokenGetter(){
              , authInterceptorProviders
              , cacheInterceptorProviders
             , AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent ]
 })
 export class AppModule { }
 

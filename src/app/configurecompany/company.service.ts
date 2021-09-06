@@ -18,14 +18,19 @@ const token = localStorage.getItem('accessToken')!;
 
 const credentials = JSON.stringify({ accessToken: token, refreshToken });
 
+
+
 @Injectable()
 export class CompanyService  implements OnInit  {
   constructor(private _httpClient: HttpClient
     , private _router: Router
     , private _errorService: ErrorService) { }
+    
+    
 
   ngOnInit(): void {
     this.getListOfCompanies();
+    
   }
 
   private handleError(errorResponse: HttpErrorResponse) {
@@ -68,7 +73,7 @@ export class CompanyService  implements OnInit  {
   // }
 
   getListOfCompaniesByLogin(login: string | null): Observable<ICompanyInfo[]> {
-     console.log('Url:' + API_URL + 'company/companieslistbylogin?_login=' + login);
+   //  console.log('Url:' + API_URL + 'company/companieslistbylogin?_login=' + login);
     //    return this._httpClient.get<ICompanyInfo[]>(API_URL + 'companieslist?loginId=' + login)
     return this._httpClient.get<ICompanyInfo[]>(API_URL + 'company/companieslistbylogin?_login=' + login)
     //return this._httpClient.get<ICompanyInfo[]>(API_URL + 'companieslistbylogin?loginId=' + login)
@@ -89,16 +94,16 @@ export class CompanyService  implements OnInit  {
     // return of(this.listEmployees);
   }
 
-  updateCompany(company: ICompanyInfo): Observable<void> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
-    //put method on webapi not exist yet, need to be created
-    return this._httpClient.put<void>(`${API_URL}/savecompany/${company.companyId}`, company, httpOptions)
-      .pipe(catchError(this.handleError));
-  }
+  // updateCompany(company: ICompanyInfo): Observable<void> {
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json'
+  //     })
+  //   };
+  //   //put method on webapi not exist yet, need to be created
+  //   return this._httpClient.put<void>(`${API_URL}/savecompany/${company.companyId}`, company, httpOptions)
+  //     .pipe(catchError(this.handleError));
+  // }
 
   private getServerErrorMessage(error: HttpErrorResponse): string {
     switch (error.status) {
@@ -121,14 +126,18 @@ export class CompanyService  implements OnInit  {
     }
   }
 
-  delete(id: string): Observable<void> {
-    return this._httpClient.delete<void>(`${API_URL}company/delete/${id}`)
-      .pipe(catchError(this.handleError));
+  //https://www.youtube.com/watch?v=XqXPyYs9fyI
+  //delete video
+  delete(id: string): Observable<ICompanyInfo> |undefined |null {
+    // return this._httpClient.delete<void>(`${API_URL}company/delete/${id}`)
+    //   .pipe(catchError(this.handleError));
+    var _companyInfo = {} as ICompanyInfo ;
+    
 
-    // const deleteId = this.listEmployees.findIndex(e => e.id == id);
-    // if (deleteId !== -1) {
-    //   this.listEmployees.splice(deleteId, 1)
-    // }
+      _companyInfo.companyId = id;
+
+    return this._httpClient.post<ICompanyInfo>(`${API_URL}company/delete_company`, _companyInfo, httpOptions)
+      .pipe(catchError(this._errorService.handleErrors));
   }
 
   addCompany(company: ICompanyInfo): Observable<ICompanyInfo> | undefined | null {

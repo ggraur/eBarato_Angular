@@ -1,5 +1,6 @@
 <app-accordion [title]="company.companyName!" [hasJustViewed]="selectedCompanyId===company.companyId" [isHidden]="true">
     <div class="col-xs-10 myPanelBody">
+        <notifier-container></notifier-container>
         <div class="row vertical-align">
             <!-- <div class="col-xs-4">
                 <img class="imageClass" [src]="company?.photoPath" />
@@ -69,6 +70,7 @@
             </div>
         </div>
     </div>
+
     <div class="myPanelFooter">
         <button class="btn btn-primary" (click)="viewCompany()">{{'View' | translate}}</button>
         <button class="btn btn-primary" (click)="editCompany()">{{'Edit' | translate}}</button>
@@ -80,5 +82,7 @@
         <button class="btn btn-primary" (click)="confirmDelete=false">{{'No'|translate}}</button>
         </span>
         <button *ngIf="!confirmDelete" class="btn btn-danger" (click)="confirmDelete=true">{{'Delete'|translate}}</button>
+        <button class="btn btn-primary" (click)="showMsg()">Show Message</button>
+        <!-- <button class="btn btn-primary" (click)="removeEmployee('10')">remove</button> -->
     </div>
 </app-accordion>

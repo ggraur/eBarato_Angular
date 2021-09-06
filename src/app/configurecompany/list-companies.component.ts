@@ -15,6 +15,8 @@ export class ListCompaniesComponent implements OnInit {
   private cmpCount = -1;
 
   public error!: string;
+  
+  deleteSuccess: boolean = false;
 
   companies!: ICompanyInfo[];
   filteredCompanies!: ICompanyInfo[];
@@ -38,9 +40,16 @@ export class ListCompaniesComponent implements OnInit {
   onDeleteNotification(id: string ) {
     const deleteId = this.filteredCompanies.findIndex(e => e.companyId == id);
     if (deleteId !== -1) {
+      this.deleteSuccess=true;
       this.filteredCompanies.splice(deleteId, 1);
     }
   }
+
+  closeUpdateSuccess() {
+    this.deleteSuccess = false;
+
+  }
+
   constructor(private _route: ActivatedRoute, private _router: Router) { 
     
     const resolvedData: ICompanyInfo[] | string = this._route.snapshot.data.companiesList;
@@ -49,7 +58,6 @@ export class ListCompaniesComponent implements OnInit {
     } else {
       this.error = resolvedData!;
     }
-
        //      this.employees=this._route.snapshot.data['employeeList'];
       if (Array.isArray(this.companies)) {
 
@@ -66,7 +74,7 @@ export class ListCompaniesComponent implements OnInit {
         }
         this.companyToDisplay = this.companies[0];
         this.cmpCount = this.companies.length;
-        console.log('Total number of companies: ' + this.cmpCount);
+        //console.log('Total number of companies: ' + this.cmpCount);
       }
      
   }

@@ -3,13 +3,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICompanyInfo } from '../Models/company.model';
 import { CompanyService } from './company.service';
 
+ 
+
+import { NotifierService } from 'angular-notifier';
+
+
 @Component({
   selector: 'app-display-company',
   templateUrl: './display-company.component.html',
-  styleUrls: ['./display-company.component.css']
+  styleUrls: ['./display-company.component.css'
+       ]
 })
 export class DisplayCompanyComponent implements OnInit {
-
+  private readonly notifier: NotifierService;
   private _companyId: string;
   selectedCompanyId: string | undefined;
 
@@ -41,18 +47,28 @@ export class DisplayCompanyComponent implements OnInit {
 
   constructor(private _route: ActivatedRoute,
     private _cmpService: CompanyService,
-    private _router: Router) {
+    private _router: Router,
+    notifierService: NotifierService) {
     this._companyId = '';
-    
+    this.notifier = notifierService;
     const id: string = _route.snapshot.params.companyId;
+    
   }
 
   deleteCompany() {
+    this._cmpService.delete(this.company.companyId!)?.subscribe(
+      (data: any) => {
+        this.notifyDelete.emit(this.company.companyId!);
+      },
+      (error: any) => console.log(error)
+    );
+    /*
     this._cmpService.delete(this.company.companyId!).subscribe(
       () => console.log(`Company with Id = ${this.company.companyId} deleted.`),
       (err) => console.log()
     );
     this.notifyDelete.emit(this.company.companyId!);
+    */
   }
   viewCompany() {
     //this.company.login = localStorage.getItem('email');
@@ -90,7 +106,29 @@ export class DisplayCompanyComponent implements OnInit {
     this._router.navigate(['/configurecompany', this.company.companyId]
     );
   }
+  showMsg(){
+    this.notifier.notify('error','Ola first message!');
+  }
+   
+  // removeEmployee(i : string) {
+  //   const confirmDialog = this.dialog.open(ConfirmDialogComponent, {
+  //     data: {
+  //       title: 'Confirm Remove Employee',
+  //       message: 'Are you sure, you want to remove an employee: ' + i
+  //     }
+  //   });
 
+  //   confirmDialog.afterClosed().subscribe(result => {
+  //     if (result === true) {
+  //       this.notifier.notify('error','Deleted!');
+  //      // this.employeeList = this.employeeList.filter(item => item.employeeId !== employeeObj.employeeId);
+  //     }
+  //   });
+  // }
+
+  
+ 
+    
   ngOnInit(): void {
   }
 

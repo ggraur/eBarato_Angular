@@ -92,6 +92,9 @@
     "This operation has no undo, after save operation you will be redirected to configure the company.": "Esta operação não pode ser desfeita. Após a operação de salvar você será redirecionado para configurar a empresa!",
     "The list of your companies": "A lista das suas empresas",
     "The full name is a mandatory field": "O nome do comerciante é um campo obrigatório",
+
+    "The company successfully removed": "A empresa foi removida com sucesso!",
+
     "title": "eBarato Marketplace, o seu local preferido de vendas",
     "town": "Município / Cidade / Freguesia",
     "townErr": "Município / Cidade / Freguesia  é um campo obrigatório",

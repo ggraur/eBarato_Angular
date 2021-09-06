@@ -7,7 +7,7 @@ import { ICompanyInfo } from '../Models/company.model';
 
 import { Guid } from 'guid-typescript';
 import { CompanyService } from './company.service';
-
+import { NotifierService } from 'angular-notifier';
 
 
 // const API_URL = AppConstants.Https_API_URL;
@@ -21,6 +21,7 @@ import { CompanyService } from './company.service';
 
 export class ConfigurecompanyComponent implements OnInit {
   private _cmpId: string | null | undefined;
+  private readonly notifier:NotifierService;
 
   set mCompany(value: ICompanyInfo) {
     this.companyInfo = value;
@@ -55,9 +56,10 @@ export class ConfigurecompanyComponent implements OnInit {
   };
 
   constructor(
-    private _cmpService: CompanyService, private _route: ActivatedRoute, private router: Router
+    private _cmpService: CompanyService, private _route: ActivatedRoute, private router: Router, private notifierService:NotifierService
   ) {
     //this.ShowReg();
+    this.notifier= notifierService;
   }
 
   ngOnInit(): void {
@@ -133,6 +135,8 @@ export class ConfigurecompanyComponent implements OnInit {
         this.companyInfo = data;
         //this.companyInfo.CompanyName="asdfsdfsdfas"
         this.updateSuccess = true;
+
+        this.notifier.notify('success', 'You are awesome! I mean it!');
 
         // }
       },

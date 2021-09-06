@@ -114,3 +114,9 @@ https://www.tugberkugurlu.com/archive/creating-custom-csvmediatypeformatter-in-a
 
 //check if the generated tokes is correct 
 //https://jwt.io/
+
+//Notifier module 
+//https://www.npmjs.com/package/angular-notifier
+
+//common error in typescript 
+//https://typescript.tv/error-ts/

@@ -38,7 +38,7 @@ export class MyloginComponent implements OnInit {
   public login = (form: NgForm) => {
     const credentials = JSON.stringify(form.value).replace('Email', 'Username');
     const str = JSON.parse(credentials);
-    this.http.post(API_URL + 'account/authenticate',
+    this.http.post(API_URL + 'Account/authenticate',
       credentials, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=UTF-8'
